@@ -8,6 +8,7 @@
       
       # Core Features (The Dendritic Way)
       # self.nixosModules.neovim
+      self.nixosModules.GNOME
       self.nixosModules.mySops
       self.nixosModules.env-vars
       self.nixosModules.niri
@@ -46,13 +47,13 @@
     # Assuming you followed the modular sops.nix we discussed:
     features.env-vars.enable = true;
 
-    # --- Desktop Environment ---
+    # --- xserver config ---
     # Note: You have Niri imported, but GDM/GNOME are enabled here.
     # Keep both if you want a fallback, otherwise disable GNOME to stay minimal.
     services.xserver = {
       enable = true;
       displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
+      
       xkb = {
         layout = "au";
         variant = "";
