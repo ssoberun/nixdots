@@ -47,12 +47,12 @@
     # Assuming you followed the modular sops.nix we discussed:
     features.env-vars.enable = true;
 
-    # --- xserver config ---
+    # --- Desktop Environment ---
     # Note: You have Niri imported, but GDM/GNOME are enabled here.
     # Keep both if you want a fallback, otherwise disable GNOME to stay minimal.
+    services.displayManager.ly.enable = true;
     services.xserver = {
       enable = true;
-      displayManager.gdm.enable = true;
       
       xkb = {
         layout = "au";
