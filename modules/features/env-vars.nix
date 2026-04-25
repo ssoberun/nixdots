@@ -6,6 +6,7 @@
       environment.sessionVariables = {
         # This makes it available to all shells and desktop sessions
         EDITOR = "nvim";
+	SOPS_AGE_KEY_FILE="~/nixdots/secrets/keys.txt";
       };
     };
   };

@@ -7,10 +7,24 @@
       self.nixosModules.x1-machine-hardware
       
       # Core Features (The Dendritic Way)
-      self.nixosModules.sops
+      self.nixosModules.mySops
       self.nixosModules.env-vars
       self.nixosModules.niri
       self.nixosModules.git
+    ];
+    
+    # --- Environment & Packages ---
+    environment.systemPackages = with pkgs; [
+      # CLI Essentials
+      vim
+      neovim
+      wget
+      age
+
+      # GUI Apps
+      firefox
+      kitty
+      bitwarden-desktop
     ];
 
     # --- System Core ---
@@ -60,20 +74,6 @@
       description = "sam";
       extraGroups = [ "networkmanager" "wheel" "video" ]; # Added video for Niri/Wayland
     };
-
-    # --- Environment & Packages ---
-    environment.systemPackages = with pkgs; [
-      # CLI Essentials
-      vim
-      neovim
-      wget
-      age
-
-      # GUI Apps
-      firefox
-      kitty
-      bitwarden-desktop
-    ];
 
     system.stateVersion = "25.11"; 
   };
