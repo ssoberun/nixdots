@@ -1,5 +1,5 @@
-{ ... }: {
-  flake.nixosModules.gnome = { lib, config, ... }: {
+{ pkgs, ... }: {
+  flake.nixosModules.GNOME = { pkgs, lib, config, ... }: {
     config = {
       services.xserver = {
 	desktopManager.gnome.enable = true;

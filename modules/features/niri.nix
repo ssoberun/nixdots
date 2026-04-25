@@ -26,6 +26,11 @@
 	    accel-profile = "flat";
 	  };
 	};
+	
+	outputs."eDP-1" = {
+          scale = 1.0;            # 1.0 is the native, smallest size
+          variable-refresh-rate = null; # Smooths out animations on your X1
+        };
 
         layout.gaps = 5;
 
