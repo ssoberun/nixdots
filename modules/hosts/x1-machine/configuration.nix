@@ -7,6 +7,7 @@
       self.nixosModules.x1-machine-hardware
       
       # Core Features (The Dendritic Way)
+      self.nixosModules.myNeovim
       self.nixosModules.mySops
       self.nixosModules.env-vars
       self.nixosModules.niri

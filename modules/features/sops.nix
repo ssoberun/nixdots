@@ -15,11 +15,11 @@
     environment.systemPackages = [ sops' ];
 
     sops = {
-      package = sops'; 
+      # package = pkgs.sops;
 
       defaultSopsFile = ../../secrets/secrets.yaml;
       defaultSopsFormat = "yaml";
-      # age.keyFile = "/home/sam/nixdots/secrets/keys.txt";
+      age.keyFile = "/home/sam/nixdots/secrets/keys.txt";
 
       secrets = {
 	github_ssh_key = {
