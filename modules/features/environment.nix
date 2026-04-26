@@ -5,9 +5,12 @@
       package = self'.packages.fish;
       runtimeInputs = [
         # unwrapped
+	pkgs.zoxide
+	pkgs.btop
 
         # wrapped
 	self'.packages.git
+	self'.packages.lf
       ];
     }; 
   };

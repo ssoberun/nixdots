@@ -6,25 +6,27 @@
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-9th-gen
       self.nixosModules.x1-machine-hardware
 
+
+      # unwrapped, modularised
+      self.nixosmodules.desktop
+      # self.nixosModules.discord
+
       # base
       self.nixosModules.base
 
       # fonts
-      self.nixosModules.fonts
-
-      # unwrapped, modularised
-      self.nixosModules.discord
+      # self.nixosModules.fonts
       
       # wrapped modules
       # self.nixosModules.neovim
       self.nixosModules.fish
       self.nixosModules.kitty
-      self.nixosModules.GNOME
+      # self.nixosModules.GNOME
       self.nixosModules.mySops
-      self.nixosModules.env-vars
+      # self.nixosModules.env-vars
       self.nixosModules.niri
       self.nixosModules.noctalia # this is to let noctalia be accessed via shell 
-      self.nixosModules.git
+      # self.nixosModules.git
     ];
     
     # --- Environment & Packages ---

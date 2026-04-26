@@ -43,7 +43,6 @@
       package = pkgs.fish;
       runtimeInputs = [
         pkgs.zoxide
-	pkgs.lf # remove if adding lf.nix from vimjoyer's config
       ];
       flags = {
           "-C" = "source ${fishConf}";
