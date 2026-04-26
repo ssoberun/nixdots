@@ -1,4 +1,3 @@
-# primary-user.nix
 {
   config,
   lib,

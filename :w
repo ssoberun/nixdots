@@ -1,0 +1,32 @@
+{self, inputs, ...}: {
+  flake.homeConfigurations."${config.preferences.user.name}" = inputs.home-manager.lib.homeManagerConfiguration {
+    pkgs = import inputs.nixpkgs { system = "x86_64-linux"; };
+    modules = [
+      self.homeModules."${self.options.preferences.user.name}Module"
+      {
+        home.username = "${self.options.preferences.user.name}";
+	home.homeDirectory = "/home/${config.preferences.user.name}";
+      }
+    ];
+  };
+
+  flake.homeModules."${config.preferences.user.name}Module" = { pkgs, lib, ... }: {
+    # TODO: move to a diff file, also fucking two things cuz home managre has its own scope
+    options.preferences.user = {
+        name = lib.mkOption {
+        type = lib.types.str;
+        default = "sam";
+      };
+    };
+
+    config = {
+        programs.bash.enable = true;
+        programs.bash.shellAliases.ll = "ls -l";
+
+        preferences.user.name = "sam";
+
+        home.packages = [ pkgs.hello ];
+        home.stateVersion = "25.11";
+    };
+  };
+}
