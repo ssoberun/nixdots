@@ -5,7 +5,7 @@
       # Hardware and Inputs
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-9th-gen
       self.nixosModules.x1-machine-hardware
-      
+
       # base
       self.nixosModules.base
       
@@ -44,6 +44,8 @@
       };
       # shell = self'.packages.fish;
     };
+    # HOME MANAGER
+    home-manager.users."${config.preferences.user.name}" = self.homeModules."${config.preferences.user.name}Module";
 
     # --- System Core ---
     networking.hostName = "x1-machine"; 
