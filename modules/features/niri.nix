@@ -19,6 +19,11 @@
 
         xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
+	cursor = {
+	  xcursor-theme = "macOS";
+	  xcursor-size = 28;
+	};
+
         input = {
           keyboard.xkb.layout = "us";
           mouse.accel-profile = "flat";
@@ -56,10 +61,11 @@
           "Mod+Down".focus-window-or-workspace-down = _: {};
 
           # Moving Windows
-          "Mod+Shift+H".move-column-left = _: {};
-          "Mod+Shift+L".move-column-right = _: {};
-          "Mod+Shift+K".move-window-up = _: {};
-          "Mod+Shift+J".move-window-down = _: {};
+	  
+          "Mod+Shift+H".move-column-left-or-to-monitor-left = _: { };
+          "Mod+Shift+J".move-window-down-or-to-workspace-down = _: { };
+          "Mod+Shift+K".move-window-up-or-to-workspace-up = _: { };
+          "Mod+Shift+L".move-column-right-or-to-monitor-right = _: { };
 
           "Mod+Home".focus-column-first = _: {};
           "Mod+End".focus-column-last = _: {};

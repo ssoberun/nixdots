@@ -9,9 +9,7 @@
     };
   };
 
-  perSystem = { pkgs, lib, ... }: {
-    packages.kitty = inputs.wrapper-modules.wrappers.kitty.wrap {
-      inherit pkgs;
+  flake.wrapperModules.kitty = {config, lib, ...}: {
       settings = {
         cursor_trail = 3;
         background_blur = 1;
@@ -19,10 +17,15 @@
         scrollback_lines = 2000;
         hide_window_decorations = true;
       };
-
       extraConfig = ''
         include ~/.config/kitty/themes/noctalia.conf
       '';
+  };
+
+  perSystem = { pkgs, lib, ... }: {
+    packages.kitty = inputs.wrapper-modules.wrappers.kitty.wrap {
+      inherit pkgs;
+      imports = [self.wrapperModules.kitty];
     };
   };
 }

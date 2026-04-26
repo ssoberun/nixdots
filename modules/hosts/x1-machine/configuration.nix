@@ -8,8 +8,11 @@
 
       # base
       self.nixosModules.base
+
+      # fonts
+      self.nixosModules.fonts
       
-      # Core Features (The Dendritic Way)
+      # wrapped modules
       # self.nixosModules.neovim
       self.nixosModules.fish
       self.nixosModules.kitty
@@ -30,6 +33,9 @@
 
       firefox
       bitwarden-desktop
+
+      # cursor test
+      apple-cursor
     ];
     
     # --- User Configuration ---
@@ -42,7 +48,8 @@
         extraGroups = [ "networkmanager" "wheel" "video" ];
 	initialPassword = "password";
       };
-      # shell = self'.packages.fish;
+      # shell = "${self.packages.${pkgs.stdenv.hostPlatform.system}.shell-environment}/bin/fish";
+      # shell = self.packages.${pkgs.stdenv.hostPlatform.system}.fish;
     };
 
     # --- System Core ---
