@@ -1,13 +1,31 @@
 { self, inputs, ... }: {
+  # 1. The NixOS Module: This makes the command available system-wide
+  flake.nixosModules.noctalia = { pkgs, ... }: {
+    environment.systemPackages = [
+      self.packages.${pkgs.stdenv.hostPlatform.system}.noctalia-shell
+    ];
+  };
+
+  # 2. The Package Definition: This handles the actual wrapping logic
   perSystem = { pkgs, ... }: {
     packages.noctalia-shell = inputs.wrapper-modules.wrappers.noctalia-shell.wrap {
-      inherit pkgs; # THIS PART IS VERY IMPORTAINT, I FORGOT IT IN THE VIDEO!!!
-      settings =
-        (builtins.fromJSON
-          (builtins.readFile ./noctalia.json));
+      inherit pkgs;
+      # Using fromJSON as you prefer for your theme/layout
+      settings = builtins.fromJSON (builtins.readFile ./noctalia.json);
     };
   };
 }
+
+# { self, pkgs, inputs, ... }: {
+#   perSystem = { pkgs, ... }: {
+#     packages.noctalia-shell = inputs.wrapper-modules.wrappers.noctalia-shell.wrap {
+#       inherit pkgs; # THIS PART IS VERY IMPORTAINT, I FORGOT IT IN THE VIDEO!!!
+#       settings =
+#         (builtins.fromJSON
+#           (builtins.readFile ./noctalia.json));
+#     };
+#   };
+# }
 
 # {inputs, ...}: {
 #   perSystem = {pkgs, ...}: {

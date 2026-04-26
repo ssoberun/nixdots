@@ -8,10 +8,13 @@
       
       # Core Features (The Dendritic Way)
       # self.nixosModules.neovim
+      self.nixosModules.fish
+      self.nixosModules.kitty
       self.nixosModules.GNOME
       self.nixosModules.mySops
       self.nixosModules.env-vars
       self.nixosModules.niri
+      self.nixosModules.noctalia # this is to let noctalia be accessed via shell 
       self.nixosModules.git
     ];
     
@@ -25,7 +28,6 @@
 
       # GUI Apps
       firefox
-      kitty
       bitwarden-desktop
     ];
 

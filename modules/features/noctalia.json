@@ -2,7 +2,7 @@
   "settingsVersion": 59,
   "bar": {
     "barType": "floating",
-    "position": "top",
+    "position": "left",
     "monitors": [],
     "density": "comfortable",
     "showOutline": false,
@@ -21,7 +21,7 @@
     "frameRadius": 12,
     "outerCorners": true,
     "hideOnOverview": false,
-    "displayMode": "auto_hide",
+    "displayMode": "always_visible",
     "autoHideDelay": 500,
     "autoShowDelay": 150,
     "showOnWorkspaceSwitch": true,
@@ -579,7 +579,36 @@
     "syncGsettings": true
   },
   "templates": {
-    "activeTemplates": [],
+    "activeTemplates": [
+      {
+        "enabled": true,
+        "id": "kitty"
+      },
+      {
+        "enabled": true,
+        "id": "niri"
+      },
+      {
+        "enabled": true,
+        "id": "pywalfox"
+      },
+      {
+        "enabled": true,
+        "id": "qt"
+      },
+      {
+        "enabled": true,
+        "id": "btop"
+      },
+      {
+        "enabled": true,
+        "id": "yazi"
+      },
+      {
+        "enabled": true,
+        "id": "zathura"
+      }
+    ],
     "enableUserTheming": false
   },
   "nightLight": {
