@@ -6,6 +6,9 @@
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-9th-gen
       self.nixosModules.x1-machine-hardware
       
+      # base
+      self.nixosModules.base
+      
       # Core Features (The Dendritic Way)
       # self.nixosModules.neovim
       self.nixosModules.fish
@@ -20,13 +23,11 @@
     
     # --- Environment & Packages ---
     environment.systemPackages = with pkgs; [
-      # CLI Essentials
       vim
       neovim
       wget
       age
 
-      # GUI Apps
       firefox
       bitwarden-desktop
     ];
@@ -73,7 +74,7 @@
     };
 
     # --- User Configuration ---
-    users.users.sam = {
+    users.users."${self.preferences.user.name}" = {
       isNormalUser = true;
       description = "sam";
       extraGroups = [ "networkmanager" "wheel" "video" ]; # Added video for Niri/Wayland

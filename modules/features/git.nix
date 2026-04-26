@@ -14,8 +14,7 @@
       inherit pkgs;
       settings = {
         user = {
-	  name = name;
-	  email = email;
+	  inherit name email;
 	};
 
         init = {

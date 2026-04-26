@@ -1,57 +1,109 @@
-{self, inputs, ...}: {
-  flake.nixosModules.fish =
-    {
-      config,
-      pkgs,
-      ...
-    }: {
-      programs = {
-        fish = {
-          enable = true;
-          # seems like shell abbreviations take precedence over aliases
-          shellAbbrs = config.environment.shellAliases // {
-            ehistory = ''nvim "/home/sam/fish/fish_history"'';
-          };
-          shellInit =
-            /* fish */ ''
-              # shut up welcome message
-              function fish_greeting
+{
+  self,
+  inputs,
+  lib,
+  ...
+}: {
+  flake.nixosModules.fish = {pkgs, ...}: {
+    programs.fish = {
+      enable = true;
+      package = self.packages.${pkgs.stdenv.hostPlatform.system}.fish;
+    }; 
+  };
+  perSystem = {
+    pkgs,
+    self',
+    ...
+  }: let
+    lf = self'.packages.lf;
+    fishConf =
+      pkgs.writeText "fishy-fishy"
+      # fish
+      ''
+        # function fish_prompt
+        #     string join "" -- (set_color red) "[" (set_color yellow) $USER (set_color green) "@" (set_color blue) $hostname (set_color magenta) " " $(prompt_pwd) (set_color red) ']' (set_color normal) "\$ "
+        # end
 
-	      end
+        set fish_greeting
+        fish_vi_key_bindings
 
-              # use vi key bindings with hybrid emacs keybindings
-              # function fish_user_key_bindings
-              #     fish_default_key_bindings -M insert
-              #     fish_vi_key_bindings --no-erase insert
-              # end
+        ${lib.getExe pkgs.zoxide} init fish | source
 
-              # setup vi mode
-              fish_vi_key_bindings
-a
-              # setup fish-completion-sync
-              # source ${fish-completion-sync}/init.fish
-            ''
-            # sponge options
-            + ''
-              # set options for plugins
-              set sponge_regex_patterns 'password|passwd|^kill'
+        function lf --wraps="lf" --description="lf - Terminal file manager (changing directory on exit)"
+            cd "$(command lf -print-last-dir $argv)"
+        end
 
-              # bind --mode default \t complete-and-search
-            '';
+        if type -q direnv
+            direnv hook fish | source
+        end
+      '';
+  in {
+    packages.fish = inputs.wrappers.lib.wrapPackage {
+      inherit pkgs;
+      package = pkgs.fish;
+      runtimeInputs = [
+        pkgs.zoxide
+	pkgs.lf # remove if adding lf.nix from vimjoyer's config
+      ];
+      flags = {
+          "-C" = "source ${fishConf}";
         };
-      };
-
-      # fish plugins
-      environment = {
-        # install fish completions for fish
-        # https://github.com/nix-community/home-manager/pull/2408
-        pathsToLink = [ "/share/fish" ];
-
-        systemPackages = [
-          # do not add failed commands to history
-          pkgs.fishPlugins.sponge
-          # fish-completion-sync
-        ];
       };
     };
 }
+
+# {self, inputs, ...}: {
+#   flake.nixosModules.fish =
+#     {
+#       config,
+#       pkgs,
+#       ...
+#     }: {
+#       programs = {
+#         fish = {
+#           enable = true;
+#           # seems like shell abbreviations take precedence over aliases
+#           shellAbbrs = config.environment.shellAliases // {
+#             ehistory = ''nvim "/home/sam/fish/fish_history"'';
+#           };
+#           shellInit =
+#             /* fish */ ''
+#               # shut up welcome message
+#               function fish_greeting
+#
+# 	      end
+#
+#               # use vi key bindings with hybrid emacs keybindings
+#               # function fish_user_key_bindings
+#               #     fish_default_key_bindings -M insert
+#               #     fish_vi_key_bindings --no-erase insert
+#               # end
+#
+#               # setup vi mode
+#               fish_vi_key_bindings
+# a
+#             ''
+#             # sponge options
+#             + ''
+#               # set options for plugins
+#               set sponge_regex_patterns 'password|passwd|^kill'
+#
+#               # bind --mode default \t complete-and-search
+#             '';
+#         };
+#       };
+#
+#       # fish plugins
+#       environment = {
+#         # install fish completions for fish
+#         # https://github.com/nix-community/home-manager/pull/2408
+#         pathsToLink = [ "/share/fish" ];
+#
+#         systemPackages = [
+#           # do not add failed commands to history
+#           pkgs.fishPlugins.sponge
+#           # fish-completion-sync
+#         ];
+#       };
+#     };
+# }
