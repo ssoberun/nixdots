@@ -33,10 +33,14 @@
             "colorizeSystemIcon": "tertiary",
             "colorizeSystemText": "none",
             "customIconPath": "",
-            "enableColorization": true,
+            "enableColorization": false,
             "icon": "noctalia",
             "id": "ControlCenter",
             "useDistroLogo": true
+          },
+          {
+            "iconColor": "none",
+            "id": "WallpaperSelector"
           },
           {
             "characterCount": 2,
@@ -145,7 +149,7 @@
       "screenOverrides": []
     },
     "general": {
-      "avatarImage": "/home/sam/.face",
+      "avatarImage": "/home/sam/nixdots/wallpapers/malcolm x.jpg",
       "dimmerOpacity": 0.05,
       "showScreenCorners": false,
       "forceBlackScreenCorners": false,
@@ -261,7 +265,7 @@
     "wallpaper": {
       "enabled": true,
       "overviewEnabled": false,
-      "directory": "/home/sam/Pictures/Wallpapers",
+      "directory": "/home/sam/nixdots/wallpapers/",
       "monitorDirectories": [],
       "enableMultiMonitorDirectories": false,
       "showHiddenFiles": false,
@@ -303,7 +307,64 @@
       "wallhavenResolutionWidth": "",
       "wallhavenResolutionHeight": "",
       "sortOrder": "name",
-      "favorites": []
+      "favorites": [
+        {
+          "appearance": "dark",
+          "colorScheme": "Noctalia (default)",
+          "darkMode": true,
+          "generationMethod": "monochrome",
+          "paletteColors": [
+            "#ffffff",
+            "#c6c6c6",
+            "#e2e2e2",
+            "#ffb4ab"
+          ],
+          "path": "/home/sam/nixdots/wallpapers/FarmsOutWest.jpg",
+          "useWallpaperColors": true
+        },
+        {
+          "appearance": "dark",
+          "colorScheme": "Noctalia (default)",
+          "darkMode": true,
+          "generationMethod": "monochrome",
+          "paletteColors": [
+            "#ffffff",
+            "#c6c6c6",
+            "#e2e2e2",
+            "#ffb4ab"
+          ],
+          "path": "/home/sam/nixdots/wallpapers/malcolm-x-wallpaper.jpg",
+          "useWallpaperColors": true
+        },
+        {
+          "appearance": "dark",
+          "colorScheme": "Noctalia (default)",
+          "darkMode": true,
+          "generationMethod": "monochrome",
+          "paletteColors": [
+            "#ffffff",
+            "#c6c6c6",
+            "#e2e2e2",
+            "#ffb4ab"
+          ],
+          "path": "/home/sam/nixdots/wallpapers/AmericanUkraine.jpg",
+          "useWallpaperColors": true
+        },
+        {
+          "appearance": "dark",
+          "colorScheme": "Noctalia (default)",
+          "darkMode": true,
+          "generationMethod": "tonal-spot",
+          "paletteColors": [
+            "#ffb962",
+            "#dfc1a2",
+            "#bccd9d",
+            "#ffb4ab"
+          ],
+          "path": "/home/sam/nixdots/wallpapers/shady-sands.jpg",
+          "useWallpaperColors": true
+        }
+      ]
     },
     "appLauncher": {
       "enableClipboardHistory": false,
@@ -584,7 +645,7 @@
       "schedulingMode": "off",
       "manualSunrise": "06:30",
       "manualSunset": "18:30",
-      "generationMethod": "monochrome",
+      "generationMethod": "tonal-spot",
       "monitorForColors": "eDP-1",
       "syncGsettings": true
     },
@@ -690,7 +751,7 @@
     "openedPanel": "",
     "lockScreenActive": false,
     "wallpapers": {
-      "eDP-1": "/home/sam/Pictures/Wallpapers/malcolm-x-wallpaper.jpg"
+      "eDP-1": "/home/sam/nixdots/wallpapers/something-beautiful.png"
     },
     "desktopWidgetsEditMode": false,
     "display": {

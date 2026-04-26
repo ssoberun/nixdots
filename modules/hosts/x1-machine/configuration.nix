@@ -47,6 +47,7 @@
         description = "${config.preferences.user.name}, he is the primary user";
         extraGroups = [ "networkmanager" "wheel" "video" ];
 	initialPassword = "password";
+        shell = self.packages.${pkgs.stdenv.hostPlatform.system}.shell-environment;
       };
       # shell = "${self.packages.${pkgs.stdenv.hostPlatform.system}.shell-environment}/bin/fish";
       # shell = self.packages.${pkgs.stdenv.hostPlatform.system}.fish;
