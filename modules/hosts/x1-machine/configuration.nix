@@ -11,6 +11,9 @@
 
       # fonts
       self.nixosModules.fonts
+
+      # unwrapped, modularised
+      self.nixosModules.discord
       
       # wrapped modules
       # self.nixosModules.neovim
