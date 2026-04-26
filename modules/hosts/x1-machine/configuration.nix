@@ -44,8 +44,6 @@
       };
       # shell = self'.packages.fish;
     };
-    # HOME MANAGER
-    home-manager.users."${config.preferences.user.name}" = self.homeModules."${config.preferences.user.name}Module";
 
     # --- System Core ---
     networking.hostName = "x1-machine"; 
