@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-  flake.nixosModules.x1-machine-configuration = { pkgs, lib, config, ... }: {
+  flake.nixosModules.x1-machine-configuration = { pkgs, lib, config, self', ... }: {
     
     imports = [
       # Hardware and Inputs
@@ -31,6 +31,19 @@
       firefox
       bitwarden-desktop
     ];
+    
+    # --- User Configuration ---
+    preferences.user.name = "sam";
+    users.users = {
+      # primary user
+      "${config.preferences.user.name}" = {
+        isNormalUser = true;
+        description = "${config.preferences.user.name}, he is the primary user";
+        extraGroups = [ "networkmanager" "wheel" "video" ];
+	initialPassword = "password";
+      };
+      # shell = self'.packages.fish;
+    };
 
     # --- System Core ---
     networking.hostName = "x1-machine"; 
@@ -71,13 +84,6 @@
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
-    };
-
-    # --- User Configuration ---
-    users.users."${self.preferences.user.name}" = {
-      isNormalUser = true;
-      description = "sam";
-      extraGroups = [ "networkmanager" "wheel" "video" ]; # Added video for Niri/Wayland
     };
 
     system.stateVersion = "25.11"; 

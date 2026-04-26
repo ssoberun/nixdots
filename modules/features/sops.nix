@@ -13,10 +13,9 @@
       defaultSopsFormat = "yaml";
       age.keyFile = "/home/sam/nixdots/secrets/keys.txt";
       
-      # secrets.github_ssh_key = {
-      #   path = "/home/sam/.ssh/github-ssh-key";
-      #   owner = "sam";
-      # };
+      secrets.github_ssh_key = {
+        owner = "sam";
+      };
     };
   };
 
