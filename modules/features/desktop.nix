@@ -11,5 +11,5 @@
      # desktop visuals
      self.nixosModules.fonts
    ];
- }
+ };
 }

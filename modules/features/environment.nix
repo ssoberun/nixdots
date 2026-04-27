@@ -12,6 +12,9 @@
 	self'.packages.git
 	self'.packages.lf
       ];
+      env = {
+        EDITOR = "neovim";
+      };
     }; 
   };
 }

@@ -8,7 +8,7 @@
 
 
       # unwrapped, modularised
-      self.nixosmodules.desktop
+      self.nixosModules.desktop
       # self.nixosModules.discord
 
       # base
@@ -23,8 +23,7 @@
       self.nixosModules.kitty
       # self.nixosModules.GNOME
       self.nixosModules.mySops
-      # self.nixosModules.env-vars
-      self.nixosModules.niri
+      # self.nixosModules.niri
       self.nixosModules.noctalia # this is to let noctalia be accessed via shell 
       # self.nixosModules.git
     ];
@@ -74,7 +73,6 @@
 
     # --- Feature Toggles ---
     # Assuming you followed the modular sops.nix we discussed:
-    features.env-vars.enable = true;
 
     # --- Desktop Environment ---
     # Note: You have Niri imported, but GDM/GNOME are enabled here.

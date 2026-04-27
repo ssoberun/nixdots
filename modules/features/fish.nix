@@ -15,7 +15,6 @@
     self',
     ...
   }: let
-    lf = self'.packages.lf;
     fishConf =
       pkgs.writeText "fishy-fishy"
       # fish
@@ -43,6 +42,7 @@
       package = pkgs.fish;
       runtimeInputs = [
         pkgs.zoxide
+	self'.packages.git
       ];
       flags = {
           "-C" = "source ${fishConf}";

@@ -1,7 +1,7 @@
 {self, inputs, lib, ...}: {
   flake.nixosModules.fonts = {self, pkgs, ...}: {
     fonts = {
-      fontConfig = {
+      fontconfig = {
         defaultFonts = {
 	  serif = ["Ubuntu Sans"];
 	  sansSerif = ["Ubuntu Sans"];
