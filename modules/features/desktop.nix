@@ -7,6 +7,8 @@
 
      # apps
      self.nixosModules.discord
+     self.nixosModules.beeper
+     self.nixosModules.obsidian
 
      # desktop visuals
      self.nixosModules.fonts
