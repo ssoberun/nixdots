@@ -6,11 +6,11 @@
       runtimeInputs = [
         # unwrapped
 	pkgs.zoxide
-	pkgs.btop
 
         # wrapped
 	self'.packages.git
 	self'.packages.lf
+	self'.packages.btop
       ];
       env = {
         EDITOR = "neovim";

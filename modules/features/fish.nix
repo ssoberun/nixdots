@@ -4,12 +4,12 @@
   lib,
   ...
 }: {
-  flake.nixosModules.fish = {pkgs, ...}: {
-    programs.fish = {
-      enable = true;
-      package = self.packages.${pkgs.stdenv.hostPlatform.system}.fish;
-    }; 
-  };
+  # flake.nixosModules.fish = {pkgs, ...}: {
+  #   programs.fish = {
+  #     enable = true;
+  #     package = self.packages.${pkgs.stdenv.hostPlatform.system}.fish;
+  #   }; 
+  # };
   perSystem = {
     pkgs,
     self',
@@ -42,7 +42,6 @@
       package = pkgs.fish;
       runtimeInputs = [
         pkgs.zoxide
-	self'.packages.git
       ];
       flags = {
           "-C" = "source ${fishConf}";

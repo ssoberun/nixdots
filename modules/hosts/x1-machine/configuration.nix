@@ -19,7 +19,7 @@
       
       # wrapped modules
       # self.nixosModules.neovim
-      self.nixosModules.fish
+      # self.nixosModules.fish
       self.nixosModules.kitty
       # self.nixosModules.GNOME
       self.nixosModules.mySops
