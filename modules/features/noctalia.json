@@ -64,7 +64,17 @@
             "unfocusedIconsOpacity": 1
           }
         ],
-        "center": [],
+        "center": [
+          {
+            "clockColor": "none",
+            "customFont": "7-Segment",
+            "formatHorizontal": "HH:mm ddd, MMM dd",
+            "formatVertical": "HH mm - dd MM",
+            "id": "Clock",
+            "tooltipFormat": "HH:mm ddd, MMM dd",
+            "useCustomFont": true
+          }
+        ],
         "right": [
           {
             "defaultSettings": {
@@ -92,6 +102,10 @@
             "textColor": "none"
           },
           {
+            "defaultSettings": {
+              "batteryDevice": "/sys/class/power_supply/BAT0",
+              "chargeThreshold": 80
+            },
             "id": "plugin:battery-threshold"
           },
           {
@@ -116,15 +130,6 @@
             "id": "KeyboardLayout",
             "showIcon": true,
             "textColor": "none"
-          },
-          {
-            "clockColor": "none",
-            "customFont": "",
-            "formatHorizontal": "HH:mm ddd, MMM dd",
-            "formatVertical": "HH mm - dd MM",
-            "id": "Clock",
-            "tooltipFormat": "HH:mm ddd, MMM dd",
-            "useCustomFont": false
           },
           {
             "blacklist": [],
@@ -178,7 +183,7 @@
       "enableLockScreenCountdown": true,
       "lockScreenCountdownDuration": 5000,
       "autoStartAuth": false,
-      "allowPasswordWithFprintd": false,
+      "allowPasswordWithFprintd": true,
       "clockStyle": "custom",
       "clockFormat": "hh\\nmm",
       "passwordChars": false,
@@ -236,11 +241,11 @@
       "weatherShowEffects": true,
       "weatherTaliaMascotAlways": false,
       "useFahrenheit": false,
-      "use12hourFormat": false,
+      "use12hourFormat": true,
       "showWeekNumberInCalendar": false,
       "showCalendarEvents": true,
       "showCalendarWeather": true,
-      "analogClockInCalendar": false,
+      "analogClockInCalendar": true,
       "firstDayOfWeek": -1,
       "hideWeatherTimezone": false,
       "hideWeatherCityName": false,
@@ -362,6 +367,20 @@
             "#ffb4ab"
           ],
           "path": "/home/sam/nixdots/wallpapers/shady-sands.jpg",
+          "useWallpaperColors": true
+        },
+        {
+          "appearance": "dark",
+          "colorScheme": "Noctalia (default)",
+          "darkMode": true,
+          "generationMethod": "tonal-spot",
+          "paletteColors": [
+            "#ffb68d",
+            "#e6beaa",
+            "#cdc991",
+            "#ffb4ab"
+          ],
+          "path": "/home/sam/nixdots/wallpapers/something-beautiful.png",
           "useWallpaperColors": true
         }
       ]
@@ -617,7 +636,8 @@
         0,
         1,
         2,
-        4
+        4,
+        3
       ],
       "monitors": []
     },
@@ -678,6 +698,14 @@
         {
           "enabled": true,
           "id": "zathura"
+        },
+        {
+          "enabled": true,
+          "id": "discord"
+        },
+        {
+          "enabled": true,
+          "id": "spicetify"
         }
       ],
       "enableUserTheming": false
@@ -708,7 +736,7 @@
       "notifyUpdates": true
     },
     "idle": {
-      "enabled": false,
+      "enabled": true,
       "screenOffTimeout": 600,
       "lockTimeout": 660,
       "suspendTimeout": 1800,

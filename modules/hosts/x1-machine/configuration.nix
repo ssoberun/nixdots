@@ -9,23 +9,13 @@
 
       # unwrapped, modularised
       self.nixosModules.desktop
-      # self.nixosModules.discord
 
       # base
       self.nixosModules.base
 
-      # fonts
-      # self.nixosModules.fonts
-      
       # wrapped modules
-      # self.nixosModules.neovim
-      # self.nixosModules.fish
-      self.nixosModules.kitty
-      # self.nixosModules.GNOME
       self.nixosModules.mySops
-      # self.nixosModules.niri
       self.nixosModules.noctalia # this is to let noctalia be accessed via shell 
-      # self.nixosModules.git
     ];
     
     # --- Environment & Packages ---
@@ -67,6 +57,9 @@
     nixpkgs.config.allowUnfree = true;
 
     # --- Boot & Kernel ---
+    boot.plymouth = { 
+      enable = true;
+    };
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
     boot.kernelPackages = pkgs.linuxPackages_latest;

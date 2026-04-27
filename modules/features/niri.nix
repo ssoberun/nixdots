@@ -12,6 +12,7 @@
       inherit pkgs;
       settings = let
         noctaliaExe = lib.getExe self'.packages.noctalia-shell;
+	terminalExe = lib.getExe self'.packages.terminal;
       in  {
         spawn-at-startup = [
           noctaliaExe
@@ -36,9 +37,34 @@
 
         layout.gaps = 5;
 
+        switch-events = {
+	    lid-open = _: {
+	      content = {
+	        spawn = [
+		  "notify-send"
+		  "Rise and shine, Mr. Freeman"
+		];
+	      };
+	    };
+	    lid-close = _: {
+	      content = {
+	        spawn = [
+		  "noctalia-shell"
+		  "ipc"
+		  "call"
+		  "lockScreen"
+		  "lock"
+		];
+	      };
+	    };
+	};
+
+	prefer-no-csd = _: {};
+
         binds = {
+	  # -- KEYBINDINGS --
           # Terminal and Launcher
-          "Mod+Return".spawn-sh = "$TERMINAL"; 
+          "Mod+Return".spawn-sh = "${terminalExe}"; 
           "Mod+Space".spawn-sh = "${noctaliaExe} ipc call launcher toggle";
 
           
