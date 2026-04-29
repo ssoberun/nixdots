@@ -3,12 +3,12 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.nvf-config = {
+  flake.nixosModules.nvf = {
     config.vim = {
       theme = {
         enable = true;
-        name = "catpuccin";
-        style = "dark";
+        name = "catppuccin";
+        style = "mocha";
       };
       options = {
         tabstop = 2;      # Number of spaces a <Tab> counts for
@@ -32,12 +32,6 @@
     };
   };
 
-  flake.nixosModules.nvf-keybinds = {
-    config = {
-      
-    };
-  };
-
   perSystem = {
     self',
     pkgs,
@@ -47,7 +41,7 @@
       (inputs.nvf.lib.neovimConfiguration {
         inherit pkgs;
         modules = [
-            self.nixosModules.nvf-config
+            self.nixosModules.nvf
         ];
       }).neovim;
   };
