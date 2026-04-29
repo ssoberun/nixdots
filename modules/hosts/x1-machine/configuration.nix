@@ -15,6 +15,8 @@
       
       # laptop (move to a diff file?)
       self.nixosModules.tlp # tlp conflicts
+      ## suspending and hibernate
+      self.nixosModules.suspend-and-hibernate
 
       # wrapped modules
       self.nixosModules.mySops
@@ -99,5 +101,25 @@
     };
 
     system.stateVersion = "25.11"; 
+
+    # hibernation
+    # Physical offset: The first number under 'physical_offset' from ext 0
+    boot.kernelParams = [ "resume_offset=20072448" "mem_sleep_default=deep" ];
+    # Resume Device: The UUID of your ext4 'root' partition (nvme0n1p5)
+    boot.resumeDevice = "/dev/disk/by-uuid/d976dde6-3a99-4d2b-8242-1d18811edaba";   
+    powerManagement.enable = true;
+
+    # Suspend first then hibernate when closing the lid
+    services.logind.settings.Login.LidSwitch = "suspend-then-hibernate";
+    # Hibernate on power button pressed
+    services.logind.settings.Login.PowerKey = "hibernate";
+    services.logind.settings.Login.PowerKeyLongPress = "poweroff";
+
+    swapDevices = [
+     {
+       device = "/var/lib/swapfile";
+       size = 16 * 1024;
+     }
+    ];
   };
 }

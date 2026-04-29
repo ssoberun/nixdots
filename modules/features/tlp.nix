@@ -1,5 +1,6 @@
 {
   flake.nixosModules.tlp = {...}: {
+    services.thermald.enable = true;
     # must be explicitly disabled in order for tlp to run
     services.power-profiles-daemon.enable = false;
     services.tlp = {
