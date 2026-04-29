@@ -5,6 +5,15 @@
       package = self.packages.${pkgs.stdenv.hostPlatform.system}.niri;
       # package = self'.packages.niri;
     };
+
+    # from iynaix on the vimjoyer discord server
+    # do not kick me out of a session on rebuild
+    # systemd.user.services.niri = {
+    #   # add to the existing service, drop-in so it doesn't genreate the other sections
+    #   overrideStrategy = "asDropin";
+    #   stopIfChanged = false;
+    #   restartIfChanged = false;
+    # };
   };
 
   perSystem = { pkgs, lib, self', ... }: {
@@ -226,9 +235,10 @@
 	};
 
 	# add the below once niri updates to 26.04!
-        # extraConfig = ''
-        #   include optional=true "~/.config/niri/noctalia.kdl"
-        # '';
+	# niri has updated to 26.04
+        extraConfig = ''
+          include optional=true "~/.config/niri/noctalia.kdl"
+        '';
       };
     };
   };
