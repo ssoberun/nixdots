@@ -12,6 +12,9 @@
 
       # base
       self.nixosModules.base
+      
+      # laptop (move to a diff file?)
+      self.nixosModules.tlp # tlp conflicts
 
       # wrapped modules
       self.nixosModules.mySops
@@ -70,7 +73,12 @@
     # --- Desktop Environment ---
     # Note: You have Niri imported, but GDM/GNOME are enabled here.
     # Keep both if you want a fallback, otherwise disable GNOME to stay minimal.
-    services.displayManager.ly.enable = true;
+    services.displayManager.ly = {
+      enable = true;
+      settings = {
+        animation = "doom";
+      };
+    };
     services.xserver = {
       enable = true;
       

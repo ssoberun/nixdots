@@ -25,7 +25,7 @@
 
         #* Set to True to enable "h,j,k,l,g,G" keys for directional control in lists.
         #* Conflicting keys for h:"help" and k:"kill" is accessible while holding shift.
-        vim_keys = false;
+        vim_keys = true;
 
         #* Rounded corners on boxes, is ignored if TTY mode is ON.
         rounded_corners = true;
