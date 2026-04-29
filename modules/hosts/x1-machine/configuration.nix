@@ -26,9 +26,10 @@
     # --- Environment & Packages ---
     environment.systemPackages = with pkgs; [
       vim
-      neovim
       wget
       age
+
+      kitty # by adding kitty here, noctalia shell seems to recognize the package rathe rthan the wrpaped one we made.
 
       firefox
       bitwarden-desktop
@@ -121,5 +122,23 @@
        size = 16 * 1024;
      }
     ];
+    
+    # graphics
+    hardware.graphics = {
+      enable = true;
+      extraPackages = with pkgs; [
+        intel-media-driver
+	vpl-gpu-rt
+	libvdpau-va-gl
+      ];
+    };
+
+    environment.variables = {
+      LIBVA_DRIVER_NAME = "iHD";
+    };
+
+    # firmware updates and fstirm
+    services.fwupd.enable = true;
+    services.fstrim.enable = true;
   };
 }

@@ -1,9 +1,20 @@
-{ inputs, self, pkgs, lib, ... }: {
-  perSystem = {self', pkgs, ...}: {
-
+{
+  inputs,
+  self,
+  lib,
+  ...
+}: 
+{
+  perSystem = {
+    self',
+    pkgs,
+    ...
+  }: let
+    wrappedPkgs = self'.packages;
+  in {
     packages.terminal = inputs.wrapper-modules.wrappers.kitty.wrap {
       inherit pkgs;
-      imports = [self.wrapperModules.kitty];
+      imports = [self.nixosModules.kitty];
       # shell is defined in kitty.nix
       settings = {
         shell = lib.getExe self'.packages.shell-environment;
@@ -13,27 +24,30 @@
     #   inherit pkgs;
     #   imports = [self.wrapperModules.kitty];
     #   shell = lib.getExe self'.packages.shell-environment;
-    # }).wrapper;   
+    # }).wrapper;
 
     packages.shell-environment = inputs.wrappers.lib.wrapPackage {
       inherit pkgs;
       package = self'.packages.fish;
       runtimeInputs = [
         # nix
-	self'.packages.nh
-
+        self'.packages.nh
         # unwrapped
-	pkgs.zoxide
-	pkgs.libnotify
+        pkgs.zoxide
+        pkgs.libnotify
 
         # wrapped
-	self'.packages.git
-	self'.packages.lf
-	self'.packages.btop
+        self'.packages.git
+        self'.packages.lf
+        self'.packages.btop
+        self'.packages.neovim-nvf
+
+        # testing
+        self'.packages.foot
       ];
       env = {
-        EDITOR = "neovim";
+        EDITOR = lib.getExe self'.packages.neovim-nvf;
       };
-    }; 
+    };
   };
 }

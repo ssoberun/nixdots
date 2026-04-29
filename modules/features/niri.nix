@@ -126,6 +126,12 @@
           "Mod+Ctrl+8".move-column-to-workspace = 8;
           "Mod+Ctrl+9".move-column-to-workspace = 9;
 
+	  # The following binds move the focused window in and out of a column.
+          # If the window is alone, they will consume it into the nearby column to the side.
+          # If the window is already in a column, they will expel it out.
+          "Mod+BracketLeft".consume-or-expel-window-left = _: { };
+          "Mod+BracketRight".consume-or-expel-window-right = _: { };
+
           # --- Media Keys (The Requested Rewrite) ---  
           "XF86AudioRaiseVolume" = _: {
             props = {

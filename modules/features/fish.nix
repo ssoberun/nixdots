@@ -8,7 +8,7 @@
   #   programs.fish = {
   #     enable = true;
   #     package = self.packages.${pkgs.stdenv.hostPlatform.system}.fish;
-  #   }; 
+  #   };
   # };
   perSystem = {
     pkgs,
@@ -28,6 +28,7 @@
 
         ${lib.getExe pkgs.zoxide} init fish | source
 
+
         function lf --wraps="lf" --description="lf - Terminal file manager (changing directory on exit)"
             cd "$(command lf -print-last-dir $argv)"
         end
@@ -44,12 +45,11 @@
         pkgs.zoxide
       ];
       flags = {
-          "-C" = "source ${fishConf}";
-        };
+        "-C" = "source ${fishConf}";
       };
     };
+  };
 }
-
 # {self, inputs, ...}: {
 #   flake.nixosModules.fish =
 #     {
@@ -105,3 +105,4 @@
 #       };
 #     };
 # }
+
