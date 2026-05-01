@@ -244,8 +244,8 @@
       "smoothScrollEnabled": true
     },
     "ui": {
-      "fontDefault": "FantasqueSansM Nerd Font",
-      "fontFixed": "FantasqueSansM Nerd Font Mono",
+      "fontDefault": "Iosevka Light",
+      "fontFixed": "Iosevka NFM",
       "fontDefaultScale": 1,
       "fontFixedScale": 1,
       "tooltipsEnabled": true,
@@ -298,7 +298,7 @@
       "showHiddenFiles": false,
       "viewMode": "single",
       "setWallpaperOnAllMonitors": true,
-      "linkLightAndDarkWallpapers": true,
+      "linkLightAndDarkWallpapers": false,
       "fillMode": "crop",
       "fillColor": "#000000",
       "useSolidColor": false,
@@ -801,28 +801,28 @@
     "openedPanel": "",
     "lockScreenActive": false,
     "wallpapers": {
-      "eDP-1": "/home/sam/nixdots/wallpapers/something-beautiful.png"
+      "eDP-1": "/home/sam/nixdots/wallpapers/AmericanaGhibli.jpg"
     },
     "desktopWidgetsEditMode": false,
     "display": {
-      "winit": {
+      "eDP-1": {
+        "name": "eDP-1",
         "connected": true,
-        "height": 1158,
-        "name": "winit",
-        "physical_height": 0,
-        "physical_width": 0,
-        "refresh_rate": 60000,
         "scale": 1,
-        "transform": "Flipped180",
-        "vrr_enabled": false,
-        "vrr_supported": false,
-        "width": 923,
+        "width": 1920,
+        "height": 1200,
         "x": 0,
-        "y": 0
+        "y": 0,
+        "physical_width": 300,
+        "physical_height": 190,
+        "refresh_rate": 60001,
+        "vrr_supported": true,
+        "vrr_enabled": true,
+        "transform": "Normal"
       }
     },
     "notificationsState": {
-      "lastSeenTs": 1777265727000
+      "lastSeenTs": 1777455941000
     },
     "changelogState": {
       "lastSeenVersion": "v4.7.6"

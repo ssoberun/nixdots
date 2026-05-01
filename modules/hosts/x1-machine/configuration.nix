@@ -12,6 +12,8 @@
 
       # base
       self.nixosModules.base
+      self.nixosModules.core
+      self.nixosModules.gaming
       
       # laptop (move to a diff file?)
       self.nixosModules.tlp # tlp conflicts
@@ -123,13 +125,14 @@
      }
     ];
     
-    # graphics
+    # graphics (intel)
     hardware.graphics = {
       enable = true;
       extraPackages = with pkgs; [
         intel-media-driver
-	vpl-gpu-rt
-	libvdpau-va-gl
+        vpl-gpu-rt
+	      libvdpau-va-gl
+        vaapiIntel
       ];
     };
 
@@ -140,5 +143,6 @@
     # firmware updates and fstirm
     services.fwupd.enable = true;
     services.fstrim.enable = true;
+
   };
 }

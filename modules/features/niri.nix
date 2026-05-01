@@ -76,6 +76,12 @@
           "Mod+Return".spawn-sh = "${terminalExe}"; 
           "Mod+Space".spawn-sh = "${noctaliaExe} ipc call launcher toggle";
 
+          # Screenshot
+          "Print".screenshot = _: {
+            props = {
+            };
+          };
+
           
           # Window Management
           "Mod+C".close-window = _: {};
