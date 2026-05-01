@@ -772,9 +772,9 @@
       "customCommands": "[]"
     },
     "desktopWidgets": {
-      "enabled": false,
+      "enabled": true,
       "overviewEnabled": true,
-      "gridSnap": false,
+      "gridSnap": true,
       "gridSnapScale": false,
       "monitorWidgets": [
         {
@@ -790,6 +790,65 @@
               "y": 200
             }
           ]
+        },
+        {
+          "name": "eDP-1",
+          "widgets": [
+            {
+              "clockColor": "none",
+              "clockStyle": "digital",
+              "customFont": "",
+              "format": "HH:mm\\nd MMMM yyyy",
+              "id": "Clock",
+              "roundedCorners": true,
+              "scale": 1.641515261535858,
+              "showBackground": true,
+              "useCustomFont": false,
+              "x": 60,
+              "y": 20
+            },
+            {
+              "id": "Weather",
+              "roundedCorners": true,
+              "scale": 1,
+              "showBackground": true,
+              "x": 60,
+              "y": 280
+            },
+            {
+              "diskPath": "/",
+              "id": "SystemStat",
+              "layout": "bottom",
+              "roundedCorners": true,
+              "scale": 0.8564057635496692,
+              "showBackground": true,
+              "statType": "CPU",
+              "x": 320,
+              "y": 20
+            },
+            {
+              "diskPath": "/",
+              "id": "SystemStat",
+              "layout": "bottom",
+              "roundedCorners": true,
+              "scale": 0.8711923975416693,
+              "showBackground": true,
+              "statType": "Memory",
+              "x": 320,
+              "y": 140
+            },
+            {
+              "diskPath": "/",
+              "id": "SystemStat",
+              "layout": "bottom",
+              "roundedCorners": true,
+              "scale": 0.8660364105955174,
+              "showBackground": true,
+              "statType": "Disk",
+              "x": 320,
+              "y": 260
+            }
+          ]
         }
       ]
     }
@@ -801,7 +860,7 @@
     "openedPanel": "",
     "lockScreenActive": false,
     "wallpapers": {
-      "eDP-1": "/home/sam/nixdots/wallpapers/AmericanaGhibli.jpg"
+      "eDP-1": "/home/sam/nixdots/wallpapers/something-beautiful.png"
     },
     "desktopWidgetsEditMode": false,
     "display": {

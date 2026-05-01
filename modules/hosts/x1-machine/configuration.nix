@@ -126,14 +126,21 @@
     ];
     
     # graphics (intel)
-    hardware.graphics = {
-      enable = true;
-      extraPackages = with pkgs; [
-        intel-media-driver
-        vpl-gpu-rt
-	      libvdpau-va-gl
-        vaapiIntel
-      ];
+    hardware = {
+      # opengl = {
+      #   enable = true;
+      #   driSupport = true;
+      #   driSupport32Bit = true;
+      # };
+      graphics = {
+        enable = true;
+        enable32Bit = true;
+        extraPackages = with pkgs; [
+          intel-media-driver
+          vpl-gpu-rt
+	        libvdpau-va-gl
+        ];
+      };
     };
 
     environment.variables = {

@@ -10,23 +10,23 @@
   };
 
   # from iynaix's dotfiles, on his nvim config
-  # flake.nixosModules.core = {config, pkgs, ...}: 
-  # let
-  #    git-desktop-entry = pkgs.makeDesktopItem {
-  #       name = "git";
-  #       desktopName = "Git";
-  #       genericName = "Version Control";
-  #       icon = "git";
-  #       terminal = true;
-  #       exec = ''${lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.git}'';
-  #     };
-  # in {
-  #   environment = {
-  #     systemPackages = [
-  #       (lib.hiPrio git-desktop-entry)
-  #     ];
-  #   };
-  # };
+  flake.nixosModules.core = {config, pkgs, ...}: 
+  let
+     git-desktop-entry = pkgs.makeDesktopItem {
+        name = "git";
+        desktopName = "Git";
+        genericName = "Version Control";
+        icon = "git";
+        terminal = true;
+        exec = ''${lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.git}'';
+      };
+  in {
+    environment = {
+      systemPackages = [
+        (lib.hiPrio git-desktop-entry)
+      ];
+    };
+  };
 
   perSystem = {config, pkgs, lib, self', ...}: {
     packages.git = let
