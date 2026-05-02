@@ -152,5 +152,20 @@
     services.fwupd.enable = true;
     services.fstrim.enable = true;
 
+    # ssh 
+    # no home manager, thus, system wide ssh...
+    programs.ssh = {
+      # conflicts with GNOME ssh
+      # startAgent = true;
+
+      # Raw configuration for /etc/ssh/ssh_config
+      extraConfig = ''
+        Host github.com
+          HostName github.com
+          User git
+          IdentityFile ${config.sops.secrets.github_ssh_key.path}
+          IdentitiesOnly yes
+      '';
+    };
   };
 }
