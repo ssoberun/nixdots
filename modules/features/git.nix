@@ -2,10 +2,10 @@
   flake.nixosModules.git = { config, pkgs, lib, ... }: {
     programs.git = {
       enable = true;
-      # package = self.packages.${pkgs.stdenv.hostPlatform.system}.git;
-      config.extraConfig.core = {
-   sshCommand = "ssh -i ${config.sops.secrets.github_ssh_key.path} -o IdentitiesOnly=yes";
-      };
+      package = self.packages.${pkgs.stdenv.hostPlatform.system}.git;
+   #    config.extraConfig.core = {
+   # sshCommand = "ssh -i ${config.sops.secrets.github_ssh_key.path} -o IdentitiesOnly=yes";
+   #    };
     };
   };
 
@@ -42,6 +42,11 @@
 
         init = {
           defaultBranch = "main";
+        };
+
+        core = {
+          sshCommand = "ssh -i /run/secrets/github_ssh_key -o IdentitiesOnly=yes";
+          # sshCommand = "ssh -i ${config.sops.secrets.github_ssh_key.path} -o IdentitiesOnly=yes";
         };
       };
     };
