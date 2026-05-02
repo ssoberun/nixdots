@@ -39,6 +39,7 @@
         # wrapped
         self'.packages.git
         self'.packages.lf
+        self'.packages.yazi
         self'.packages.btop
         self'.packages.neovim-nvf
 

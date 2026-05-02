@@ -9,6 +9,7 @@
 
       # unwrapped, modularised
       self.nixosModules.desktop
+      self.nixosModules.opencloud
 
       # base
       self.nixosModules.base
