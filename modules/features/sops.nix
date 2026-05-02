@@ -14,6 +14,7 @@
       age.keyFile = "/home/sam/nixdots/secrets/keys.txt";
       
       secrets.github_ssh_key = {
+        # path = "/home/sam/.ssh/github-ssh-key";
         owner = "sam";
       };
     };
@@ -24,8 +25,7 @@
     packages.sops = inputs.wrapper-modules.lib.wrapPackage {
       inherit pkgs;
       package = pkgs.sops;
-      # This ensures that whenever you run 'sops' in the terminal,
-      # it already knows where your keys are.
+      # Environment baked into the package itself
       env.SOPS_AGE_KEY_FILE = "/home/sam/nixdots/secrets/keys.txt";
     };
   };

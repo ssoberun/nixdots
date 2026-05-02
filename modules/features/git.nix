@@ -10,6 +10,7 @@
   };
 
   # from iynaix's dotfiles, on his nvim config
+  # this is mostly tesitng
   flake.nixosModules.core = {config, pkgs, ...}: 
   let
      git-desktop-entry = pkgs.makeDesktopItem {
