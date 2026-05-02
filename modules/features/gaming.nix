@@ -10,6 +10,7 @@
           extraArgs = "-system-composer";
         };
       };
+
       gamemode = {
         enable = true;
       };
@@ -25,6 +26,11 @@
         extraPkgs = pkgs: [
           pkgs.wineWowPackages.stagingFull
           pkgs.winetricks
+          # These are the ones that actually help with unarc.dll / ISDone.dll errors
+          pkgs.p7zip
+          pkgs.unzip
+          pkgs.gnutar
+          pkgs.xz
         ];
       })
 
