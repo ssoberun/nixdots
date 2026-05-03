@@ -45,7 +45,7 @@
         pkgs.killall
         pkgs.sshfs
         pkgs.fzf
-        pkgs.neofetch
+        pkgs.fastfetch
         pkgs.ffmpeg-full
         pkgs.lazygit
         pkgs.dust
