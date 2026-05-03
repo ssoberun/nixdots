@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.discord = {pkgs, ...}: {
+  flake.nixosModules.mpv = {pkgs, ...}: {
     environment.systemPackages = [
       pkgs.mpv
     ];
