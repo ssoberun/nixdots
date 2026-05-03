@@ -55,6 +55,7 @@
           pkgs.eza
           pkgs.imv
           pkgs.sioyek
+          pkgs.bat
 
           # wrapped
           self'.packages.git
