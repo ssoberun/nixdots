@@ -32,9 +32,26 @@
       runtimeInputs = [
         # nix
         self'.packages.nh
+        pkgs.manix
+
         # unwrapped
         pkgs.zoxide
         pkgs.libnotify
+        pkgs.file
+        pkgs.unzip
+        pkgs.zip
+        pkgs.p7zip
+        pkgs.wget
+        pkgs.killall
+        pkgs.sshfs
+        pkgs.fzf
+        pkgs.neofetch
+        pkgs.ffmpeg-full
+        pkgs.lazygit
+        pkgs.dust
+        pkgs.eza
+        pkgs.imv
+
 
         # wrapped
         self'.packages.git

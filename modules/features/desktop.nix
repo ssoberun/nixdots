@@ -9,6 +9,7 @@
      self.nixosModules.discord
      self.nixosModules.beeper
      self.nixosModules.obsidian
+     self.nixosModules.mpv
 
      # desktop visuals
      self.nixosModules.fonts

@@ -1,18 +1,24 @@
 { self, inputs, ... }: {
-  # 1. The NixOS Module
   flake.nixosModules.mySops = { pkgs, ... }: {
     imports = [ inputs.sops-nix.nixosModules.sops ];
 
-    # Install the wrapped sops package from this flake
     environment.systemPackages = [
       self.packages.${pkgs.stdenv.hostPlatform.system}.sops
     ];
 
+    # environment.systemPackages = [
+    #   pkgs.sops
+    # ];
     sops = {
+      # package = pkgs.sops;
       defaultSopsFile = ../../secrets/secrets.yaml;
       defaultSopsFormat = "yaml";
-      age.keyFile = "/home/sam/nixdots/secrets/keys.txt";
-      
+
+      age = {
+        keyFile = "/home/sam/nixdots/secrets/keys.txt";
+        generateKey = false;
+      };
+
       secrets.github_ssh_key = {
         # path = "/home/sam/.ssh/github-ssh-key";
         owner = "sam";
@@ -20,7 +26,6 @@
     };
   };
 
-  # 2. The Package Definition (The Wrapper)
   perSystem = { pkgs, ... }: {
     packages.sops = inputs.wrapper-modules.lib.wrapPackage {
       inherit pkgs;
