@@ -239,7 +239,7 @@
           tex_flavor = "latex";
           maplocalleader = " ";
           vimtex_compiler_method = "latexmk";
-          vimtex_view_method = "zathura";
+          vimtex_view_method = "sioyek";
           vimtex_compiler_latexmk = {
             callback = 1;
             continuous = 1;
