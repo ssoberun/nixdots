@@ -1,0 +1,16 @@
+{self, inputs, ...}: {
+  flake.nixosModules.nix = {config, ...}: {
+    nix = {
+      settings = {
+        # Enable the official NixOS cache
+        substituters = [ "https://cache.nixos.org/" ];
+        
+        # Ensure your user (or all users) is allowed to use the cache
+        trusted-public-keys = [ "cache.nixos.org-1:6nCk48X65shshYpZqz0X9vRjayahF4GCednhgyXDYXk=" ];
+
+        # Set this to true to ensure Nix always checks for binaries first
+        substitute = true;
+      };
+    };
+  };
+}

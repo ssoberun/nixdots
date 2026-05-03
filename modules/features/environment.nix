@@ -32,25 +32,25 @@
       runtimeInputs = [
         # nix
         self'.packages.nh
-        pkgs.manix
+        # pkgs.manix
 
         # unwrapped
         pkgs.zoxide
         pkgs.libnotify
-        pkgs.file
-        pkgs.unzip
-        pkgs.zip
-        pkgs.p7zip
-        pkgs.wget
-        pkgs.killall
-        pkgs.sshfs
-        pkgs.fzf
-        pkgs.fastfetch
-        pkgs.ffmpeg-full
-        pkgs.lazygit
-        pkgs.dust
-        pkgs.eza
-        pkgs.imv
+        # pkgs.file
+        # pkgs.unzip
+        # pkgs.zip
+        # pkgs.p7zip
+        # pkgs.wget
+        # pkgs.killall
+        # pkgs.sshfs
+        # pkgs.fzf
+        # pkgs.fastfetch
+        # pkgs.ffmpeg-full
+        # pkgs.lazygit
+        # pkgs.dust
+        # pkgs.eza
+        # pkgs.imv
 
 
         # wrapped

@@ -11,6 +11,9 @@
       self.nixosModules.desktop
       self.nixosModules.opencloud
 
+      # nix settings 
+      self.nixosModules.nix
+
       # base
       self.nixosModules.base
       self.nixosModules.core
