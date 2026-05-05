@@ -207,8 +207,8 @@
       "autoStartAuth": false,
       "allowPasswordWithFprintd": true,
       "clockStyle": "custom",
-      "clockFormat": "hh\\nmm",
-      "passwordChars": false,
+      "clockFormat": "h:mm ap ",
+      "passwordChars": true,
       "lockScreenMonitors": [],
       "lockScreenBlur": 0.65,
       "lockScreenTint": 0,
@@ -881,7 +881,7 @@
       }
     },
     "notificationsState": {
-      "lastSeenTs": 1777455941000
+      "lastSeenTs": 1777973137000
     },
     "changelogState": {
       "lastSeenVersion": "v4.7.6"

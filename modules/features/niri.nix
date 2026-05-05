@@ -11,6 +11,15 @@
 
       # from iynaix on the vimjoyer discord server
       # do not kick me out of a session on rebuild
+      systemd.user.units."niri.service" = {
+        # add to the existing service, as drop-in so it doesn't generate the other sections
+        overrideStrategy = "asDropin";
+        text = ''
+          [Service]
+          X-StopIfChanged=false
+          X-RestartIfChanged=false
+        '';
+      };
       # systemd.user.services.niri = {
       #   # add to the existing service, drop-in so it doesn't genreate the other sections
       #   overrideStrategy = "asDropin";
@@ -29,7 +38,7 @@
     {
       packages.niri = inputs.wrapper-modules.wrappers.niri.wrap {
         inherit pkgs;
-        disableConfigHotReload = true;
+        disableConfigHotReload = false;
         settings =
           let
             noctaliaExe = lib.getExe self'.packages.noctalia-shell;
@@ -96,17 +105,17 @@
               };
 
               # Window Management
-              "Mod+C".close-window = _: { };
+              "Mod+Q".close-window = _: { };
               "Mod+F".maximize-column = _: { };
               "Mod+G".fullscreen-window = _: { };
               "Mod+Shift+F".toggle-window-floating = _: { };
               "Mod+V".center-column = _: { };
 
               # Navigation
-              "Mod+H".focus-column-left = _: { };
-              "Mod+L".focus-column-right = _: { };
-              "Mod+K".focus-window-or-workspace-up = _: { };
+              "Mod+H".focus-column-or-monitor-left = _: { };
               "Mod+J".focus-window-or-workspace-down = _: { };
+              "Mod+K".focus-window-or-workspace-up = _: { };
+              "Mod+L".focus-column-or-monitor-right = _: { };
 
               "Mod+Left".focus-column-left = _: { };
               "Mod+Right".focus-column-right = _: { };
@@ -119,6 +128,11 @@
               "Mod+Shift+J".move-window-down-or-to-workspace-down = _: { };
               "Mod+Shift+K".move-window-up-or-to-workspace-up = _: { };
               "Mod+Shift+L".move-column-right-or-to-monitor-right = _: { };
+
+              "Mod+Shift+Left".move-column-to-monitor-left = _: { };
+              "Mod+Shift+Down".move-column-to-monitor-down = _: { };
+              "Mod+Shift+Up".move-column-to-monitor-up = _: { };
+              "Mod+Shift+Right".move-column-to-monitor-right = _: { };
 
               "Mod+Home".focus-column-first = _: { };
               "Mod+End".focus-column-last = _: { };
@@ -134,15 +148,15 @@
               "Mod+7".focus-workspace = 7;
               "Mod+8".focus-workspace = 8;
               "Mod+9".focus-workspace = 9;
-              "Mod+Ctrl+1".move-column-to-workspace = 1;
-              "Mod+Ctrl+2".move-column-to-workspace = 2;
-              "Mod+Ctrl+3".move-column-to-workspace = 3;
-              "Mod+Ctrl+4".move-column-to-workspace = 4;
-              "Mod+Ctrl+5".move-column-to-workspace = 5;
-              "Mod+Ctrl+6".move-column-to-workspace = 6;
-              "Mod+Ctrl+7".move-column-to-workspace = 7;
-              "Mod+Ctrl+8".move-column-to-workspace = 8;
-              "Mod+Ctrl+9".move-column-to-workspace = 9;
+              "Mod+Shift+1".move-column-to-workspace = 1;
+              "Mod+Shift+2".move-column-to-workspace = 2;
+              "Mod+Shift+3".move-column-to-workspace = 3;
+              "Mod+Shift+4".move-column-to-workspace = 4;
+              "Mod+Shift+5".move-column-to-workspace = 5;
+              "Mod+Shift+6".move-column-to-workspace = 6;
+              "Mod+Shift+7".move-column-to-workspace = 7;
+              "Mod+Shift+8".move-column-to-workspace = 8;
+              "Mod+Shift+9".move-column-to-workspace = 9;
 
               # The following binds move the focused window in and out of a column.
               # If the window is alone, they will consume it into the nearby column to the side.

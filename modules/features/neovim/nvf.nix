@@ -152,7 +152,7 @@
           bash.enable = true;
           lua.enable = true;
           html.enable = true;
-          typescript.enable = true;
+          # typescript.enable = true;
           python.enable = true;
           tex = {
             enable = true;
@@ -207,14 +207,14 @@
           presets.harper.enable = true;
 
           servers = {
-            texlab = {
-              enable = true;
-              # im getting an error where vim.lsp.servers.texlab.cmd has already been set somewhere else, though i cannot find this file.
-              # cmd = [
-              #   "${lib.getExe pkgs.texlab}"
-              # ];
-              filetypes = [ "tex" ];
-            };
+            # texlab = {
+            #   enable = true;
+            #   # im getting an error where vim.lsp.servers.texlab.cmd has already been set somewhere else, though i cannot find this file.
+            #   # cmd = [
+            #   #   "${lib.getExe pkgs.texlab}"
+            #   # ];
+            #   filetypes = [ "tex" ];
+            # };
           };
 
           # lspSignature?
