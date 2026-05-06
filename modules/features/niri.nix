@@ -43,6 +43,7 @@
           let
             noctaliaExe = lib.getExe self'.packages.noctalia-shell;
             terminalExe = lib.getExe self'.packages.terminal;
+            # fcitx5Exe = lib.getExe pkgs.fcitx5;
           in
           {
             spawn-at-startup = [

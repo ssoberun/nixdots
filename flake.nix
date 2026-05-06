@@ -11,7 +11,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nvf.url = "github:notashelf/nvf";
+
+    evangelion-ui = {
+      url = "gitlab:lobstermane/evangelion-ui-plymouth";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    home-manager.url = "github:nix-community/home-manager";
+    hm-wrapper-modules.url = "github:sini/hm-wrapper-modules";
+    hm-wrapper-modules.inputs.nixpkgs.follows = "nixpkgs";
+    hm-wrapper-modules.inputs.home-manager.follows = "home-manager";
   };
 
-  outputs = inputs: inputs.flake-parts.lib.mkFlake {inherit inputs;} (inputs.import-tree ./modules);
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 }
