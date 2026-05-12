@@ -2,7 +2,7 @@
   "settings": {
     "settingsVersion": 59,
     "bar": {
-      "barType": "floating",
+      "barType": "framed",
       "position": "left",
       "monitors": [],
       "density": "comfortable",
@@ -19,7 +19,7 @@
       "marginVertical": 5,
       "marginHorizontal": 5,
       "frameThickness": 8,
-      "frameRadius": 12,
+      "frameRadius": 4,
       "outerCorners": true,
       "hideOnOverview": false,
       "displayMode": "always_visible",
@@ -132,12 +132,12 @@
           },
           {
             "deviceNativePath": "",
-            "displayMode": "alwaysShow",
+            "displayMode": "icon-always",
             "hideIfIdle": false,
             "hideIfNotDetected": true,
             "id": "Battery",
-            "showNoctaliaPerformance": false,
-            "showPowerProfiles": false
+            "showNoctaliaPerformance": true,
+            "showPowerProfiles": true
           },
           {
             "displayMode": "alwaysHide",
@@ -546,7 +546,7 @@
       "networkPanelView": "wifi",
       "wifiDetailsViewMode": "grid",
       "bluetoothDetailsViewMode": "grid",
-      "bluetoothHideUnnamedDevices": false,
+      "bluetoothHideUnnamedDevices": true,
       "disableDiscoverability": false,
       "bluetoothAutoConnect": true
     },
@@ -855,7 +855,7 @@
   },
   "state": {
     "doNotDisturb": false,
-    "noctaliaPerformanceMode": false,
+    "noctaliaPerformanceMode": true,
     "barVisible": true,
     "openedPanel": "",
     "lockScreenActive": false,
@@ -881,7 +881,7 @@
       }
     },
     "notificationsState": {
-      "lastSeenTs": 1777973137000
+      "lastSeenTs": 1778573005000
     },
     "changelogState": {
       "lastSeenVersion": "v4.7.6"

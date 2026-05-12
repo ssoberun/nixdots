@@ -38,7 +38,18 @@
         comments.comment-nvim.enable = true;
         autocomplete = {
           # nvim-cmp.enable = true;
-          blink-cmp.enable = true;
+          blink-cmp = {
+            enable = true;
+            # friendly-snippets.enable = true;
+          };
+        };
+
+        snippets = {
+          luasnip = {
+            enable = true;
+            providers = [ "friendly-snippets" ];
+            # providers = [ "vimplugin-luasnip-latex-snippets.nvim" ];
+          };
         };
 
         # git

@@ -54,7 +54,6 @@
           pkgs.dust
           pkgs.eza
           pkgs.imv
-          pkgs.sioyek
           pkgs.bat
 
           # wrapped

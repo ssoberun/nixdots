@@ -47,10 +47,13 @@
         age
 
         kitty # by adding kitty here, noctalia shell seems to recognize the package rathe rthan the wrpaped one we made.
+        sioyek # same with sioyek
 
         firefox
         bitwarden-desktop
         spotify
+
+        godot_4
 
         # cursor test
         apple-cursor
