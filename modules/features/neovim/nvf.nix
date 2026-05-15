@@ -60,14 +60,14 @@
         # enable dashboard?
         # lazy.enable = false;
         dashboard = {
-          # startify = {
-          #   enable = true;
-          #   changeToVCRoot = true;
-          # };
-          dashboard-nvim.enable = false;
-          alpha = {
+          startify = {
             enable = true;
+            changeToVCRoot = true;
           };
+          # dashboard-nvim.enable = false;
+          # alpha = {
+          #   enable = true;
+          # };
         };
 
         ui = {

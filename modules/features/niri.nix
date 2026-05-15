@@ -67,8 +67,16 @@
               variable-refresh-rate = _: { };
             };
 
-            layout.gaps = 5;
-
+            layout = {
+              gaps = 3;
+              # focus-ring = {
+              #   off = _: { };
+              # };
+              border = {
+                width = 1;
+              };
+            };
+            #
             switch-events = {
               lid-open = _: {
                 content = {
@@ -102,6 +110,19 @@
               # Screenshot
               "Print".screenshot = _: {
                 props = {
+                };
+              };
+
+              # Session Menu
+              "Home" = _: {
+                content = {
+                  spawn = [
+                    "noctalia-shell"
+                    "ipc"
+                    "call"
+                    "sessionMenu"
+                    "toggle"
+                  ];
                 };
               };
 

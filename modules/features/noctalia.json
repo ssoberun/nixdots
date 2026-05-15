@@ -2,7 +2,7 @@
   "settings": {
     "settingsVersion": 59,
     "bar": {
-      "barType": "framed",
+      "barType": "simple",
       "position": "left",
       "monitors": [],
       "density": "comfortable",
@@ -339,11 +339,11 @@
           "appearance": "dark",
           "colorScheme": "Noctalia (default)",
           "darkMode": true,
-          "generationMethod": "monochrome",
+          "generationMethod": "tonal-spot",
           "paletteColors": [
-            "#ffffff",
-            "#c6c6c6",
-            "#e2e2e2",
+            "#ddc74d",
+            "#d0c7a2",
+            "#a8d0b5",
             "#ffb4ab"
           ],
           "path": "/home/sam/nixdots/wallpapers/FarmsOutWest.jpg",
@@ -369,9 +369,9 @@
           "darkMode": true,
           "generationMethod": "monochrome",
           "paletteColors": [
-            "#ffffff",
-            "#c6c6c6",
-            "#e2e2e2",
+            "#ddc74d",
+            "#d0c7a2",
+            "#a8d0b5",
             "#ffb4ab"
           ],
           "path": "/home/sam/nixdots/wallpapers/AmericanUkraine.jpg",
@@ -397,9 +397,9 @@
           "darkMode": true,
           "generationMethod": "tonal-spot",
           "paletteColors": [
-            "#ffb68d",
-            "#e6beaa",
-            "#cdc991",
+            "#ffffff",
+            "#c6c6c6",
+            "#e2e2e2",
             "#ffb4ab"
           ],
           "path": "/home/sam/nixdots/wallpapers/something-beautiful.png",
@@ -408,7 +408,7 @@
       ]
     },
     "appLauncher": {
-      "enableClipboardHistory": false,
+      "enableClipboardHistory": true,
       "autoPasteClipboard": false,
       "enableClipPreview": true,
       "clipboardWrapText": true,
@@ -520,7 +520,7 @@
       "onlySameOutput": true,
       "monitors": [],
       "pinnedApps": [],
-      "colorizeIcons": false,
+      "colorizeIcons": true,
       "showLauncherIcon": false,
       "launcherPosition": "end",
       "launcherUseDistroLogo": false,
@@ -556,7 +556,7 @@
       "position": "center",
       "showHeader": true,
       "showKeybinds": true,
-      "largeButtonsStyle": false,
+      "largeButtonsStyle": true,
       "largeButtonsLayout": "single-row",
       "powerOptions": [
         {
@@ -670,7 +670,7 @@
       "visualizerType": "linear",
       "spectrumMirrored": true,
       "mprisBlacklist": [],
-      "preferredPlayer": "",
+      "preferredPlayer": "spotify",
       "volumeFeedback": false,
       "volumeFeedbackSoundFile": ""
     },
@@ -687,7 +687,7 @@
       "schedulingMode": "off",
       "manualSunrise": "06:30",
       "manualSunset": "18:30",
-      "generationMethod": "tonal-spot",
+      "generationMethod": "content",
       "monitorForColors": "eDP-1",
       "syncGsettings": true
     },
@@ -814,39 +814,6 @@
               "showBackground": true,
               "x": 60,
               "y": 280
-            },
-            {
-              "diskPath": "/",
-              "id": "SystemStat",
-              "layout": "bottom",
-              "roundedCorners": true,
-              "scale": 0.8564057635496692,
-              "showBackground": true,
-              "statType": "CPU",
-              "x": 320,
-              "y": 20
-            },
-            {
-              "diskPath": "/",
-              "id": "SystemStat",
-              "layout": "bottom",
-              "roundedCorners": true,
-              "scale": 0.8711923975416693,
-              "showBackground": true,
-              "statType": "Memory",
-              "x": 320,
-              "y": 140
-            },
-            {
-              "diskPath": "/",
-              "id": "SystemStat",
-              "layout": "bottom",
-              "roundedCorners": true,
-              "scale": 0.8660364105955174,
-              "showBackground": true,
-              "statType": "Disk",
-              "x": 320,
-              "y": 260
             }
           ]
         }
@@ -855,12 +822,12 @@
   },
   "state": {
     "doNotDisturb": false,
-    "noctaliaPerformanceMode": true,
+    "noctaliaPerformanceMode": false,
     "barVisible": true,
     "openedPanel": "",
     "lockScreenActive": false,
     "wallpapers": {
-      "eDP-1": "/home/sam/nixdots/wallpapers/something-beautiful.png"
+      "eDP-1": "/home/sam/nixdots/wallpapers/AmericanPlymouth.jpg"
     },
     "desktopWidgetsEditMode": false,
     "display": {

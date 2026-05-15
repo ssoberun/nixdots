@@ -48,7 +48,6 @@
           pkgs.killall
           pkgs.sshfs
           pkgs.fzf
-          pkgs.fastfetch
           pkgs.ffmpeg-full
           pkgs.lazygit
           pkgs.dust
@@ -57,6 +56,7 @@
           pkgs.bat
 
           # wrapped
+          self'.packages.fastfetch
           self'.packages.git
           self'.packages.lf
           self'.packages.yazi
