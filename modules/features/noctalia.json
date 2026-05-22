@@ -30,10 +30,10 @@
         "left": [
           {
             "colorizeDistroLogo": true,
-            "colorizeSystemIcon": "tertiary",
+            "colorizeSystemIcon": "none",
             "colorizeSystemText": "none",
             "customIconPath": "",
-            "enableColorization": false,
+            "enableColorization": true,
             "icon": "noctalia",
             "id": "ControlCenter",
             "useDistroLogo": true
@@ -84,6 +84,11 @@
             "textColor": "none",
             "useMonospaceFont": true,
             "usePadding": false
+          },
+          {
+            "iconColor": "none",
+            "id": "KeepAwake",
+            "textColor": "none"
           }
         ],
         "center": [

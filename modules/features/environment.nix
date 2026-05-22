@@ -63,6 +63,7 @@
           self'.packages.btop
           self'.packages.neovim-nvf
           self'.packages.zathura
+          self'.packages.qalc
 
           # testing
           self'.packages.foot

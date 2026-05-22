@@ -17,6 +17,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
+
     home-manager.url = "github:nix-community/home-manager";
     hm-wrapper-modules.url = "github:sini/hm-wrapper-modules";
     hm-wrapper-modules.inputs.nixpkgs.follows = "nixpkgs";

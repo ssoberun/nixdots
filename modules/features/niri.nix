@@ -1,7 +1,12 @@
 { self, inputs, ... }:
 {
   flake.nixosModules.niri =
-    { self', pkgs, ... }:
+    {
+      self',
+      pkgs,
+      config,
+      ...
+    }:
     {
       programs.niri = {
         enable = true;
@@ -33,6 +38,7 @@
       pkgs,
       lib,
       self',
+      config,
       ...
     }:
     {
@@ -43,6 +49,7 @@
           let
             noctaliaExe = lib.getExe self'.packages.noctalia-shell;
             terminalExe = lib.getExe self'.packages.terminal;
+            wlrWhichKeyExe = lib.getExe self'.packages.wlr-which-key;
             # fcitx5Exe = lib.getExe pkgs.fcitx5;
           in
           {
@@ -292,6 +299,25 @@
                   toggle-overview = _: { };
                 };
               };
+
+              # "Mod+d".spawn-sh = wlrWhichKeyExe [
+              #   {
+              #     key = "b";
+              #     desc = "kitty test";
+              #     cmd = "${terminalExe}";
+              #   }
+              # ];
+
+              "Mod+d".spawn-sh = self.mkWhichKeyExe config.pkgs [
+                {
+                  key = "b";
+                  desc = "Bluetooth";
+                  cmd = "${noctaliaExe} ipc call bluetooth togglePanel";
+                }
+              ];
+
+              # "Mod+d".spawn = "${self'.packages.wlr-which-key}";
+
             };
 
             # add the below once niri updates to 26.04!

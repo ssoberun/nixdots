@@ -38,6 +38,7 @@
         # wrapped modules
         self.nixosModules.mySops
         self.nixosModules.noctalia # this is to let noctalia be accessed via shell
+        # self.nixosModules.ollama
       ];
 
       # --- Environment & Packages ---
@@ -56,6 +57,7 @@
         godot_4
 
         # cursor test
+        # now put in runtimeInputs of niri.nix, revert if went wrong.
         apple-cursor
       ];
 
@@ -101,6 +103,14 @@
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
       boot.kernelPackages = pkgs.linuxPackages_latest;
+
+      # CachyOS kernel using https://github.com/xddxdd/nix-cachyos-kernel
+      # boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
+      # nixpkgs.overlays = [
+      #   inputs.nix-cachyos-kernel.overlays.default
+      # ];
+      # nix.settings.substituters = [ "https://attic.xuyh0120.win/lantian" ];
+      # nix.settings.trusted-public-keys = [ "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" ];
 
       # --- Feature Toggles ---
       # Assuming you followed the modular sops.nix we discussed:

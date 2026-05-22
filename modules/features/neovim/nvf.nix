@@ -64,7 +64,7 @@
             enable = true;
             changeToVCRoot = true;
           };
-          # dashboard-nvim.enable = false;
+          dashboard-nvim.enable = false;
           # alpha = {
           #   enable = true;
           # };
