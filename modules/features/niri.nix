@@ -47,6 +47,7 @@
         disableConfigHotReload = false;
         settings =
           let
+            MainMod = "Mod";
             noctaliaExe = lib.getExe self'.packages.noctalia-shell;
             terminalExe = lib.getExe self'.packages.terminal;
             wlrWhichKeyExe = lib.getExe self'.packages.wlr-which-key;
@@ -111,8 +112,8 @@
             binds = {
               # -- KEYBINDINGS --
               # Terminal and Launcher
-              "Mod+Return".spawn-sh = "${terminalExe}";
-              "Mod+Space".spawn-sh = "${noctaliaExe} ipc call launcher toggle";
+              "${MainMod}+Return".spawn-sh = "${terminalExe}";
+              "${MainMod}+Space".spawn-sh = "${noctaliaExe} ipc call launcher toggle";
 
               # Screenshot
               "Print".screenshot = _: {
@@ -134,64 +135,64 @@
               };
 
               # Window Management
-              "Mod+Q".close-window = _: { };
-              "Mod+F".maximize-column = _: { };
-              "Mod+G".fullscreen-window = _: { };
-              "Mod+Shift+F".toggle-window-floating = _: { };
-              "Mod+V".center-column = _: { };
+              "${MainMod}+Q".close-window = _: { };
+              "${MainMod}+F".maximize-column = _: { };
+              "${MainMod}+G".fullscreen-window = _: { };
+              "${MainMod}+Shift+F".toggle-window-floating = _: { };
+              "${MainMod}+V".center-column = _: { };
 
               # Navigation
-              "Mod+H".focus-column-or-monitor-left = _: { };
-              "Mod+J".focus-window-or-workspace-down = _: { };
-              "Mod+K".focus-window-or-workspace-up = _: { };
-              "Mod+L".focus-column-or-monitor-right = _: { };
+              "${MainMod}+H".focus-column-or-monitor-left = _: { };
+              "${MainMod}+J".focus-window-or-workspace-down = _: { };
+              "${MainMod}+K".focus-window-or-workspace-up = _: { };
+              "${MainMod}+L".focus-column-or-monitor-right = _: { };
 
-              "Mod+Left".focus-column-left = _: { };
-              "Mod+Right".focus-column-right = _: { };
-              "Mod+Up".focus-window-or-workspace-up = _: { };
-              "Mod+Down".focus-window-or-workspace-down = _: { };
+              "${MainMod}+Left".focus-column-left = _: { };
+              "${MainMod}+Right".focus-column-right = _: { };
+              "${MainMod}+Up".focus-window-or-workspace-up = _: { };
+              "${MainMod}+Down".focus-window-or-workspace-down = _: { };
 
               # Moving Windows
 
-              "Mod+Shift+H".move-column-left-or-to-monitor-left = _: { };
-              "Mod+Shift+J".move-window-down-or-to-workspace-down = _: { };
-              "Mod+Shift+K".move-window-up-or-to-workspace-up = _: { };
-              "Mod+Shift+L".move-column-right-or-to-monitor-right = _: { };
+              "${MainMod}+Shift+H".move-column-left-or-to-monitor-left = _: { };
+              "${MainMod}+Shift+J".move-window-down-or-to-workspace-down = _: { };
+              "${MainMod}+Shift+K".move-window-up-or-to-workspace-up = _: { };
+              "${MainMod}+Shift+L".move-column-right-or-to-monitor-right = _: { };
 
-              "Mod+Shift+Left".move-column-to-monitor-left = _: { };
-              "Mod+Shift+Down".move-column-to-monitor-down = _: { };
-              "Mod+Shift+Up".move-column-to-monitor-up = _: { };
-              "Mod+Shift+Right".move-column-to-monitor-right = _: { };
+              "${MainMod}+Shift+Left".move-column-to-monitor-left = _: { };
+              "${MainMod}+Shift+Down".move-column-to-monitor-down = _: { };
+              "${MainMod}+Shift+Up".move-column-to-monitor-up = _: { };
+              "${MainMod}+Shift+Right".move-column-to-monitor-right = _: { };
 
-              "Mod+Home".focus-column-first = _: { };
-              "Mod+End".focus-column-last = _: { };
-              "Mod+Ctrl+Home".move-column-to-first = _: { };
-              "Mod+Ctrl+End".move-column-to-last = _: { };
+              "${MainMod}+Home".focus-column-first = _: { };
+              "${MainMod}+End".focus-column-last = _: { };
+              "${MainMod}+Ctrl+Home".move-column-to-first = _: { };
+              "${MainMod}+Ctrl+End".move-column-to-last = _: { };
 
-              "Mod+1".focus-workspace = 1;
-              "Mod+2".focus-workspace = 2;
-              "Mod+3".focus-workspace = 3;
-              "Mod+4".focus-workspace = 4;
-              "Mod+5".focus-workspace = 5;
-              "Mod+6".focus-workspace = 6;
-              "Mod+7".focus-workspace = 7;
-              "Mod+8".focus-workspace = 8;
-              "Mod+9".focus-workspace = 9;
-              "Mod+Shift+1".move-column-to-workspace = 1;
-              "Mod+Shift+2".move-column-to-workspace = 2;
-              "Mod+Shift+3".move-column-to-workspace = 3;
-              "Mod+Shift+4".move-column-to-workspace = 4;
-              "Mod+Shift+5".move-column-to-workspace = 5;
-              "Mod+Shift+6".move-column-to-workspace = 6;
-              "Mod+Shift+7".move-column-to-workspace = 7;
-              "Mod+Shift+8".move-column-to-workspace = 8;
-              "Mod+Shift+9".move-column-to-workspace = 9;
+              "${MainMod}+1".focus-workspace = 1;
+              "${MainMod}+2".focus-workspace = 2;
+              "${MainMod}+3".focus-workspace = 3;
+              "${MainMod}+4".focus-workspace = 4;
+              "${MainMod}+5".focus-workspace = 5;
+              "${MainMod}+6".focus-workspace = 6;
+              "${MainMod}+7".focus-workspace = 7;
+              "${MainMod}+8".focus-workspace = 8;
+              "${MainMod}+9".focus-workspace = 9;
+              "${MainMod}+Shift+1".move-column-to-workspace = 1;
+              "${MainMod}+Shift+2".move-column-to-workspace = 2;
+              "${MainMod}+Shift+3".move-column-to-workspace = 3;
+              "${MainMod}+Shift+4".move-column-to-workspace = 4;
+              "${MainMod}+Shift+5".move-column-to-workspace = 5;
+              "${MainMod}+Shift+6".move-column-to-workspace = 6;
+              "${MainMod}+Shift+7".move-column-to-workspace = 7;
+              "${MainMod}+Shift+8".move-column-to-workspace = 8;
+              "${MainMod}+Shift+9".move-column-to-workspace = 9;
 
               # The following binds move the focused window in and out of a column.
               # If the window is alone, they will consume it into the nearby column to the side.
               # If the window is already in a column, they will expel it out.
-              "Mod+BracketLeft".consume-or-expel-window-left = _: { };
-              "Mod+BracketRight".consume-or-expel-window-right = _: { };
+              "${MainMod}+BracketLeft".consume-or-expel-window-left = _: { };
+              "${MainMod}+BracketRight".consume-or-expel-window-right = _: { };
 
               # --- Media Keys (The Requested Rewrite) ---
               "XF86AudioRaiseVolume" = _: {
@@ -291,7 +292,7 @@
               #   };
               # };
 
-              "Mod+O" = _: {
+              "${MainMod}+O" = _: {
                 props = {
                   repeat = false;
                 };
@@ -300,7 +301,7 @@
                 };
               };
 
-              # "Mod+d".spawn-sh = wlrWhichKeyExe [
+              # "${MainMod}+d".spawn-sh = wlrWhichKeyExe [
               #   {
               #     key = "b";
               #     desc = "kitty test";
@@ -308,15 +309,15 @@
               #   }
               # ];
 
-              "Mod+d".spawn-sh = self.mkWhichKeyExe config.pkgs [
-                {
-                  key = "b";
-                  desc = "Bluetooth";
-                  cmd = "${noctaliaExe} ipc call bluetooth togglePanel";
-                }
-              ];
+              # "${MainMod}+d".spawn-sh = self.mkWhichKeyExe config.pkgs [
+              #   {
+              #     key = "b";
+              #     desc = "Bluetooth";
+              #     cmd = "${noctaliaExe} ipc call bluetooth togglePanel";
+              #   }
+              # ];
 
-              # "Mod+d".spawn = "${self'.packages.wlr-which-key}";
+              # "${MainMod}+d".spawn = "${self'.packages.wlr-which-key}";
 
             };
 

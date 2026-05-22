@@ -12,6 +12,22 @@
         # parts of this taken from https://github.com/iynaix/dotfiles/blob/main/modules/shell/neovim/_settings.nix
         # large parts taken frm https://github.com/NotAShelf/nvf/blob/13c4ad4b4bb926c22945e2fb8862769fe51f27f1/configuration.nix
 
+        # keybinds
+        keymaps = [
+          {
+            mode = "n";
+            key = "<leader>e";
+            action = "<cmd>Neotree toggle<CR>";
+            desc = "Open Neo-tree";
+          }
+          {
+            mode = "n";
+            key = "<leader>tv";
+            action = "<cmd>ToggleTerm<CR>";
+            desc = "Toggle terminal";
+          }
+        ];
+
         viAlias = true;
         vimAlias = true;
         debugMode = {
