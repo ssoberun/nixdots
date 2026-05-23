@@ -169,24 +169,44 @@
               "${MainMod}+Ctrl+Home".move-column-to-first = _: { };
               "${MainMod}+Ctrl+End".move-column-to-last = _: { };
 
-              "${MainMod}+1".focus-workspace = 1;
-              "${MainMod}+2".focus-workspace = 2;
-              "${MainMod}+3".focus-workspace = 3;
-              "${MainMod}+4".focus-workspace = 4;
-              "${MainMod}+5".focus-workspace = 5;
-              "${MainMod}+6".focus-workspace = 6;
-              "${MainMod}+7".focus-workspace = 7;
-              "${MainMod}+8".focus-workspace = 8;
-              "${MainMod}+9".focus-workspace = 9;
-              "${MainMod}+Shift+1".move-column-to-workspace = 1;
-              "${MainMod}+Shift+2".move-column-to-workspace = 2;
-              "${MainMod}+Shift+3".move-column-to-workspace = 3;
-              "${MainMod}+Shift+4".move-column-to-workspace = 4;
-              "${MainMod}+Shift+5".move-column-to-workspace = 5;
-              "${MainMod}+Shift+6".move-column-to-workspace = 6;
-              "${MainMod}+Shift+7".move-column-to-workspace = 7;
-              "${MainMod}+Shift+8".move-column-to-workspace = 8;
-              "${MainMod}+Shift+9".move-column-to-workspace = 9;
+              "${MainMod}+1".focus-workspace = "w1";
+              "${MainMod}+2".focus-workspace = "w2";
+              "${MainMod}+3".focus-workspace = "w3";
+              "${MainMod}+4".focus-workspace = "w4";
+              "${MainMod}+5".focus-workspace = "w5";
+              "${MainMod}+6".focus-workspace = "w6";
+              "${MainMod}+7".focus-workspace = "w7";
+              "${MainMod}+8".focus-workspace = "w8";
+              "${MainMod}+9".focus-workspace = "w9";
+
+              "${MainMod}+Shift+1".move-column-to-workspace = "w1";
+              "${MainMod}+Shift+2".move-column-to-workspace = "w2";
+              "${MainMod}+Shift+3".move-column-to-workspace = "w3";
+              "${MainMod}+Shift+4".move-column-to-workspace = "w4";
+              "${MainMod}+Shift+5".move-column-to-workspace = "w5";
+              "${MainMod}+Shift+6".move-column-to-workspace = "w6";
+              "${MainMod}+Shift+7".move-column-to-workspace = "w7";
+              "${MainMod}+Shift+8".move-column-to-workspace = "w8";
+              "${MainMod}+Shift+9".move-column-to-workspace = "w9";
+
+              # "${MainMod}+1".focus-workspace = 1;
+              # "${MainMod}+2".focus-workspace = 2;
+              # "${MainMod}+3".focus-workspace = 3;
+              # "${MainMod}+4".focus-workspace = 4;
+              # "${MainMod}+5".focus-workspace = 5;
+              # "${MainMod}+6".focus-workspace = 6;
+              # "${MainMod}+7".focus-workspace = 7;
+              # "${MainMod}+8".focus-workspace = 8;
+              # "${MainMod}+9".focus-workspace = 9;
+              # "${MainMod}+Shift+1".move-column-to-workspace = 1;
+              # "${MainMod}+Shift+2".move-column-to-workspace = 2;
+              # "${MainMod}+Shift+3".move-column-to-workspace = 3;
+              # "${MainMod}+Shift+4".move-column-to-workspace = 4;
+              # "${MainMod}+Shift+5".move-column-to-workspace = 5;
+              # "${MainMod}+Shift+6".move-column-to-workspace = 6;
+              # "${MainMod}+Shift+7".move-column-to-workspace = 7;
+              # "${MainMod}+Shift+8".move-column-to-workspace = 8;
+              # "${MainMod}+Shift+9".move-column-to-workspace = 9;
 
               # The following binds move the focused window in and out of a column.
               # If the window is alone, they will consume it into the nearby column to the side.
@@ -317,7 +337,7 @@
               #   }
               # ];
 
-              "${MainMod}+S".spawn-sh = self.mkWhichKeyExe pkgs [
+              "${MainMod}+W".spawn-sh = self.mkWhichKeyExe pkgs [
                 {
                   key = "b";
                   desc = "Browsing";
@@ -345,6 +365,19 @@
                 }
               ];
 
+              "${MainMod}+C".spawn-sh = self.mkWhichKeyExe pkgs [
+                {
+                  key = "s";
+                  desc = "Noctalia Settings";
+                  cmd = "${noctaliaExe} ipc call settings toggle";
+                }
+                {
+                  key = "s";
+                  desc = "Save shell settings";
+                  cmd = "${noctaliaExe} ipc call state all > ~/nixdots/modules/features/noctalia.json";
+                }
+              ];
+
               "${MainMod}+d".spawn-sh = self.mkWhichKeyExe pkgs [
                 {
                   key = "b";
@@ -354,7 +387,12 @@
                 {
                   key = "w";
                   desc = "Wifi";
-                  cmd = "${noctaliaExe} ipc call wifi togglePanel";
+                  cmd = "${noctaliaExe} ipc call network togglePanel";
+                }
+                {
+                  key = "n";
+                  desc = "Toggle DND";
+                  cmd = "${noctaliaExe} ipc call notifications toggleDND";
                 }
                 {
                   key = "f";
@@ -385,6 +423,15 @@
                 "browser" = default;
                 "notes" = default;
                 "communication" = default;
+                "w1" = default;
+                "w2" = default;
+                "w3" = default;
+                "w4" = default;
+                "w5" = default;
+                "w6" = default;
+                "w7" = default;
+                "w8" = default;
+                "w9" = default;
               };
 
             # add the below once niri updates to 26.04!

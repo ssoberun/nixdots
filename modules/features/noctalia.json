@@ -51,16 +51,16 @@
             "followFocusedScreen": false,
             "fontWeight": "bold",
             "groupedBorderOpacity": 1,
-            "hideUnoccupied": true,
+            "hideUnoccupied": false,
             "iconScale": 0.8,
             "id": "Workspace",
-            "labelMode": "none",
+            "labelMode": "name",
             "occupiedColor": "secondary",
             "pillSize": 0.6,
             "showApplications": false,
             "showApplicationsHover": false,
             "showBadge": true,
-            "showLabelsOnlyWhenOccupied": true,
+            "showLabelsOnlyWhenOccupied": false,
             "unfocusedIconsOpacity": 1
           },
           {
@@ -853,7 +853,7 @@
       }
     },
     "notificationsState": {
-      "lastSeenTs": 1778573005000
+      "lastSeenTs": 1779539390000
     },
     "changelogState": {
       "lastSeenVersion": "v4.7.6"
