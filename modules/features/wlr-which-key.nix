@@ -12,6 +12,9 @@ let
       settings = {
         inherit menu;
         font = "Iosevka NF";
+        background = "#282828d0";
+        color = "#fbf1c7";
+        border = "#8ec07c";
         separator = " ➜ ";
         border_width = 2;
         corner_r = 5;
@@ -21,7 +24,7 @@ let
 
         anchor = "bottom-right";
         margin_right = 0;
-        margin-bottom = 5;
+        margin_bottom = 5;
         margin_left = 5;
         margin_top = 0;
       };

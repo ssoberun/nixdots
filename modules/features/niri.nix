@@ -317,9 +317,75 @@
               #   }
               # ];
 
-              # "${MainMod}+d".spawn = "${self'.packages.wlr-which-key}";
+              "${MainMod}+S".spawn-sh = self.mkWhichKeyExe pkgs [
+                {
+                  key = "b";
+                  desc = "Browsing";
+                  cmd = "niri msg action focus-workspace \"browser\"";
+                }
+                {
+                  key = "o";
+                  desc = "Options";
+                  cmd = "niri msg action focus-workspace \"options\"";
+                }
+                {
+                  key = "m";
+                  desc = "Methods";
+                  cmd = "niri msg action focus-workspace \"methods\"";
+                }
+                {
+                  key = "c";
+                  desc = "Communication";
+                  cmd = "niri msg action focus-workspace \"communication\"";
+                }
+                {
+                  key = "n";
+                  desc = "Notes";
+                  cmd = "niri msg action focus-workspace \"notes\"";
+                }
+              ];
 
+              "${MainMod}+d".spawn-sh = self.mkWhichKeyExe pkgs [
+                {
+                  key = "b";
+                  desc = "Bluetooth";
+                  cmd = "${noctaliaExe} ipc call bluetooth togglePanel";
+                }
+                {
+                  key = "w";
+                  desc = "Wifi";
+                  cmd = "${noctaliaExe} ipc call wifi togglePanel";
+                }
+                {
+                  key = "f";
+                  desc = "Firefox";
+                  cmd = "${lib.getExe pkgs.firefox}";
+                }
+                {
+                  key = "c";
+                  desc = "Beeper";
+                  cmd = "beeper";
+                }
+                {
+                  key = "d";
+                  desc = "Discord";
+                  cmd = "vesktop";
+                }
+              ];
+              # "${MainMod}+d".spawn = "${self'.packages.wlr-which-key}";
             };
+
+            workspaces =
+              let
+                default = { };
+              in
+              {
+                "options" = default;
+                "methods" = default;
+                "browser" = default;
+                "notes" = default;
+                "communication" = default;
+              };
 
             # add the below once niri updates to 26.04!
             # niri has updated to 26.04
