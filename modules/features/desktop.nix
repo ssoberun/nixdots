@@ -6,7 +6,7 @@
       imports = [
         # wm
         self.nixosModules.niri
-        self.nixosModules.GNOME
+        self.nixosModules.GNOME # GNOMe as backup, and also for its apps and portals
 
         # latex
         self.nixosModules.LaTeX

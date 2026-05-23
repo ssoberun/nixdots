@@ -22,7 +22,7 @@ let
         rows_per_column = 5;
         column_padding = 25;
 
-        anchor = "bottom-right";
+        anchor = "center";
         margin_right = 0;
         margin_bottom = 5;
         margin_left = 5;

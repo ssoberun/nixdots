@@ -367,18 +367,10 @@
 
               "${MainMod}+C".spawn-sh = self.mkWhichKeyExe pkgs [
                 {
-                  key = "s";
+                  key = "m";
                   desc = "Noctalia Settings";
                   cmd = "${noctaliaExe} ipc call settings toggle";
                 }
-                {
-                  key = "s";
-                  desc = "Save shell settings";
-                  cmd = "${noctaliaExe} ipc call state all > ~/nixdots/modules/features/noctalia.json";
-                }
-              ];
-
-              "${MainMod}+d".spawn-sh = self.mkWhichKeyExe pkgs [
                 {
                   key = "b";
                   desc = "Bluetooth";
@@ -395,6 +387,20 @@
                   cmd = "${noctaliaExe} ipc call notifications toggleDND";
                 }
                 {
+                  key = "p";
+                  desc = "Toggle Performance Mode";
+                  cmd = "${noctaliaExe} ipc call powerProfile toggleNoctaliaPerformance";
+                }
+                {
+                  key = "s";
+                  desc = "Save shell settings";
+                  cmd = "${noctaliaExe} ipc call state all > ~/nixdots/modules/features/noctalia.json";
+                }
+
+              ];
+
+              "${MainMod}+d".spawn-sh = self.mkWhichKeyExe pkgs [
+                {
                   key = "f";
                   desc = "Firefox";
                   cmd = "${lib.getExe pkgs.firefox}";
@@ -408,6 +414,16 @@
                   key = "d";
                   desc = "Discord";
                   cmd = "vesktop";
+                }
+                {
+                  key = "b";
+                  desc = "Bitwarden";
+                  cmd = "bitwarden";
+                }
+                {
+                  key = "l";
+                  desc = "localsend";
+                  cmd = "localsend_app";
                 }
               ];
               # "${MainMod}+d".spawn = "${self'.packages.wlr-which-key}";
@@ -428,10 +444,10 @@
                 "w3" = default;
                 "w4" = default;
                 "w5" = default;
-                "w6" = default;
-                "w7" = default;
-                "w8" = default;
-                "w9" = default;
+                # "w6" = default;
+                # "w7" = default;
+                # "w8" = default;
+                # "w9" = default;
               };
 
             # add the below once niri updates to 26.04!

@@ -827,12 +827,12 @@
   },
   "state": {
     "doNotDisturb": false,
-    "noctaliaPerformanceMode": false,
+    "noctaliaPerformanceMode": true,
     "barVisible": true,
     "openedPanel": "",
     "lockScreenActive": false,
     "wallpapers": {
-      "eDP-1": "/home/sam/nixdots/wallpapers/AmericanPlymouth.jpg"
+      "eDP-1": "/home/sam/nixdots/wallpapers/GrandTeton.jpg"
     },
     "desktopWidgetsEditMode": false,
     "display": {
