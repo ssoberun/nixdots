@@ -220,7 +220,7 @@
       services.fstrim.enable = true;
 
       services.fprintd = {
-        enable = true;
+        enable = false;
         # tod = {
         #   enable = true;
         #   driver = pkgs.libfprint-2-tod1-vfs0090;
