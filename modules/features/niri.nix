@@ -337,96 +337,222 @@
               #   }
               # ];
 
-              "${MainMod}+W".spawn-sh = self.mkWhichKeyExe pkgs [
-                {
-                  key = "b";
-                  desc = "Browsing";
-                  cmd = "niri msg action focus-workspace \"browser\"";
-                }
-                {
-                  key = "o";
-                  desc = "Options";
-                  cmd = "niri msg action focus-workspace \"options\"";
-                }
-                {
-                  key = "m";
-                  desc = "Methods";
-                  cmd = "niri msg action focus-workspace \"methods\"";
-                }
-                {
-                  key = "c";
-                  desc = "Communication";
-                  cmd = "niri msg action focus-workspace \"communication\"";
-                }
-                {
-                  key = "n";
-                  desc = "Notes";
-                  cmd = "niri msg action focus-workspace \"notes\"";
-                }
-              ];
-
-              "${MainMod}+C".spawn-sh = self.mkWhichKeyExe pkgs [
-                {
-                  key = "m";
-                  desc = "Noctalia Settings";
-                  cmd = "${noctaliaExe} ipc call settings toggle";
-                }
-                {
-                  key = "b";
-                  desc = "Bluetooth";
-                  cmd = "${noctaliaExe} ipc call bluetooth togglePanel";
-                }
-                {
-                  key = "w";
-                  desc = "Wifi";
-                  cmd = "${noctaliaExe} ipc call network togglePanel";
-                }
-                {
-                  key = "n";
-                  desc = "Toggle DND";
-                  cmd = "${noctaliaExe} ipc call notifications toggleDND";
-                }
-                {
-                  key = "p";
-                  desc = "Toggle Performance Mode";
-                  cmd = "${noctaliaExe} ipc call powerProfile toggleNoctaliaPerformance";
-                }
-                {
-                  key = "s";
-                  desc = "Save shell settings";
-                  cmd = "${noctaliaExe} ipc call state all > ~/nixdots/modules/features/noctalia.json";
-                }
-
-              ];
+              #   "${MainMod}+W".spawn-sh = self.mkWhichKeyExe pkgs [
+              #     {
+              #       key = "b";
+              #       desc = "Browsing";
+              #       cmd = "niri msg action focus-workspace \"browser\"";
+              #     }
+              #     {
+              #       key = "o";
+              #       desc = "Options";
+              #       cmd = "niri msg action focus-workspace \"options\"";
+              #     }
+              #     {
+              #       key = "m";
+              #       desc = "Methods";
+              #       cmd = "niri msg action focus-workspace \"methods\"";
+              #     }
+              #     {
+              #       key = "c";
+              #       desc = "Communication";
+              #       cmd = "niri msg action focus-workspace \"communication\"";
+              #     }
+              #     {
+              #       key = "n";
+              #       desc = "Notes";
+              #       cmd = "niri msg action focus-workspace \"notes\"";
+              #     }
+              #   ];
+              #
+              #   "${MainMod}+C".spawn-sh = self.mkWhichKeyExe pkgs [
+              #     {
+              #       key = "m";
+              #       desc = "Noctalia Settings";
+              #       cmd = "${noctaliaExe} ipc call settings toggle";
+              #     }
+              #     {
+              #       key = "b";
+              #       desc = "Bluetooth";
+              #       cmd = "${noctaliaExe} ipc call bluetooth togglePanel";
+              #     }
+              #     {
+              #       key = "w";
+              #       desc = "Wifi";
+              #       cmd = "${noctaliaExe} ipc call network togglePanel";
+              #     }
+              #     {
+              #       key = "n";
+              #       desc = "Toggle DND";
+              #       cmd = "${noctaliaExe} ipc call notifications toggleDND";
+              #     }
+              #     {
+              #       key = "p";
+              #       desc = "Toggle Performance Mode";
+              #       cmd = "${noctaliaExe} ipc call powerProfile toggleNoctaliaPerformance";
+              #     }
+              #     {
+              #       key = "s";
+              #       desc = "Save shell settings";
+              #       cmd = "${noctaliaExe} ipc call state all > ~/nixdots/modules/features/noctalia.json";
+              #     }
+              #
+              #   ];
+              #
+              #   "${MainMod}+d".spawn-sh = self.mkWhichKeyExe pkgs [
+              #     {
+              #       key = "t";
+              #       desc = "Submenu Test";
+              #       submenu = [
+              #         {
+              #           key = "g";
+              #           desc = "Mothafuckin' G";
+              #           cmd = "notify-send \"boi, foid\"";
+              #         }
+              #       ];
+              #     }
+              #     {
+              #       key = "f";
+              #       desc = "Firefox";
+              #       cmd = "${lib.getExe pkgs.firefox}";
+              #     }
+              #     {
+              #       key = "o";
+              #       desc = "Obsidian";
+              #       cmd = "obsidian";
+              #     }
+              #     {
+              #       key = "c";
+              #       desc = "Beeper";
+              #       cmd = "beeper";
+              #     }
+              #     {
+              #       key = "d";
+              #       desc = "Discord";
+              #       cmd = "vesktop";
+              #     }
+              #     {
+              #       key = "b";
+              #       desc = "Bitwarden";
+              #       cmd = "bitwarden";
+              #     }
+              #     {
+              #       key = "l";
+              #       desc = "localsend";
+              #       cmd = "localsend_app";
+              #     }
+              #   ];
+              #   # "${MainMod}+d".spawn = "${self'.packages.wlr-which-key}";
+              # };
 
               "${MainMod}+d".spawn-sh = self.mkWhichKeyExe pkgs [
                 {
-                  key = "f";
-                  desc = "Firefox";
-                  cmd = "${lib.getExe pkgs.firefox}";
+                  key = "w";
+                  desc = "Workspaces";
+                  submenu = [
+                    {
+                      key = "b";
+                      desc = "Browsing";
+                      cmd = "niri msg action focus-workspace \"browser\"";
+                    }
+                    {
+                      key = "o";
+                      desc = "Options";
+                      cmd = "niri msg action focus-workspace \"options\"";
+                    }
+                    {
+                      key = "m";
+                      desc = "Methods";
+                      cmd = "niri msg action focus-workspace \"methods\"";
+                    }
+                    {
+                      key = "c";
+                      desc = "Communication";
+                      cmd = "niri msg action focus-workspace \"communication\"";
+                    }
+                    {
+                      key = "n";
+                      desc = "Notes";
+                      cmd = "niri msg action focus-workspace \"notes\"";
+                    }
+                  ];
                 }
+
                 {
                   key = "c";
-                  desc = "Beeper";
-                  cmd = "beeper";
+                  desc = "Noctalia Settings";
+                  submenu = [
+                    {
+                      key = "m";
+                      desc = "Noctalia Settings";
+                      cmd = "${noctaliaExe} ipc call settings toggle";
+                    }
+                    {
+                      key = "b";
+                      desc = "Bluetooth";
+                      cmd = "${noctaliaExe} ipc call bluetooth togglePanel";
+                    }
+                    {
+                      key = "w";
+                      desc = "Wifi";
+                      cmd = "${noctaliaExe} ipc call network togglePanel";
+                    }
+                    {
+                      key = "n";
+                      desc = "Toggle DND";
+                      cmd = "${noctaliaExe} ipc call notifications toggleDND";
+                    }
+                    {
+                      key = "p";
+                      desc = "Toggle Performance Mode";
+                      cmd = "${noctaliaExe} ipc call powerProfile toggleNoctaliaPerformance";
+                    }
+                    {
+                      key = "s";
+                      desc = "Save shell settings";
+                      cmd = "${noctaliaExe} ipc call state all > ~/nixdots/modules/features/noctalia.json";
+                    }
+                  ];
                 }
+
+                # --- APPLICATIONS & EXISTING SUBMENUS (MainMod+d) ---
                 {
                   key = "d";
-                  desc = "Discord";
-                  cmd = "vesktop";
-                }
-                {
-                  key = "b";
-                  desc = "Bitwarden";
-                  cmd = "bitwarden";
-                }
-                {
-                  key = "l";
-                  desc = "localsend";
-                  cmd = "localsend_app";
+                  desc = "Applications";
+                  submenu = [
+                    {
+                      key = "f";
+                      desc = "Firefox";
+                      cmd = "${lib.getExe pkgs.firefox}";
+                    }
+                    {
+                      key = "o";
+                      desc = "Obsidian";
+                      cmd = "obsidian";
+                    }
+                    {
+                      key = "c";
+                      desc = "Beeper";
+                      cmd = "beeper";
+                    }
+                    {
+                      key = "d";
+                      desc = "Discord";
+                      cmd = "vesktop";
+                    }
+                    {
+                      key = "b";
+                      desc = "Bitwarden";
+                      cmd = "bitwarden";
+                    }
+                    {
+                      key = "l";
+                      desc = "localsend";
+                      cmd = "localsend_app";
+                    }
+                  ];
                 }
               ];
-              # "${MainMod}+d".spawn = "${self'.packages.wlr-which-key}";
             };
 
             workspaces =

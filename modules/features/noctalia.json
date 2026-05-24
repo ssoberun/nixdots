@@ -186,11 +186,11 @@
       "showScreenCorners": false,
       "forceBlackScreenCorners": false,
       "scaleRatio": 1.05,
-      "radiusRatio": 1.1300000000000001,
-      "iRadiusRatio": 0.93,
+      "radiusRatio": 0.79,
+      "iRadiusRatio": 0.77,
       "boxRadiusRatio": 1,
       "screenRadiusRatio": 0.86,
-      "animationSpeed": 1.83,
+      "animationSpeed": 1.94,
       "animationDisabled": false,
       "compactLockScreen": false,
       "lockScreenAnimations": true,
@@ -209,7 +209,7 @@
       "telemetryEnabled": false,
       "enableLockScreenCountdown": true,
       "lockScreenCountdownDuration": 5000,
-      "autoStartAuth": false,
+      "autoStartAuth": true,
       "allowPasswordWithFprintd": true,
       "clockStyle": "custom",
       "clockFormat": "h:mm ap ",
@@ -692,7 +692,7 @@
       "schedulingMode": "off",
       "manualSunrise": "06:30",
       "manualSunset": "18:30",
-      "generationMethod": "content",
+      "generationMethod": "tonal-spot",
       "monitorForColors": "eDP-1",
       "syncGsettings": true
     },
@@ -827,12 +827,12 @@
   },
   "state": {
     "doNotDisturb": false,
-    "noctaliaPerformanceMode": true,
+    "noctaliaPerformanceMode": false,
     "barVisible": true,
     "openedPanel": "",
     "lockScreenActive": false,
     "wallpapers": {
-      "eDP-1": "/home/sam/nixdots/wallpapers/GrandTeton.jpg"
+      "eDP-1": "/home/sam/nixdots/wallpapers/FarmsOutWest.jpg"
     },
     "desktopWidgetsEditMode": false,
     "display": {
