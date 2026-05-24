@@ -18,8 +18,6 @@
 
           # Set this to true to ensure Nix always checks for binaries first
           substitute = true;
-
-          auto-optimise-store = true;
         };
 
         gc = {
@@ -29,6 +27,6 @@
         };
       };
 
-      boot.loader.systemd-boot.configurationLimit = lib.mkDefault 10;
+      boot.loader.systemd-boot.configurationLimit = 10;
     };
 }

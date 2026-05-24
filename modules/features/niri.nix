@@ -5,6 +5,7 @@
       self',
       pkgs,
       config,
+      lib,
       ...
     }:
     {
@@ -18,8 +19,8 @@
       # do not kick me out of a session on rebuild
       systemd.user.units."niri.service" = {
         # add to the existing service, as drop-in so it doesn't generate the other sections
-        overrideStrategy = "asDropin";
-        text = ''
+        overrideStrategy = lib.mkDefault "asDropin";
+        text = lib.mkDefault ''
           [Service]
           X-StopIfChanged=false
           X-RestartIfChanged=false
@@ -84,6 +85,12 @@
                 width = 1;
               };
             };
+
+            blur = {
+              noise = 0.05;
+              offset = 3.0;
+            };
+
             #
             switch-events = {
               lid-open = _: {

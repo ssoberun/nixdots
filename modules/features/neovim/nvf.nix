@@ -5,6 +5,25 @@
   ...
 }:
 {
+  # flake.nixosModules.base =
+  #   { config, pkgs, ... }:
+  #   let
+  #     nvim-desktop-entry = pkgs.makeDesktopItem {
+  #       name = "Neovim";
+  #       desktopName = "Neovim";
+  #       genericName = "Text Editor";
+  #       icon = "nvim";
+  #       terminal = true;
+  #       # load direnv before opening nvim
+  #       exec = "${lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.neovim-nvf}";
+  #     };
+  #   in
+  #   {
+  #     environment.systemPackages = [
+  #       (lib.hiPrio nvim-desktop-entry)
+  #     ];
+  #   };
+
   flake.nixosModules.nvf =
     { pkgs, config, ... }:
     {
@@ -20,13 +39,13 @@
             action = "<cmd>Neotree toggle<CR>";
             desc = "Open Neo-tree";
           }
-          {
-            mode = "n";
-            key = "<leader>tv";
-            action = "<cmd>ToggleTerm<CR>";
-            desc = "Toggle terminal";
-          }
         ];
+
+        terminal = {
+          toggleterm = {
+            enable = true;
+          };
+        };
 
         viAlias = true;
         vimAlias = true;
@@ -76,14 +95,15 @@
         # enable dashboard?
         # lazy.enable = false;
         dashboard = {
-          startify = {
-            enable = true;
-            changeToVCRoot = true;
-          };
-          dashboard-nvim.enable = false;
-          # alpha = {
+          # startify = {
           #   enable = true;
+          #   changeToVCRoot = true;
           # };
+          # dashboard-nvim.enable = true;
+          alpha = {
+            enable = true;
+            theme = "theta";
+          };
         };
 
         ui = {
@@ -93,8 +113,9 @@
             enable = true;
             navbuddy.enable = true;
           };
+          # this adds the little vertical highlight column that shows you not to go too far ig
           smartcolumn = {
-            enable = true;
+            enable = false;
             setupOpts.custom_colorcolumn = {
               # this is a freeform module, it's `buftype = int;` for configuring column position
               nix = "110";
@@ -117,7 +138,7 @@
 
           highlight-undo.enable = true;
           blink-indent.enable = true;
-          indent-blankline.enable = true;
+          indent-blankline.enable = false;
 
           # Fun
           # cellular-automaton.enable = false;
@@ -126,6 +147,18 @@
         filetree = {
           neo-tree = {
             enable = true;
+          };
+        };
+
+        tabline = {
+          nvimBufferline = {
+            enable = true;
+            # default declaration can be found in https://github.com/NotAShelf/nvf/blob/main/modules/plugins/tabline/nvim-bufferline/nvim-bufferline.nix
+            mappings = {
+              cycleNext = "<S-l>";
+              cyclePrevious = "<S-h>";
+            };
+            setupOpts.options.diagnostics = "nvim_lsp";
           };
         };
 
@@ -141,7 +174,7 @@
         };
 
         minimap = {
-          minimap-vim.enable = true;
+          minimap-vim.enable = false;
           # codewindow.enable = true; # lighter, faster, and uses lua for configuration
         };
 
@@ -280,6 +313,22 @@
               "-shell-escape"
             ];
           };
+
+          vimtex_syntax_conceal = {
+            accents = 1;
+            ligatures = 1;
+            cites = 1;
+            fancy = 1;
+            greek = 1;
+            math_bounds = 1;
+            math_delimiters = 1;
+            math_fracs = 1;
+            math_super_sub = 1;
+            math_symbols = 1;
+            sections = 1;
+            styles = 1;
+          };
+          vimtex_syntax_conceal_carg = 1;
         };
 
         lazy = {

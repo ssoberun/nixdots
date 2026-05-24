@@ -25,9 +25,10 @@
     }:
     {
       settings = {
-        cursor_trail = 3;
+        # cursor_trail = 3;
         background_blur = 1;
         background_opacity = 0.8;
+
         scrollback_lines = 2000;
         hide_window_decorations = true;
         confirm_os_window_close = 0;
