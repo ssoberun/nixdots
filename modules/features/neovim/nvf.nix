@@ -5,24 +5,50 @@
   ...
 }:
 {
-  # flake.nixosModules.base =
-  #   { config, pkgs, ... }:
-  #   let
-  #     nvim-desktop-entry = pkgs.makeDesktopItem {
-  #       name = "Neovim";
-  #       desktopName = "Neovim";
-  #       genericName = "Text Editor";
-  #       icon = "nvim";
-  #       terminal = true;
-  #       # load direnv before opening nvim
-  #       exec = "${lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.neovim-nvf}";
-  #     };
-  #   in
-  #   {
-  #     environment.systemPackages = [
-  #       (lib.hiPrio nvim-desktop-entry)
-  #     ];
-  #   };
+  flake.nixosModules.base =
+    { config, pkgs, ... }:
+    let
+      nvim-direnv = pkgs.writeShellApplication {
+        name = "nvim-direnv";
+        runtimeInputs = [ pkgs.direnv ];
+        text = /* sh */ ''
+          if ! direnv exec "$(dirname "$1")" nvim "$@"; then
+              nvim "$@"
+          fi
+        '';
+      };
+      nvim-desktop-entry = pkgs.makeDesktopItem {
+        name = "Neovim";
+        desktopName = "Neovim";
+        genericName = "Text Editor";
+        icon = "nvim";
+        terminal = true;
+        # load direnv before opening nvim
+        exec = ''${lib.getExe nvim-direnv} "%F"'';
+        # exec = "${lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.neovim-nvf}";
+      };
+    in
+    {
+      environment.systemPackages = [
+        nvim-direnv
+        (lib.hiPrio nvim-desktop-entry)
+      ];
+
+      xdg = {
+        mime = {
+          defaultApplications = {
+            "text/plain" = "nvim.desktop";
+            "text/markdown" = "nvim.desktop";
+            "text/x-nix" = "nvim.desktop";
+            "application/x-shellscript" = "nvim.desktop";
+            "application/xml" = "nvim.desktop";
+          };
+          addedAssociations = {
+            "text/csv" = "nvim.desktop";
+          };
+        };
+      };
+    };
 
   flake.nixosModules.nvf =
     { pkgs, config, ... }:
@@ -32,14 +58,27 @@
         # large parts taken frm https://github.com/NotAShelf/nvf/blob/13c4ad4b4bb926c22945e2fb8862769fe51f27f1/configuration.nix
 
         # keybinds
-        keymaps = [
-          {
-            mode = "n";
-            key = "<leader>e";
-            action = "<cmd>Neotree toggle<CR>";
-            desc = "Open Neo-tree";
-          }
-        ];
+        keymaps =
+          let
+            mkKeymap = mode: key: action: desc: {
+              inherit
+                mode
+                key
+                action
+                desc
+                ;
+            };
+            mkKeymapWithOpts =
+              mode: key: action: desc: opts:
+              (mkKeymap mode key action) // opts;
+          in
+          [
+            (mkKeymap "n" "<leader>e" "<cmd>Neotree toggle<CR>" "Open Neo-tree")
+            (mkKeymap "n" "<PageUp>" "<C-U>" "")
+            (mkKeymap "n" "<PageDown>" "<C-D>" "")
+            (mkKeymap "i" "<PageUp>" "<C-O><C-U>" "")
+            (mkKeymap "i" "<PageDown>" "<C-O><C-D>" "")
+          ];
 
         terminal = {
           toggleterm = {

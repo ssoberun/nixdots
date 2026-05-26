@@ -68,12 +68,7 @@
             };
 
             input = {
-              keyboard = {
-                # increasing repeat-delay and repeat-rate seems to make things much much better and faster
-                repeat-delay = 200;
-                repeat-rate = 40;
-                xkb.layout = "us";
-              };
+              keyboard.xkb.layout = "us";
               mouse.accel-profile = "flat";
             };
 
@@ -84,12 +79,11 @@
 
             layout = {
               gaps = 3;
-              focus-ring = {
-                off = _: { };
-                width = 0;
-              };
+              # focus-ring = {
+              #   off = _: { };
+              # };
               border = {
-                width = 0.5;
+                width = 1;
               };
             };
 

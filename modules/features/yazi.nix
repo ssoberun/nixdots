@@ -297,26 +297,35 @@
 
           # Original [plugin] table
           plugin = {
-            fetchers = [
-              {
-                id = "mime";
-                url = "*/";
-                run = "mime.dir";
-                prio = "high";
-              }
-              {
-                id = "mime";
-                url = "local://*";
-                run = "mime.local";
-                prio = "high";
-              }
-              {
-                id = "mime";
-                url = "remote://*";
-                run = "mime.remote";
-                prio = "high";
-              }
-            ];
+            # causes an error?
+            #[I] sam@x1-machine ~> y
+            # TOML parse error at line 224, column 1
+            #     |
+            # 224 | [[plugin.fetchers]]
+            #     | ^^^^^^^^^^^^^^^^^^^
+            # missing field `group`
+            #
+            # Press <Enter> to continue with preset settings...
+            # fetchers = [
+            #   {
+            #     id = "mime";
+            #     url = "*/";
+            #     run = "mime.dir";
+            #     prio = "high";
+            #   }
+            #   {
+            #     id = "mime";
+            #     url = "local://*";
+            #     run = "mime.local";
+            #     prio = "high";
+            #   }
+            #   {
+            #     id = "mime";
+            #     url = "remote://*";
+            #     run = "mime.remote";
+            #     prio = "high";
+            #   }
+            # ];
             spotters = [
               {
                 url = "*/";

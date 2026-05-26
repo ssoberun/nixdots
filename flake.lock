@@ -94,6 +94,27 @@
         "type": "github"
       }
     },
+    "hjem": {
+      "inputs": {
+        "nix-darwin": "nix-darwin",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1779575248,
+        "narHash": "sha256-Zh9+WMsxDbLVWwhccXjLW+PYO/5ZyUFQLZdYydycbx8=",
+        "owner": "feel-co",
+        "repo": "hjem",
+        "rev": "77bf113e3ce91c6632def66222198561437853dc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "feel-co",
+        "repo": "hjem",
+        "type": "github"
+      }
+    },
     "hm-wrapper-modules": {
       "inputs": {
         "home-manager": [
@@ -185,6 +206,27 @@
         "owner": "feel-co",
         "ref": "refs/tags/v2.8.0",
         "repo": "ndg",
+        "type": "github"
+      }
+    },
+    "nix-darwin": {
+      "inputs": {
+        "nixpkgs": [
+          "hjem",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1777780666,
+        "narHash": "sha256-8wURyQMdDkGUarSTKOGdCuFfYiwa3HbzwscUfn3STDE=",
+        "owner": "nix-darwin",
+        "repo": "nix-darwin",
+        "rev": "8c62fba0854ba15c8917aed18894dbccb48a3777",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-darwin",
+        "repo": "nix-darwin",
         "type": "github"
       }
     },
@@ -347,6 +389,7 @@
       "inputs": {
         "evangelion-ui": "evangelion-ui",
         "flake-parts": "flake-parts",
+        "hjem": "hjem",
         "hm-wrapper-modules": "hm-wrapper-modules",
         "home-manager": "home-manager",
         "import-tree": "import-tree",

@@ -17,6 +17,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hjem = {
+      url = "github:feel-co/hjem";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
 
     home-manager.url = "github:nix-community/home-manager";
