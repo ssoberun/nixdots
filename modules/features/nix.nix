@@ -18,6 +18,14 @@
 
           # Set this to true to ensure Nix always checks for binaries first
           substitute = true;
+
+          # slows down builds, use nix.optimise instead
+          # auto-optimise-store = true;
+        };
+
+        optimise = {
+          automatic = true;
+          dates = [ "03:45" ];
         };
 
         gc = {

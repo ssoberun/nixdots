@@ -192,6 +192,7 @@
               "${MainMod}+7".focus-workspace = "w7";
               "${MainMod}+8".focus-workspace = "w8";
               "${MainMod}+9".focus-workspace = "w9";
+              "${MainMod}+0".focus-workspace = "w10";
 
               "${MainMod}+Shift+1".move-column-to-workspace = "w1";
               "${MainMod}+Shift+2".move-column-to-workspace = "w2";
@@ -202,6 +203,7 @@
               "${MainMod}+Shift+7".move-column-to-workspace = "w7";
               "${MainMod}+Shift+8".move-column-to-workspace = "w8";
               "${MainMod}+Shift+9".move-column-to-workspace = "w9";
+              "${MainMod}+Shift+0".move-column-to-workspace = "w10";
 
               # "${MainMod}+1".focus-workspace = 1;
               # "${MainMod}+2".focus-workspace = 2;
@@ -460,37 +462,37 @@
               # };
 
               "${MainMod}+d".spawn-sh = self.mkWhichKeyExe pkgs [
-                {
-                  key = "w";
-                  desc = "Workspaces";
-                  submenu = [
-                    {
-                      key = "b";
-                      desc = "Browsing";
-                      cmd = "niri msg action focus-workspace \"browser\"";
-                    }
-                    {
-                      key = "o";
-                      desc = "Options";
-                      cmd = "niri msg action focus-workspace \"options\"";
-                    }
-                    {
-                      key = "m";
-                      desc = "Methods";
-                      cmd = "niri msg action focus-workspace \"methods\"";
-                    }
-                    {
-                      key = "c";
-                      desc = "Communication";
-                      cmd = "niri msg action focus-workspace \"communication\"";
-                    }
-                    {
-                      key = "n";
-                      desc = "Notes";
-                      cmd = "niri msg action focus-workspace \"notes\"";
-                    }
-                  ];
-                }
+                # {
+                #   key = "w";
+                #   desc = "Workspaces";
+                #   submenu = [
+                #     {
+                #       key = "b";
+                #       desc = "Browsing";
+                #       cmd = "niri msg action focus-workspace \"browser\"";
+                #     }
+                #     {
+                #       key = "o";
+                #       desc = "Options";
+                #       cmd = "niri msg action focus-workspace \"options\"";
+                #     }
+                #     {
+                #       key = "m";
+                #       desc = "Methods";
+                #       cmd = "niri msg action focus-workspace \"methods\"";
+                #     }
+                #     {
+                #       key = "c";
+                #       desc = "Communication";
+                #       cmd = "niri msg action focus-workspace \"communication\"";
+                #     }
+                #     {
+                #       key = "n";
+                #       desc = "Notes";
+                #       cmd = "niri msg action focus-workspace \"notes\"";
+                #     }
+                #   ];
+                # }
 
                 {
                   key = "c";
@@ -574,20 +576,21 @@
                 default = { };
               in
               {
-                "options" = default;
-                "methods" = default;
-                "browser" = default;
-                "notes" = default;
-                "communication" = default;
+                # "options" = default;
+                # "methods" = default;
+                # "browser" = default;
+                # "notes" = default;
+                # "communication" = default;
                 "w1" = default;
                 "w2" = default;
                 "w3" = default;
                 "w4" = default;
                 "w5" = default;
-                # "w6" = default;
-                # "w7" = default;
-                # "w8" = default;
-                # "w9" = default;
+                "w6" = default;
+                "w7" = default;
+                "w8" = default;
+                "w9" = default;
+                "w10" = default;
               };
 
             # add the below once niri updates to 26.04!
