@@ -1,6 +1,7 @@
 { inputs, ... }:
 {
-  flake.modules.nixos.base =
+  flake.nixosModules.base =
+    # flake.modules.nixos.base =
     {
       config,
       pkgs,
@@ -8,6 +9,7 @@
       ...
     }:
     {
+      imports = [ inputs.hjem.nixosModules.default ];
       config.hjem = {
         clobberByDefault = true;
         linker = inputs.hjem.packages.${pkgs.stdenv.hostPlatform.system}.smfh;

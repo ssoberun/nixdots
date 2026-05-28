@@ -85,8 +85,8 @@
             layout = {
               gaps = 3;
               focus-ring = {
-                off = _: { };
-                width = 0;
+                # off = _: { };
+                # width = 0;
               };
               border = {
                 width = 0.5;
@@ -192,7 +192,7 @@
               "${MainMod}+7".focus-workspace = "w7";
               "${MainMod}+8".focus-workspace = "w8";
               "${MainMod}+9".focus-workspace = "w9";
-              "${MainMod}+0".focus-workspace = "w10";
+              # "${MainMod}+0".focus-workspace = "w10";
 
               "${MainMod}+Shift+1".move-column-to-workspace = "w1";
               "${MainMod}+Shift+2".move-column-to-workspace = "w2";
@@ -203,7 +203,7 @@
               "${MainMod}+Shift+7".move-column-to-workspace = "w7";
               "${MainMod}+Shift+8".move-column-to-workspace = "w8";
               "${MainMod}+Shift+9".move-column-to-workspace = "w9";
-              "${MainMod}+Shift+0".move-column-to-workspace = "w10";
+              # "${MainMod}+Shift+0".move-column-to-workspace = "w10";
 
               # "${MainMod}+1".focus-workspace = 1;
               # "${MainMod}+2".focus-workspace = 2;
@@ -590,7 +590,7 @@
                 "w7" = default;
                 "w8" = default;
                 "w9" = default;
-                "w10" = default;
+                # "w10" = default;
               };
 
             # add the below once niri updates to 26.04!

@@ -56,6 +56,8 @@
 
         godot_4
 
+        claude-code
+
         # cursor test
         # now put in runtimeInputs of niri.nix, revert if went wrong.
         apple-cursor
@@ -84,6 +86,8 @@
       networking.hostName = "x1-machine";
       networking.networkmanager.enable = true;
       time.timeZone = "Australia/Sydney";
+      # because i dual boot with windows
+      time.hardwareClockInLocalTime = true;
       i18n.defaultLocale = "en_AU.UTF-8";
 
       nix.settings.experimental-features = [
@@ -226,6 +230,14 @@
         #   driver = pkgs.libfprint-2-tod1-vfs0090;
         # };
       };
+
+      # inputs.hjem = {
+      #   users = {
+      #     ${config.preferences.user.name} = {
+      #       enable = true;
+      #     };
+      #   };
+      # };
 
       # ssh
       # no home manager, thus, system wide ssh...

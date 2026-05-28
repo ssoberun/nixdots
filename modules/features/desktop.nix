@@ -16,6 +16,7 @@
         self.nixosModules.beeper
         self.nixosModules.obsidian
         self.nixosModules.mpv
+        self.nixosModules.zed
 
         # desktop visuals
         self.nixosModules.fonts
@@ -24,6 +25,12 @@
       programs.localsend = {
         enable = true;
         openFirewall = true; # opens port 53317 for TCP and UDP
+      };
+
+      # chromium test
+
+      programs.chromium = {
+        enable = true;
       };
 
       xdg.portal = {
