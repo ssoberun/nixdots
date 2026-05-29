@@ -6,8 +6,13 @@
 }:
 {
   flake.nixosModules.nix =
-    { config, ... }:
+    { pkgs, ... }:
     {
+      # some code editors need the LSP installed system wide like dis
+      environment.systemPackages = with pkgs; [
+        nil
+        nixd
+      ];
       nix = {
         settings = {
           # Enable the official NixOS cache

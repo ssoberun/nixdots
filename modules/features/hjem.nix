@@ -15,7 +15,8 @@
         linker = inputs.hjem.packages.${pkgs.stdenv.hostPlatform.system}.smfh;
         users = {
           ${config.preferences.user.name} = {
-            enable = true;
+            # enable = true;
+            enable = false;
             xdg.config.files = {
               "zed/settings.json" = {
                 generator = lib.generators.toJSON { };

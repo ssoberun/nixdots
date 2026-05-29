@@ -129,11 +129,10 @@
             "textColor": "none"
           },
           {
-            "defaultSettings": {
-              "batteryDevice": "/sys/class/power_supply/BAT0",
-              "chargeThreshold": 80
-            },
-            "id": "plugin:battery-threshold"
+            "displayMode": "onhover",
+            "iconColor": "none",
+            "id": "Bluetooth",
+            "textColor": "none"
           },
           {
             "deviceNativePath": "",
@@ -853,7 +852,7 @@
       }
     },
     "notificationsState": {
-      "lastSeenTs": 1779539390000
+      "lastSeenTs": 1780005395000
     },
     "changelogState": {
       "lastSeenVersion": "v4.7.6"

@@ -71,6 +71,8 @@
         ];
         env = {
           EDITOR = lib.getExe self'.packages.neovim-nvf;
+          NIXOS_ZONE_WL = "1";
+          ELECTRON_OZONE_PLATFORM_HINT = "auto";
         };
       };
     };

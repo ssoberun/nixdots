@@ -17,6 +17,8 @@
         self.nixosModules.obsidian
         self.nixosModules.mpv
         self.nixosModules.zed
+        self.nixosModules.aichat
+        self.nixosModules.vpn
 
         # desktop visuals
         self.nixosModules.fonts

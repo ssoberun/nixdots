@@ -85,15 +85,27 @@
             layout = {
               gaps = 3;
               focus-ring = {
-                # off = _: { };
-                # width = 0;
+                width = 0.5;
               };
               border = {
-                width = 0.5;
+                off = _: { };
+                # width = 0.5;
               };
             };
 
+            window-rules = [
+              {
+                draw-border-with-background = false;
+                # rounded corners for all windows
+                geometry-corner-radius = 4;
+                clip-to-geometry = true;
+                open-maximized-to-edges = false;
+              }
+            ];
+
             blur = {
+              on = _: { };
+              passes = 2;
               noise = 0.05;
               offset = 3.0;
             };
@@ -183,47 +195,46 @@
               "${MainMod}+Ctrl+Home".move-column-to-first = _: { };
               "${MainMod}+Ctrl+End".move-column-to-last = _: { };
 
-              "${MainMod}+1".focus-workspace = "w1";
-              "${MainMod}+2".focus-workspace = "w2";
-              "${MainMod}+3".focus-workspace = "w3";
-              "${MainMod}+4".focus-workspace = "w4";
-              "${MainMod}+5".focus-workspace = "w5";
-              "${MainMod}+6".focus-workspace = "w6";
-              "${MainMod}+7".focus-workspace = "w7";
-              "${MainMod}+8".focus-workspace = "w8";
-              "${MainMod}+9".focus-workspace = "w9";
-              # "${MainMod}+0".focus-workspace = "w10";
-
-              "${MainMod}+Shift+1".move-column-to-workspace = "w1";
-              "${MainMod}+Shift+2".move-column-to-workspace = "w2";
-              "${MainMod}+Shift+3".move-column-to-workspace = "w3";
-              "${MainMod}+Shift+4".move-column-to-workspace = "w4";
-              "${MainMod}+Shift+5".move-column-to-workspace = "w5";
-              "${MainMod}+Shift+6".move-column-to-workspace = "w6";
-              "${MainMod}+Shift+7".move-column-to-workspace = "w7";
-              "${MainMod}+Shift+8".move-column-to-workspace = "w8";
-              "${MainMod}+Shift+9".move-column-to-workspace = "w9";
+              # "${MainMod}+1".focus-workspace = "w1";
+              # "${MainMod}+2".focus-workspace = "w2";
+              # "${MainMod}+3".focus-workspace = "w3";
+              # "${MainMod}+4".focus-workspace = "w4";
+              # "${MainMod}+5".focus-workspace = "w5";
+              # "${MainMod}+6".focus-workspace = "w6";
+              # "${MainMod}+7".focus-workspace = "w7";
+              # "${MainMod}+8".focus-workspace = "w8";
+              # "${MainMod}+9".focus-workspace = "w9";
+              # # "${MainMod}+0".focus-workspace = "w10";
+              #
+              # "${MainMod}+Shift+1".move-column-to-workspace = "w1";
+              # "${MainMod}+Shift+2".move-column-to-workspace = "w2";
+              # "${MainMod}+Shift+3".move-column-to-workspace = "w3";
+              # "${MainMod}+Shift+4".move-column-to-workspace = "w4";
+              # "${MainMod}+Shift+5".move-column-to-workspace = "w5";
+              # "${MainMod}+Shift+6".move-column-to-workspace = "w6";
+              # "${MainMod}+Shift+7".move-column-to-workspace = "w7";
+              # "${MainMod}+Shift+8".move-column-to-workspace = "w8";
+              # "${MainMod}+Shift+9".move-column-to-workspace = "w9";
               # "${MainMod}+Shift+0".move-column-to-workspace = "w10";
 
-              # "${MainMod}+1".focus-workspace = 1;
-              # "${MainMod}+2".focus-workspace = 2;
-              # "${MainMod}+3".focus-workspace = 3;
-              # "${MainMod}+4".focus-workspace = 4;
-              # "${MainMod}+5".focus-workspace = 5;
-              # "${MainMod}+6".focus-workspace = 6;
-              # "${MainMod}+7".focus-workspace = 7;
-              # "${MainMod}+8".focus-workspace = 8;
-              # "${MainMod}+9".focus-workspace = 9;
-              # "${MainMod}+Shift+1".move-column-to-workspace = 1;
-              # "${MainMod}+Shift+2".move-column-to-workspace = 2;
-              # "${MainMod}+Shift+3".move-column-to-workspace = 3;
-              # "${MainMod}+Shift+4".move-column-to-workspace = 4;
-              # "${MainMod}+Shift+5".move-column-to-workspace = 5;
-              # "${MainMod}+Shift+6".move-column-to-workspace = 6;
-              # "${MainMod}+Shift+7".move-column-to-workspace = 7;
-              # "${MainMod}+Shift+8".move-column-to-workspace = 8;
-              # "${MainMod}+Shift+9".move-column-to-workspace = 9;
-
+              "${MainMod}+1".focus-workspace = 1;
+              "${MainMod}+2".focus-workspace = 2;
+              "${MainMod}+3".focus-workspace = 3;
+              "${MainMod}+4".focus-workspace = 4;
+              "${MainMod}+5".focus-workspace = 5;
+              "${MainMod}+6".focus-workspace = 6;
+              "${MainMod}+7".focus-workspace = 7;
+              "${MainMod}+8".focus-workspace = 8;
+              "${MainMod}+9".focus-workspace = 9;
+              "${MainMod}+Shift+1".move-column-to-workspace = 1;
+              "${MainMod}+Shift+2".move-column-to-workspace = 2;
+              "${MainMod}+Shift+3".move-column-to-workspace = 3;
+              "${MainMod}+Shift+4".move-column-to-workspace = 4;
+              "${MainMod}+Shift+5".move-column-to-workspace = 5;
+              "${MainMod}+Shift+6".move-column-to-workspace = 6;
+              "${MainMod}+Shift+7".move-column-to-workspace = 7;
+              "${MainMod}+Shift+8".move-column-to-workspace = 8;
+              "${MainMod}+Shift+9".move-column-to-workspace = 9;
               # The following binds move the focused window in and out of a column.
               # If the window is alone, they will consume it into the nearby column to the side.
               # If the window is already in a column, they will expel it out.
@@ -571,27 +582,27 @@
               ];
             };
 
-            workspaces =
-              let
-                default = { };
-              in
-              {
-                # "options" = default;
-                # "methods" = default;
-                # "browser" = default;
-                # "notes" = default;
-                # "communication" = default;
-                "w1" = default;
-                "w2" = default;
-                "w3" = default;
-                "w4" = default;
-                "w5" = default;
-                "w6" = default;
-                "w7" = default;
-                "w8" = default;
-                "w9" = default;
-                # "w10" = default;
-              };
+            # workspaces =
+            #   let
+            #     default = { };
+            #   in
+            #   {
+            #     # "options" = default;
+            #     # "methods" = default;
+            #     # "browser" = default;
+            #     # "notes" = default;
+            #     # "communication" = default;
+            #     "w1" = default;
+            #     "w2" = default;
+            #     "w3" = default;
+            #     "w4" = default;
+            #     "w5" = default;
+            #     "w6" = default;
+            #     "w7" = default;
+            #     "w8" = default;
+            #     "w9" = default;
+            #     # "w10" = default;
+            #   };
 
             # add the below once niri updates to 26.04!
             # niri has updated to 26.04
