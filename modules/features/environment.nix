@@ -35,9 +35,9 @@
         runtimeInputs = [
           # nix
           self'.packages.nh
+          self'.packages.ns
           pkgs.manix
           pkgs.nix-inspect
-          pkgs.nix-search-tv
 
           # unwrapped
           pkgs.zoxide

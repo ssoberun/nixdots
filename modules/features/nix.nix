@@ -13,6 +13,7 @@
         nil
         nixd
       ];
+
       nix = {
         settings = {
           # Enable the official NixOS cache
@@ -41,5 +42,6 @@
       };
 
       boot.loader.systemd-boot.configurationLimit = 10;
+
     };
 }
