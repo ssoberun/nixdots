@@ -12,6 +12,7 @@
         self.packages.${pkgs.stdenv.hostPlatform.system}.noctalia-shell
         # self'.packages.${pkgs.stdenv.hostPlatform.system}.noctalia-shell
       ];
+      hj.xdg.config.files."noctalia/plugins.json".source = ./plugins.json;
     };
 
   perSystem =
