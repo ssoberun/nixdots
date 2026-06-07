@@ -37,6 +37,7 @@
           self'.packages.nh
           pkgs.manix
           pkgs.nix-inspect
+          pkgs.nix-search-tv
 
           # unwrapped
           pkgs.zoxide
@@ -73,6 +74,7 @@
           EDITOR = lib.getExe self'.packages.neovim-nvf;
           NIXOS_ZONE_WL = "1";
           ELECTRON_OZONE_PLATFORM_HINT = "auto";
+          QT_QPLA_PLATFORMTHEME = "qt6ct";
         };
       };
     };

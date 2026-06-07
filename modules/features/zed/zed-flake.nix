@@ -18,8 +18,7 @@
 
       hj.xdg.config.files."zed/settings.json" = {
         generator = lib.generators.toJSON { };
-        value = {
-        };
+        value = import ./_settings.nix;
       };
     };
 }

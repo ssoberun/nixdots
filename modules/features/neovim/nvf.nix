@@ -96,8 +96,13 @@
 
         theme = {
           enable = true;
-          name = "catppuccin";
-          style = "mocha";
+          name = "gruber-darker";
+          style = "dark";
+          # name = "catppuccin";
+          # style = "mocha";
+          # name = "oxocarbon";
+          # style = "dark";
+          transparent = false;
         };
         options = {
           tabstop = 2; # Number of spaces a <Tab> counts for

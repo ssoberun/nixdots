@@ -89,7 +89,8 @@
   theme = {
     mode = "dark";
     light = "Maple Light";
-    dark = "Maple Dark";
+    # dark = "Maple Dark";
+    dark = "Noctalia Dark";
   };
   ui_font_size = 17;
   buffer_font_size = 18.5;
@@ -288,6 +289,12 @@
         "!pyrefly"
         "!pyright"
         "!pylsp"
+      ];
+    };
+    nix = {
+      language_servers = [
+        "nixd"
+        "nil"
       ];
     };
   };

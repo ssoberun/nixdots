@@ -1,35 +1,10 @@
+{ inputs, ... }:
 {
-  inputs,
-  config,
-  lib,
-  ...
-}:
-{
-  # hjem = {
-  #   users = {
-  #     ${config.preferences.user.name} = {
-  #       xdg.config.files = {
-  #         "zed/settings.json" = {
-  #           generator = lib.generators.toJSON { };
-  #           value = {
-  #
-  #           };
-  #         };
-  #       };
-  #     };
-  #   };
-  # };
   flake.nixosModules.zed =
+    { pkgs, ... }:
     {
-      config,
-      pkgs,
-      lib,
-      ...
-    }:
-    {
-      environment.systemPackages = with pkgs; [
-        zed-editor
+      environment.systemPackages = [
+        pkgs.zed-editor
       ];
-
     };
 }

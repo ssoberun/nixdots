@@ -337,7 +337,7 @@
       "wallhavenResolutionMode": "atleast",
       "wallhavenResolutionWidth": "",
       "wallhavenResolutionHeight": "",
-      "sortOrder": "name",
+      "sortOrder": "date_asc",
       "favorites": [
         {
           "appearance": "dark",
@@ -407,6 +407,34 @@
             "#ffb4ab"
           ],
           "path": "/home/sam/nixdots/wallpapers/something-beautiful.png",
+          "useWallpaperColors": true
+        },
+        {
+          "appearance": "dark",
+          "colorScheme": "Noctalia (default)",
+          "darkMode": true,
+          "generationMethod": "content",
+          "paletteColors": [
+            "#8ecdff",
+            "#aacae8",
+            "#e9b3ff",
+            "#ffb4ab"
+          ],
+          "path": "/home/sam/nixdots/wallpapers/AmericanPlymouth.jpg",
+          "useWallpaperColors": true
+        },
+        {
+          "appearance": "dark",
+          "colorScheme": "Noctalia (default)",
+          "darkMode": true,
+          "generationMethod": "monochrome",
+          "paletteColors": [
+            "#ffffff",
+            "#c6c6c6",
+            "#e2e2e2",
+            "#ffb4ab"
+          ],
+          "path": "/home/sam/nixdots/wallpapers/Brokeback-Mountain-6.jpeg",
           "useWallpaperColors": true
         }
       ]
@@ -691,7 +719,7 @@
       "schedulingMode": "off",
       "manualSunrise": "06:30",
       "manualSunset": "18:30",
-      "generationMethod": "tonal-spot",
+      "generationMethod": "monochrome",
       "monitorForColors": "eDP-1",
       "syncGsettings": true
     },
@@ -732,6 +760,22 @@
         {
           "enabled": true,
           "id": "spicetify"
+        },
+        {
+          "enabled": true,
+          "id": "gtk"
+        },
+        {
+          "enabled": true,
+          "id": "foot"
+        },
+        {
+          "enabled": true,
+          "id": "zed"
+        },
+        {
+          "enabled": true,
+          "id": "steam"
         }
       ],
       "enableUserTheming": false
@@ -831,7 +875,7 @@
     "openedPanel": "",
     "lockScreenActive": false,
     "wallpapers": {
-      "eDP-1": "/home/sam/nixdots/wallpapers/AmericanPlymouth.jpg"
+      "eDP-1": "/home/sam/nixdots/wallpapers/Brokeback-Mountain-6.jpeg"
     },
     "desktopWidgetsEditMode": false,
     "display": {

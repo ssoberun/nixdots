@@ -1,7 +1,7 @@
 { self, ... }:
 {
   flake.nixosModules.desktop =
-    { pkgs, ... }:
+    { config, pkgs, ... }:
     {
       imports = [
         # wm
@@ -19,10 +19,22 @@
         self.nixosModules.zed
         self.nixosModules.aichat
         self.nixosModules.vpn
+        self.nixosModules.flatpak
+        self.nixosModules.gtk
 
         # desktop visuals
         self.nixosModules.fonts
       ];
+
+      environment.systemPackages = [
+        pkgs.chromium
+      ];
+      services.qui = {
+        enable = true;
+        openFirewall = true;
+        package = pkgs.qui;
+        secretFile = config.sops.secrets.qui-session.path;
+      };
 
       programs.localsend = {
         enable = true;

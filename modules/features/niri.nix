@@ -85,11 +85,24 @@
             layout = {
               gaps = 3;
               focus-ring = {
-                width = 0.5;
+                width = 1.5;
               };
               border = {
                 off = _: { };
                 # width = 0.5;
+              };
+              tab-indicator = {
+                hide-when-single-tab = _: { };
+                gap = 0;
+                width = 12;
+                length = _: {
+                  props = {
+                    total-proportion = 1.0;
+                  };
+                };
+                position = "top";
+                gaps-between-tabs = 0.0;
+                corner-radius = 0.0;
               };
             };
 
@@ -140,6 +153,7 @@
               # Terminal and Launcher
               "${MainMod}+Return".spawn-sh = "${terminalExe}";
               "${MainMod}+Space".spawn-sh = "${noctaliaExe} ipc call launcher toggle";
+              "${MainMod}+W".toggle-column-tabbed-display = _: { };
 
               # Screenshot
               "Print".screenshot = _: {

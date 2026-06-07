@@ -1,45 +1,58 @@
-{ self, inputs, ... }: {
-  flake.nixosModules.mySops = { pkgs, ... }: {
-    imports = [ inputs.sops-nix.nixosModules.sops ];
+{ self, inputs, ... }:
+{
+  flake.nixosModules.mySops =
+    { pkgs, ... }:
+    {
+      imports = [ inputs.sops-nix.nixosModules.sops ];
 
-    environment.systemPackages = [
-      self.packages.${pkgs.stdenv.hostPlatform.system}.sops
-    ];
+      environment.systemPackages = [
+        self.packages.${pkgs.stdenv.hostPlatform.system}.sops
+      ];
 
-    # environment.systemPackages = [
-    #   pkgs.sops
-    # ];
-    sops = {
-      # package = pkgs.sops;
-      defaultSopsFile = ../../secrets/secrets.yaml;
-      defaultSopsFormat = "yaml";
+      # environment.systemPackages = [
+      #   pkgs.sops
+      # ];
+      sops = {
+        # package = pkgs.sops;
+        defaultSopsFile = ../../secrets/secrets.yaml;
+        defaultSopsFormat = "yaml";
 
-      age = {
-        keyFile = "/home/sam/nixdots/secrets/keys.txt";
-        generateKey = false;
-      };
+        age = {
+          keyFile = "/home/sam/nixdots/secrets/keys.txt";
+          generateKey = false;
+        };
 
-      secrets.github_ssh_key = {
-        # path = "/home/sam/.ssh/github-ssh-key";
-        owner = "sam";
+        secrets = {
+          "ai_keys/gemini_api_key" = {
+            owner = "sam";
+          };
+          "qui-session" = {
+            owner = "sam";
+          };
+          github_ssh_key = {
+            # path = "/home/sam/.ssh/github-ssh-key";
+            owner = "sam";
+          };
+        };
       };
     };
-  };
 
-  perSystem = { pkgs, ... }: {
-    packages.sops = inputs.wrapper-modules.lib.wrapPackage {
-      inherit pkgs;
-      package = pkgs.sops;
-      # Environment baked into the package itself
-      env.SOPS_AGE_KEY_FILE = "/home/sam/nixdots/secrets/keys.txt";
+  perSystem =
+    { pkgs, ... }:
+    {
+      packages.sops = inputs.wrapper-modules.lib.wrapPackage {
+        inherit pkgs;
+        package = pkgs.sops;
+        # Environment baked into the package itself
+        env.SOPS_AGE_KEY_FILE = "/home/sam/nixdots/secrets/keys.txt";
+      };
     };
-  };
 }
 
 # { self, inputs, ... }:
 # {
-#   flake.nixosModules.mySops = { pkgs, lib, config, ... }: 
-#   let 
+#   flake.nixosModules.mySops = { pkgs, lib, config, ... }:
+#   let
 #     # Define the wrapper INSIDE the module, where pkgs is already provided by the host
 #     sops' = inputs.wrapper-modules.lib.wrapPackage {
 #         inherit pkgs;
@@ -68,4 +81,3 @@
 #     };
 #   };
 # }
-

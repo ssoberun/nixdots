@@ -61,6 +61,7 @@
         # cursor test
         # now put in runtimeInputs of niri.nix, revert if went wrong.
         apple-cursor
+        antigravity
       ];
 
       # --- User Configuration ---
