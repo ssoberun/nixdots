@@ -23,6 +23,11 @@
         nixd
       ];
 
+      programs.ccache = {
+        enable = true;
+        cacheDir = "/var/cache/ccache";
+      };
+
       nix = {
         settings = {
           # Enable the official NixOS cache
@@ -69,7 +74,7 @@
         {
           permittedInsecurePackages = [
             ${insecurePackagesString}
-          ]
+          ];
         }
 
       '';

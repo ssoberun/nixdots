@@ -11,9 +11,10 @@
         "file"
         "settings"
       ];
-      settings = {
-        theme = "darkblood";
-      };
+      # themes are set in the --config; see fish.nix
+      # settings = {
+      #   theme = "darkblood";
+      # };
     };
   perSystem =
     { pkgs, ... }:

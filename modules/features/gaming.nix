@@ -26,8 +26,10 @@
         protonup-qt
         # from https://www.reddit.com/r/linux_gaming/comments/1ifkziz/howto_native_wayland_gaming_with_wine_on_nixos/
         (pkgs.lutris.override {
-          extraPkgs = pkgs: [
-            pkgs.wineWowPackages.stagingFull
+          # if anything goes funny this is what extraPkgs used to look like:
+          # extraPkgs = pkgs: [
+          extraPkgs = _: [
+            pkgs.wineWow64Packages.stagingFull
             pkgs.winetricks
             # These are the ones that actually help with unarc.dll / ISDone.dll errors
             pkgs.p7zip

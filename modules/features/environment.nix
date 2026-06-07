@@ -66,6 +66,7 @@
           self'.packages.neovim-nvf
           self'.packages.zathura
           self'.packages.qalc
+          self'.packages.oh-my-posh
 
           # testing
           self'.packages.foot

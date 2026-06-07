@@ -18,7 +18,7 @@
       ...
     }:
     let
-      fishConf = pkgs.writeText "fishy-fishy" /* bash */ ''
+      fishConf = pkgs.writeText "fishy-fishy" /* sh */ ''
         function y
           set tmp (mktemp -t "yazi-cwd.XXXXXX")
           command yazi $argv --cwd-file="$tmp"
@@ -28,16 +28,20 @@
           rm -f -- "$tmp"
         end
 
-        function fish_prompt
-            string join "" -- (set_color red) "[" (set_color yellow) $USER (set_color green) "@" (set_color blue) $hostname (set_color magenta) " " $(prompt_pwd) (set_color red) ']' (set_color normal) "\$ "
+        # function fish_prompt
+        #     string join "" -- (set_color red) "[" (set_color yellow) $USER (set_color green) "@" (set_color blue) $hostname (set_color magenta) " " $(prompt_pwd) (set_color red) ']' (set_color normal) "\$ "
+        #
+        # end
 
+        function fish_greeting
+          # ${lib.getExe pkgs.fortune-kind}
         end
 
-        set fish_greeting
         fish_vi_key_bindings
         alias ls eza
 
         ${lib.getExe pkgs.zoxide} init fish | source
+        ${lib.getExe self'.packages.oh-my-posh} init --config "darkblood" fish | source
 
         function lf --wraps="lf" --description="lf - Terminal file manager (changing directory on exit)"
             cd "$(command lf -print-last-dir $argv)"
@@ -54,6 +58,8 @@
         package = pkgs.fish;
         runtimeInputs = [
           pkgs.zoxide
+          pkgs.fortune-kind
+          self'.packages.oh-my-posh
         ];
         flags = {
           "-C" = "source ${fishConf}";

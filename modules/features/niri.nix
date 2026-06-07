@@ -85,24 +85,25 @@
             layout = {
               gaps = 3;
               focus-ring = {
-                width = 1.5;
+                width = 0.5;
               };
               border = {
                 off = _: { };
                 # width = 0.5;
               };
               tab-indicator = {
-                hide-when-single-tab = _: { };
+                on = _: { };
+                # hide-when-single-tab = _: { };
                 gap = 0;
                 width = 12;
                 length = _: {
                   props = {
-                    total-proportion = 1.0;
+                    total-proportion = 0.8;
                   };
                 };
                 position = "top";
-                gaps-between-tabs = 0.0;
-                corner-radius = 0.0;
+                gaps-between-tabs = 5;
+                corner-radius = 2.0;
               };
             };
 

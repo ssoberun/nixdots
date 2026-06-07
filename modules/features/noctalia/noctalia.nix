@@ -1,19 +1,30 @@
-{ self, inputs, lib, ... }: {
-  flake.nixosModules.noctalia = { pkgs, ... }: {
-    environment.systemPackages = [
-      self.packages.${pkgs.stdenv.hostPlatform.system}.noctalia-shell
-      # self'.packages.${pkgs.stdenv.hostPlatform.system}.noctalia-shell
-    ];
-  };
-
-  perSystem = { pkgs, ... }: {
-    packages.noctalia-shell = inputs.wrapper-modules.wrappers.noctalia-shell.wrap {
-      inherit pkgs;
-      settings = (builtins.fromJSON (builtins.readFile ./noctalia.json)).settings;
+{
+  self,
+  inputs,
+  lib,
+  ...
+}:
+{
+  flake.nixosModules.noctalia =
+    { pkgs, ... }:
+    {
+      environment.systemPackages = [
+        self.packages.${pkgs.stdenv.hostPlatform.system}.noctalia-shell
+        # self'.packages.${pkgs.stdenv.hostPlatform.system}.noctalia-shell
+      ];
     };
-  };
+
+  perSystem =
+    { pkgs, ... }:
+    {
+      packages.noctalia-shell = inputs.wrapper-modules.wrappers.noctalia-shell.wrap {
+        inherit pkgs;
+        settings = (builtins.fromJSON (builtins.readFile ./noctalia.json)).settings;
+      };
+    };
 }
 
+# the below was taken from vimjoyer's noctalia shell config
 # { self, pkgs, inputs, ... }: {
 #   perSystem = { pkgs, ... }: {
 #     packages.noctalia-shell = inputs.wrapper-modules.wrappers.noctalia-shell.wrap {
