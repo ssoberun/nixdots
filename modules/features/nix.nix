@@ -1,11 +1,20 @@
 {
-  self,
   inputs,
   lib,
   ...
 }:
 {
   flake.nixosModules.nix =
+    let
+      insecurePackages = [
+
+        "electron-39.8.10"
+      ];
+
+      insecurePackagesString = builtins.concatStringsSep "\n      " (
+        map (pkg: ''"${pkg}"'') insecurePackages
+      );
+    in
     { pkgs, ... }:
     {
       # some code editors need the LSP installed system wide like dis
@@ -27,6 +36,11 @@
 
           # slows down builds, use nix.optimise instead
           # auto-optimise-store = true;
+
+          experimental-features = [
+            "nix-command"
+            "flakes"
+          ];
         };
 
         optimise = {
@@ -39,9 +53,35 @@
           dates = "weekly";
           options = "--delete-older-than 14d";
         };
+
       };
 
       boot.loader.systemd-boot.configurationLimit = 10;
 
+      # nixpkgs configs
+
+      nixpkgs.config = {
+        allowUnfree = true;
+        permittedInsecurePackages = insecurePackages;
+      };
+
+      hj.xdg.config.files."nixpkgs/config.nix".source = pkgs.writeText "nixpkgs-config" /* nix */ ''
+        {
+          permittedInsecurePackages = [
+            ${insecurePackagesString}
+          ]
+        }
+
+      '';
+
+      # hj.xdg.config.files."nixpkgs/config.nix" = {
+      #   value = /* nix */ ''
+      #     {
+      #       permittedInsecurePackages = [
+      #           "electron-39.8.10"
+      #         ];
+      #     }
+      #   '';
+      # };
     };
 }

@@ -1,10 +1,10 @@
 { inputs, ... }:
 {
-  flake.nixosModules.zed =
+  flake.nixosModules.base =
     { pkgs, ... }:
     {
       environment.systemPackages = [
-        pkgs.zed-editor
+        pkgs.pavucontrol
       ];
     };
 }

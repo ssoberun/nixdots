@@ -282,7 +282,7 @@
               type = [ "nixfmt" ];
             };
             lsp.servers = [
-              "nil"
+              # "nil"
               "nixd"
             ];
           };
