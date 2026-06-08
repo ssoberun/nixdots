@@ -100,6 +100,34 @@
             "id": "Clock",
             "tooltipFormat": "HH:mm ddd, MMM dd",
             "useCustomFont": true
+          },
+          {
+            "defaultSettings": {
+              "ai": {
+                "apiKeys": {},
+                "maxHistoryLength": 100,
+                "model": "gemini-2.5-flash",
+                "openaiBaseUrl": "https://api.openai.com/v1/chat/completions",
+                "openaiLocal": false,
+                "provider": "google",
+                "systemPrompt": "You are a helpful assistant integrated into a Linux desktop shell. Be concise and helpful.",
+                "temperature": 0.7
+              },
+              "maxHistoryLength": 100,
+              "panelDetached": true,
+              "panelHeightRatio": 0.85,
+              "panelPosition": "right",
+              "panelWidth": 520,
+              "scale": 1,
+              "translator": {
+                "backend": "google",
+                "deeplApiKey": "",
+                "realTimeTranslation": true,
+                "sourceLanguage": "auto",
+                "targetLanguage": "en"
+              }
+            },
+            "id": "plugin:assistant-panel"
           }
         ],
         "right": [
@@ -165,6 +193,9 @@
             "hidePassive": false,
             "id": "Tray",
             "pinned": []
+          },
+          {
+            "id": "plugin:assistant-panel"
           }
         ]
       },
@@ -875,17 +906,33 @@
     "openedPanel": "",
     "lockScreenActive": false,
     "wallpapers": {
+      "DP-3": "/home/sam/nixdots/wallpapers/Brokeback-Mountain-6.jpeg",
       "eDP-1": "/home/sam/nixdots/wallpapers/Brokeback-Mountain-6.jpeg"
     },
     "desktopWidgetsEditMode": false,
     "display": {
+      "DP-3": {
+        "name": "DP-3",
+        "connected": true,
+        "scale": 1,
+        "width": 1920,
+        "height": 1080,
+        "x": 0,
+        "y": 0,
+        "physical_width": 530,
+        "physical_height": 300,
+        "refresh_rate": 143981,
+        "vrr_supported": false,
+        "vrr_enabled": false,
+        "transform": "Normal"
+      },
       "eDP-1": {
         "name": "eDP-1",
         "connected": true,
         "scale": 1,
         "width": 1920,
         "height": 1200,
-        "x": 0,
+        "x": 1920,
         "y": 0,
         "physical_width": 300,
         "physical_height": 190,
@@ -899,7 +946,7 @@
       "lastSeenTs": 1780005395000
     },
     "changelogState": {
-      "lastSeenVersion": "v4.7.6"
+      "lastSeenVersion": "v4.7.7"
     },
     "colorSchemesList": {
       "schemes": [],

@@ -11,9 +11,6 @@
       pkgs,
       ...
     }:
-    let
-      wrappedPkgs = self'.packages;
-    in
     {
       packages.terminal = inputs.wrapper-modules.wrappers.kitty.wrap {
         inherit pkgs;
@@ -56,6 +53,7 @@
           pkgs.eza
           pkgs.imv
           pkgs.bat
+          pkgs.broot
 
           # wrapped
           self'.packages.fastfetch
@@ -67,6 +65,7 @@
           self'.packages.zathura
           self'.packages.qalc
           self'.packages.oh-my-posh
+          self'.packages.himalaya
 
           # testing
           self'.packages.foot

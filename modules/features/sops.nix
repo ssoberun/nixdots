@@ -29,6 +29,35 @@
           "qui-session" = {
             owner = "sam";
           };
+
+          # emails
+          # sam Pounder
+          "email-accounts/SamPounder/email" = {
+            owner = "sam";
+          };
+          "email-accounts/SamPounder/IMAP" = {
+            owner = "sam";
+          };
+          "email-accounts/SamPounder/SMTP" = {
+            owner = "sam";
+          };
+
+          "email-accounts/BiggEmployee/email" = {
+            owner = "sam";
+          };
+          "email-accounts/BiggEmployee/IMAP" = {
+            owner = "sam";
+          };
+          "email-accounts/BiggEmployee/SMTP" = {
+            owner = "sam";
+          };
+          # "email-accounts/sam-edu/IMAP" = {
+          #   owner = "sam";
+          # };
+          # "email-accounts/sam-edu/SMTP" = {
+          #   owner = "sam";
+          # };
+
           github_ssh_key = {
             # path = "/home/sam/.ssh/github-ssh-key";
             owner = "sam";

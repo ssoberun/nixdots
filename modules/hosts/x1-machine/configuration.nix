@@ -91,12 +91,6 @@
       time.hardwareClockInLocalTime = true;
       i18n.defaultLocale = "en_AU.UTF-8";
 
-      nix.settings.experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-      nixpkgs.config.allowUnfree = true;
-
       # --- Boot & Kernel ---
       boot.plymouth = {
         theme = "evangelion-ui";
@@ -200,11 +194,6 @@
 
       # graphics (intel)
       hardware = {
-        # opengl = {
-        #   enable = true;
-        #   driSupport = true;
-        #   driSupport32Bit = true;
-        # };
         graphics = {
           enable = true;
           enable32Bit = true;
@@ -231,14 +220,6 @@
         #   driver = pkgs.libfprint-2-tod1-vfs0090;
         # };
       };
-
-      # inputs.hjem = {
-      #   users = {
-      #     ${config.preferences.user.name} = {
-      #       enable = true;
-      #     };
-      #   };
-      # };
 
       # ssh
       # no home manager, thus, system wide ssh...

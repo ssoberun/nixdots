@@ -11,6 +11,10 @@
             "enabled": false,
             "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
         },
+        "assistant-panel": {
+          "enabled": true,
+          "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins" 
+        },
         "screenshot": {
             "enabled": true,
             "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"

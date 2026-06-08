@@ -1,12 +1,14 @@
 {
-  flake.nixosModules.discord = {pkgs, ...}: {
-    environment.systemPackages = [
-      pkgs.vesktop
-      pkgs.discord
-    ];
+  flake.nixosModules.discord =
+    { pkgs, ... }:
+    {
+      environment.systemPackages = [
+        pkgs.vesktop
+        pkgs.discord
+      ];
 
-    # persistance.cache.directories = [
-    #   ".config/vesktop"
-    # ];
-  };
+      # persistance.cache.directories = [
+      #   ".config/vesktop"
+      # ];
+    };
 }

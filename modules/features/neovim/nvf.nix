@@ -18,7 +18,7 @@
         '';
       };
       nvim-desktop-entry = pkgs.makeDesktopItem {
-        name = "Neovim";
+        name = "nvim";
         desktopName = "Neovim";
         genericName = "Text Editor";
         icon = "nvim";
@@ -78,6 +78,8 @@
             (mkKeymap "n" "<PageDown>" "<C-D>" "")
             (mkKeymap "i" "<PageUp>" "<C-O><C-U>" "")
             (mkKeymap "i" "<PageDown>" "<C-O><C-D>" "")
+            # Himalaya Vim
+            (mkKeymap "n" "<leader>ml" "<cmd>Himalaya<CR>" "Open Himalaya")
           ];
 
         terminal = {
@@ -308,7 +310,8 @@
           lspsaga.enable = false;
           # lspSignature.enable = !true; # conflicts with blink in maximal
           nvim-docs-view.enable = true;
-          presets.harper.enable = true;
+          # perhaps grammar?
+          # presets.harper.enable = true;
 
           servers = {
             # texlab = {
@@ -373,17 +376,29 @@
             styles = 1;
           };
           vimtex_syntax_conceal_carg = 1;
+          # himalaya mail client globals
+          himalaya_executable = "${lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.himalaya}";
+          himalaya_folder_picker = "telescope";
+          himalaya_account_picker = "telescope";
         };
 
         lazy = {
           enable = true;
-          plugins.vimtex = {
-            # for vimtex shit: https://github.com/NotAShelf/nvf/issues/566
-            enabled = true;
-            package = pkgs.vimPlugins.vimtex;
-            lazy = true; # Changed this
-            ft = "tex"; # Added this
-            # Added this
+          plugins = {
+            vimtex = {
+              # for vimtex shit: https://github.com/NotAShelf/nvf/issues/566
+              enabled = true;
+              package = pkgs.vimPlugins.vimtex;
+              lazy = true; # Changed this
+              ft = "tex"; # Added this
+              # Added this
+            };
+            "himalaya-vim" = {
+              enabled = true;
+              cmd = [ "Himalaya" ];
+              package = pkgs.vimPlugins.himalaya-vim;
+              lazy = true;
+            };
           };
         };
 

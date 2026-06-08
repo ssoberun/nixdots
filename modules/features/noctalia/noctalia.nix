@@ -36,7 +36,7 @@
 #     };
 #   };
 # }
-
+# this is vimjoyer's nixified noctalia shell ig?
 # {inputs, ...}: {
 #   perSystem = {pkgs, ...}: {
 #     packages = {

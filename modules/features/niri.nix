@@ -62,6 +62,10 @@
 
             xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
+            hotkey-overlay = {
+              skip-at-startup = _: { };
+            };
+
             cursor = {
               xcursor-theme = "macOS";
               xcursor-size = 28;
@@ -93,15 +97,16 @@
               };
               tab-indicator = {
                 on = _: { };
-                # hide-when-single-tab = _: { };
+                hide-when-single-tab = _: { };
+                place-within-column = _: { };
                 gap = 0;
-                width = 12;
+                width = 8;
                 length = _: {
                   props = {
-                    total-proportion = 0.8;
+                    total-proportion = 1.0;
                   };
                 };
-                position = "top";
+                position = "left";
                 gaps-between-tabs = 5;
                 corner-radius = 2.0;
               };
@@ -114,14 +119,18 @@
                 geometry-corner-radius = 4;
                 clip-to-geometry = true;
                 open-maximized-to-edges = false;
+                background-effect = {
+                  xray = false;
+                };
               }
             ];
 
             blur = {
               on = _: { };
-              passes = 2;
-              noise = 0.05;
-              offset = 3.0;
+              passes = 3;
+              noise = 0.02;
+              offset = 1;
+              saturation = 3;
             };
 
             #
@@ -552,7 +561,7 @@
                     {
                       key = "s";
                       desc = "Save shell settings";
-                      cmd = "${noctaliaExe} ipc call state all > ~/nixdots/modules/features/noctalia.json";
+                      cmd = "${noctaliaExe} ipc call state all > ~/nixdots/modules/features/noctalia/noctalia.json";
                     }
                   ];
                 }

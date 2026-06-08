@@ -1,4 +1,4 @@
-{ self, ... }:
+{ self, lib, ... }:
 {
   flake.nixosModules.desktop =
     { config, pkgs, ... }:
@@ -28,13 +28,24 @@
 
       environment.systemPackages = [
         pkgs.chromium
+        pkgs.qbittorrent
       ];
-      services.qui = {
-        enable = true;
-        openFirewall = true;
-        package = pkgs.qui;
-        secretFile = config.sops.secrets.qui-session.path;
-      };
+
+      # services.qbittorrent = {
+      #   enable = true;
+      #   openFirewall = true;
+      #   user = "sam";
+      #   group = "users";
+      #   torrentingPort = 8080;
+      #   package = pkgs.qbittorrent;
+      # };
+
+      # services.qui = {
+      #   enable = false;
+      #   openFirewall = true;
+      #   package = pkgs.qui;
+      #   secretFile = config.sops.secrets.qui-session.path;
+      # };
 
       programs.localsend = {
         enable = true;
@@ -51,6 +62,18 @@
         enable = true;
         extraPortals = [ pkgs.xdg-desktop-portal-gtk ]; # Standard for most DEs/WMs
         config.common.default = "*"; # Ensures a fallback portal is used
+      };
+
+      xdg.mime = {
+        enable = lib.mkDefault true;
+        defaultApplications = {
+          "text/html" = "firefox.desktop";
+          "text/xml" = "firefox.desktop";
+          "x-scheme-handler/http" = "firefox.desktop";
+          "x-scheme-handler/https" = "firefox.desktop";
+          "x-scheme-handler/about" = "firefox.desktop";
+          "x-scheme-handler/unknown" = "firefox.desktop";
+        };
       };
 
     };
