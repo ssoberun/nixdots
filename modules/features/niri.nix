@@ -9,6 +9,15 @@
       ...
     }:
     {
+      imports = [ inputs.nirinit.nixosModules.nirinit ];
+
+      services.nirinit = {
+        enable = false;
+        settings = {
+          skip.apps = [ "steam" ];
+        };
+      };
+
       programs.niri = {
         enable = true;
         package = self.packages.${pkgs.stdenv.hostPlatform.system}.niri;
@@ -50,7 +59,7 @@
         settings =
           let
             MainMod = "Mod";
-            noctaliaExe = lib.getExe self'.packages.noctalia-shell;
+            noctaliaExe = self.noctaliaExe;
             terminalExe = lib.getExe self'.packages.terminal;
             wlrWhichKeyExe = lib.getExe self'.packages.wlr-which-key;
             # fcitx5Exe = lib.getExe pkgs.fcitx5;
@@ -127,7 +136,7 @@
 
             blur = {
               on = _: { };
-              passes = 3;
+              passes = 4;
               noise = 0.02;
               offset = 1;
               saturation = 3;

@@ -21,6 +21,7 @@
         self.nixosModules.vpn
         self.nixosModules.flatpak
         self.nixosModules.gtk
+        self.nixosModules.jetbrains
 
         # desktop visuals
         self.nixosModules.fonts

@@ -54,6 +54,7 @@
           pkgs.imv
           pkgs.bat
           pkgs.broot
+          pkgs.tree
 
           # wrapped
           self'.packages.fastfetch
@@ -75,6 +76,7 @@
           NIXOS_ZONE_WL = "1";
           ELECTRON_OZONE_PLATFORM_HINT = "auto";
           QT_QPLA_PLATFORMTHEME = "qt6ct";
+          GIT_BINARY_PATH = lib.getExe self'.packages.git;
         };
       };
     };

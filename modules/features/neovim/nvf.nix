@@ -310,7 +310,7 @@
           lspsaga.enable = false;
           # lspSignature.enable = !true; # conflicts with blink in maximal
           nvim-docs-view.enable = true;
-          # perhaps grammar?
+          # grammar is annoying and lints blue
           # presets.harper.enable = true;
 
           servers = {
@@ -376,6 +376,7 @@
             styles = 1;
           };
           vimtex_syntax_conceal_carg = 1;
+
           # himalaya mail client globals
           himalaya_executable = "${lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.himalaya}";
           himalaya_folder_picker = "telescope";
@@ -399,18 +400,29 @@
               package = pkgs.vimPlugins.himalaya-vim;
               lazy = true;
             };
+            # "cutlass" = {
+            #   enabled = true;
+            #   package = pkgs.vimPlugins.cutlass-nvim;
+            #   lazy = true;
+            # };
           };
         };
 
-        # assistant = {
-        #   chatgpt.enable = false;
-        #   copilot = {
-        #     enable = false;
-        #     cmp.enable = isMaximal;
-        #   };
-        #   codecompanion-nvim.enable = false;
-        #   avante-nvim.enable = isMaximal;
-        # };
+        assistant = {
+          # chatgpt.enable = false;
+          copilot = {
+            enable = true;
+            cmp.enable = true;
+            # check nvf options to find mappings
+            mappings = {
+              panel = {
+                open = "<M-CR>";
+              };
+            };
+          };
+          # codecompanion-nvim.enable = false;
+          # avante-nvim.enable = isMaximal;
+        };
       };
     };
 
