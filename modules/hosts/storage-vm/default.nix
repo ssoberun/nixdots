@@ -1,7 +1,8 @@
-{self, inputs, ...}: {
+{ self, inputs, ... }:
+{
   flake.nixosConfigurations.storage-vm = inputs.nixpkgs.lib.nixosSystem {
     modules = [
-      self.nixosModules.x1-mcahine-configuration
+      self.nixosModules.x1-machine-configuration
     ];
   };
 }
