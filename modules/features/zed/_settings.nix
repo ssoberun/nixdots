@@ -90,7 +90,7 @@
     mode = "dark";
     light = "Maple Light";
     # dark = "Maple Dark";
-    dark = "Noctalia Dark";
+    dark = "One Dark";
   };
   ui_font_size = 17;
   buffer_font_size = 18.5;
