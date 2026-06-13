@@ -8,12 +8,14 @@
   flake.nixosModules.base =
     { config, pkgs, ... }:
     let
+      nvim-nvf = self.packages.${pkgs.stdenv.hostPlatform.system}.neovim-nvf;
+      # lowkey this is from iynaix and i dont use nvim-direnv so lol whatever
       nvim-direnv = pkgs.writeShellApplication {
         name = "nvim-direnv";
         runtimeInputs = [ pkgs.direnv ];
         text = /* sh */ ''
-          if ! direnv exec "$(dirname "$1")" nvim "$@"; then
-              ${lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.neovim-nvf} "$@"
+          if ! ${lib.getExe pkgs.direnv} exec "$(dirname "$1")" ${lib.getExe nvim-nvf} "$@"; then
+              ${lib.getExe nvim-nvf} "$@"
           fi
         '';
       };
@@ -93,8 +95,6 @@
             (mkKeymap "i" "<PageDown>" "<C-O><C-D>" "")
             # Himalaya Vim
             (mkKeymap "n" "<leader>ml" "<cmd>Himalaya<CR>" "Open Himalaya")
-            (mkKeymap "i" "<Tab>" "<Plug>luasnip-expand-or-jump" "Expand or jump to next snippet")
-            (mkKeymap "s" "<Tab>" "<Plug>luasnip-expand-or-jump" "Jump to next snippet")
 
             # Jump backward (Shift+Tab)
             (mkKeymap "i" "<S-Tab>" "<Plug>luasnip-jump-prev" "Jump to previous snippet")
@@ -388,6 +388,7 @@
               "-shell-escape"
             ];
           };
+          vimtex_quickfix_mode = 0;
 
           vimtex_syntax_conceal = {
             accents = 1;

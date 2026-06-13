@@ -85,6 +85,10 @@
               xcursor-size = 28;
             };
 
+            clipboard = {
+              disable-primary = _: { };
+            };
+
             input = {
               keyboard = {
                 # increasing repeat-delay and repeat-rate seems to make things much much better and faster

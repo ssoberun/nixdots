@@ -1,0 +1,74 @@
+\documentclass[10pt,landscape,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+%\usepackage[LY1,T1]{fontenc}
+%\usepackage{frutigernext}
+%\usepackage[lf,minionint]{MinionPro}
+\usepackage{tikz}
+\usetikzlibrary{shapes,positioning,arrows,fit,calc,graphs,graphs.standard}
+\usepackage[nosf]{kpfonts}
+\usepackage[t1]{sourcesanspro}
+\usepackage{multicol}
+\usepackage{wrapfig}
+\usepackage[top=0mm,bottom=1mm,left=0mm,right=1mm]{geometry}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{microtype}
+\usepackage{pdfpages}
+\usepackage{flowfram}
+
+
+\let\bar\overline
+
+\global\mdfdefinestyle{headerstyle}{%
+	linecolor=gray,linewidth=1pt,%
+	leftmargin=0mm,rightmargin=0mm,skipbelow=0mm,skipabove=0mm,
+}
+
+\newsavebox{\header}
+\newlength{\headerheight}
+
+\sbox{\header}{
+    \begin{minipage}[t]{0.19\textwidth}
+	\begin{mdframed}[style=headerstyle]
+		\footnotesize
+		\sffamily
+		Hilfszettel zur Klausur\\
+		von~Tim~S.,~Seite~\thepage~von~2
+	\end{mdframed}
+	\end{minipage}
+}
+\setlength{\headerheight}{\totalheightof{\usebox{\header}}}
+
+\newflowframe{0.19\textwidth}{\textheight - \headerheight}{0pt}{0pt}[column1]
+\newflowframe{0.19\textwidth}{\textheight}{0.2025\textwidth}{0pt}[column2]
+\newflowframe{0.19\textwidth}{\textheight}{0.405\textwidth}{0pt}[column3]
+\newflowframe{0.19\textwidth}{\textheight}{0.6075\textwidth}{0pt}[column4]
+\newflowframe{0.19\textwidth}{\textheight}{0.81\textwidth}{0pt}[column5]
+
+
+\begin{document}
+\include{inhalt/def}
+\newdynamicframe{0.3\textwidth}{\headerheight}{0pt}{\textheight - \headerheight}[authorbox]
+\begin{dynamiccontents*}{authorbox}
+	\begin{minipage}[t]{0.18\textwidth}
+		\begin{mdframed}[style=headerstyle]
+			\footnotesize
+			\sffamily
+			Hilfszettel zur Klausur\\
+			von~Tim~S.,~Seite~\thepage~von~2
+		\end{mdframed}
+	\end{minipage}
+\end{dynamiccontents*}
+%\footnotesize
+\small
+\input{inhalt/aussagen}
+\input{inhalt/mengen}
+\input{inhalt/relationen}
+\input{inhalt/abbildungen}
+%\input{inhalt/beweise}
+\input{inhalt/graphen}
+%\input{inhalt/graphalgo}
+%\input{inhalt/bool}
+%\input{inhalt/formeln}
+\end{document}
