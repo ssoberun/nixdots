@@ -136,9 +136,11 @@
         snippets = {
           luasnip = {
             enable = true;
-            providers = [ "friendly-snippets" ];
+            providers = [
+              # "vimplugin-luasnip-latex-snippets.nvim"
+              "friendly-snippets"
+            ];
             setupOpts.enable_autosnippets = true;
-            # providers = [ "vimplugin-luasnip-latex-snippets.nvim" ];
           };
         };
 
@@ -354,7 +356,7 @@
         globals = {
           tex_flavor = "latex";
           maplocalleader = " ";
-          vimtex_compiler_method = "latexmk";
+          vimtex_compiler_method = "tectonic";
           vimtex_view_method = "sioyek";
           vimtex_compiler_latexmk = {
             callback = 1;
