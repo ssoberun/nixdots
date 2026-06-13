@@ -58,6 +58,19 @@
         # large parts taken frm https://github.com/NotAShelf/nvf/blob/13c4ad4b4bb926c22945e2fb8862769fe51f27f1/configuration.nix
 
         # keybinds
+        luaConfigPost = /* lua */ ''
+          local vimtex_ts_group = vim.api.nvim_create_augroup("VimTexDisableTS", { clear = true })
+
+          -- Listen for LaTeX file types and shut down Tree-sitter for that buffer
+          vim.api.nvim_create_autocmd("FileType", {
+            pattern = { "tex", "plaintex" },
+            group = vimtex_ts_group,
+            callback = function(args)
+              -- Safely kills the native tree-sitter highlighter instance for this buffer
+              vim.treesitter.stop(args.buf)
+            end,
+          })
+        '';
         keymaps =
           let
             mkKeymap = mode: key: action: desc: {
@@ -118,7 +131,7 @@
           expandtab = true; # Convert tabs to spaces (highly recommended for Nix)
           smartindent = true;
           conceallevel = 2;
-          concealcursor = "niv";
+          # concealcursor = "";
         };
 
         statusline.lualine.enable = true;
@@ -129,19 +142,19 @@
           # nvim-cmp.enable = true;
           blink-cmp = {
             enable = true;
-            # friendly-snippets.enable = true;
+            friendly-snippets.enable = true;
           };
         };
 
         snippets = {
-          luasnip = {
-            enable = true;
-            providers = [
-              # "vimplugin-luasnip-latex-snippets.nvim"
-              "friendly-snippets"
-            ];
-            setupOpts.enable_autosnippets = true;
-          };
+          # luasnip = {
+          #   enable = true;
+          #   providers = [
+          #     # "vimplugin-luasnip-latex-snippets.nvim"
+          #     "friendly-snippets"
+          #   ];
+          #   setupOpts.enable_autosnippets = true;
+          # };
         };
 
         # git
@@ -223,6 +236,9 @@
           enable = true;
           addDefaultGrammars = true;
           context.enable = true;
+          highlight = {
+            enable = true;
+          };
         };
 
         binds = {
@@ -358,6 +374,7 @@
           maplocalleader = " ";
           vimtex_compiler_method = "latexmk";
           vimtex_view_method = "sioyek";
+          vimtex_syntax_enabled = 1;
           vimtex_compiler_latexmk = {
             callback = 1;
             continuous = 1;
@@ -386,6 +403,7 @@
             sections = 1;
             styles = 1;
           };
+          vimtex_syntax_conceal_disabled = 0;
           vimtex_syntax_conceal_carg = 1;
 
           # himalaya mail client globals
@@ -411,11 +429,54 @@
               package = pkgs.vimPlugins.himalaya-vim;
               lazy = true;
             };
-            # "cutlass" = {
-            #   enabled = true;
-            #   package = pkgs.vimPlugins.cutlass-nvim;
-            #   lazy = true;
-            # };
+            "vimplugin-math-conceal-nvim" = {
+              enabled = true;
+              lazy = true;
+              package = pkgs.vimUtils.buildVimPlugin {
+                name = "math-conceal-nvim";
+                src = pkgs.fetchFromGitHub {
+                  owner = "pxwg";
+                  repo = "math-conceal.nvim";
+                  rev = "preview";
+                  hash = "sha256-Fb1ZK7q3milZlaWHRPMa/pc5YHD3Cpooh6nTpXDwEMA=";
+                };
+                nativeBuildInputs = [
+                  pkgs.cargo
+                  pkgs.rustc
+                ];
+                postBuild = "cargo build --release --manifest-path service/Cargo.toml";
+              };
+
+              # 2. Your filetype lazy-loading rules
+              ft = "tex";
+
+              # 3. Lua options mapped directly to setup()
+              setupOpts = {
+                conceal = [
+                  "greek"
+                  "script"
+                  "math"
+                  "font"
+                  "delim"
+                  "phy"
+                ];
+                ft = [
+                  "plaintex"
+                  "tex"
+                  "context"
+                  "bibtex"
+                  "markdown"
+                  "typst"
+                ];
+                image = {
+                  enabled = true;
+                  filetypes = [
+                    "typst"
+                    "markdown"
+                  ];
+                };
+              };
+            };
           };
         };
 
