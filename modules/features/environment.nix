@@ -5,6 +5,47 @@
   ...
 }:
 {
+  flake.nixosModules.base =
+    {
+      config,
+      pkgs,
+      lib,
+      ...
+    }:
+    let
+      system = pkgs.stdenv.hostPlatform.system;
+      terminalExe = lib.getExe self.packages.${system}.terminal;
+      terminal-desktop-entry = pkgs.makeDesktopItem {
+        name = "wrapped-terminal";
+        desktopName = "Terminal (wrapped)";
+        icon = "kitty";
+        genericName = "Terminal Emulator";
+        exec = "${terminalExe} %u";
+        categories = [
+          "System"
+          "TerminalEmulator"
+        ];
+        extraConfig = {
+          # This flag tells xdg-terminal-exec and desktop environments
+          # that this package can be targeted to run terminal apps.
+          "X-Geany-Terminal" = "true";
+        };
+      };
+    in
+    {
+      # makes the wrapped terminal a desktop entry
+      environment.systemPackages = [
+        terminal-desktop-entry
+      ];
+      # terminal executables go to this wrapped terminal instead of Console
+      xdg.terminal-exec = {
+        enable = true;
+        settings = {
+          default = [ "wrapped-terminal.desktop" ];
+        };
+      };
+    };
+
   perSystem =
     {
       self',

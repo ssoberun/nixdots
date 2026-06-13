@@ -22,6 +22,7 @@
         self.nixosModules.flatpak
         self.nixosModules.gtk
         self.nixosModules.jetbrains
+        self.nixosModules.vscode
 
         # desktop visuals
         self.nixosModules.fonts

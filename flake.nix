@@ -26,6 +26,15 @@
       url = "github:gmodena/nix-flatpak/?ref=latest";
     };
 
+    nirinit = {
+      url = "github:amaanq/nirinit";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    noctalia = {
+      url = "github:noctalia-dev/noctalia";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
 
     home-manager.url = "github:nix-community/home-manager";

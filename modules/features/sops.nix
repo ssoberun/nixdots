@@ -51,6 +51,10 @@
           "email-accounts/BiggEmployee/SMTP" = {
             owner = "sam";
           };
+          "users/sam-password" = {
+            owner = "sam";
+            neededForUsers = true;
+          };
           # "email-accounts/sam-edu/IMAP" = {
           #   owner = "sam";
           # };

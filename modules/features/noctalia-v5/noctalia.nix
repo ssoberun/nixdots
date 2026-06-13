@@ -5,15 +5,20 @@
   ...
 }:
 let
-  noctaliaPackage = inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  # noctaliaPackage = inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in
 {
   flake.nixosModules.noctalia =
-    { ... }:
+    { pkgs, ... }:
     {
-      environment.systemPackages = [
-        noctaliaPackage
-      ];
+      # hj.xdg.config.files."noctalia/config.toml" = {
+      #   generator = pkgs.formats.yaml { };
+      #   value = {
+      #
+      #   };
+      # };
     };
-  flake.noctaliaExe = lib.getExe noctaliaPackage;
+  # flake.noctaliaExe = lib.getExe (
+  #   inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+  # );
 }

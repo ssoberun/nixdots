@@ -356,7 +356,7 @@
         globals = {
           tex_flavor = "latex";
           maplocalleader = " ";
-          vimtex_compiler_method = "tectonic";
+          vimtex_compiler_method = "latexmk";
           vimtex_view_method = "sioyek";
           vimtex_compiler_latexmk = {
             callback = 1;

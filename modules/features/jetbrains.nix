@@ -5,7 +5,7 @@
     {
       environment.systemPackages = with pkgs; [
         jetbrains.idea # Java, Kotlin, & Polyglot
-        jetbrains.pycharm-professional # Python & Data Science
+        jetbrains.pycharm # Python & Data Science
         jetbrains.goland # Go
         jetbrains.clion # C and C++
         jetbrains.rust-rover # Rust
@@ -14,7 +14,7 @@
         jetbrains.datagrip # Databases & SQL
         jetbrains.rider # C# & .NET
         jetbrains.phpstorm # PHP
-        jetbrains.rubymine # Ruby
+        # jetbrains.rubymine # Ruby
       ];
     };
 }

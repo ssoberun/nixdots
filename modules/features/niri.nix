@@ -24,6 +24,11 @@
         # package = self'.packages.niri;
       };
 
+      environment.systemPackages = [
+        inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+
+      ];
+
       # from iynaix on the vimjoyer discord server
       # do not kick me out of a session on rebuild
       systemd.user.units."niri.service" = {
@@ -59,7 +64,7 @@
         settings =
           let
             MainMod = "Mod";
-            noctaliaExe = self.noctaliaExe;
+            noctaliaExe = lib.getExe inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default;
             terminalExe = lib.getExe self'.packages.terminal;
             wlrWhichKeyExe = lib.getExe self'.packages.wlr-which-key;
             # fcitx5Exe = lib.getExe pkgs.fcitx5;
@@ -139,7 +144,7 @@
               passes = 4;
               noise = 0.02;
               offset = 1;
-              saturation = 3;
+              saturation = 1;
             };
 
             #
@@ -171,7 +176,7 @@
               # -- KEYBINDINGS --
               # Terminal and Launcher
               "${MainMod}+Return".spawn-sh = "${terminalExe}";
-              "${MainMod}+Space".spawn-sh = "${noctaliaExe} ipc call launcher toggle";
+              "${MainMod}+Space".spawn-sh = "${noctaliaExe} msg panel-toggle launcher";
               "${MainMod}+W".toggle-column-tabbed-display = _: { };
 
               # Screenshot
@@ -325,10 +330,8 @@
                 content = {
                   spawn = [
                     "${noctaliaExe}"
-                    "ipc"
-                    "call"
-                    "brightness"
-                    "increase"
+                    "msg"
+                    "brightness-up"
                   ];
                 };
               };
@@ -339,10 +342,8 @@
                 content = {
                   spawn = [
                     "${noctaliaExe}"
-                    "ipc"
-                    "call"
-                    "brightness"
-                    "decrease"
+                    "msg"
+                    "brightness-down"
                   ];
                 };
               };
