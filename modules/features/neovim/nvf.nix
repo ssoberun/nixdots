@@ -13,7 +13,7 @@
         runtimeInputs = [ pkgs.direnv ];
         text = /* sh */ ''
           if ! direnv exec "$(dirname "$1")" nvim "$@"; then
-              nvim "$@"
+              ${lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.neovim-nvf} "$@"
           fi
         '';
       };
@@ -80,6 +80,12 @@
             (mkKeymap "i" "<PageDown>" "<C-O><C-D>" "")
             # Himalaya Vim
             (mkKeymap "n" "<leader>ml" "<cmd>Himalaya<CR>" "Open Himalaya")
+            (mkKeymap "i" "<Tab>" "<Plug>luasnip-expand-or-jump" "Expand or jump to next snippet")
+            (mkKeymap "s" "<Tab>" "<Plug>luasnip-expand-or-jump" "Jump to next snippet")
+
+            # Jump backward (Shift+Tab)
+            (mkKeymap "i" "<S-Tab>" "<Plug>luasnip-jump-prev" "Jump to previous snippet")
+            (mkKeymap "s" "<S-Tab>" "<Plug>luasnip-jump-prev" "Jump to previous snippet")
           ];
 
         terminal = {
@@ -111,6 +117,8 @@
           shiftwidth = 2; # Number of spaces for auto-indent
           expandtab = true; # Convert tabs to spaces (highly recommended for Nix)
           smartindent = true;
+          conceallevel = 2;
+          concealcursor = "niv";
         };
 
         statusline.lualine.enable = true;
@@ -129,6 +137,7 @@
           luasnip = {
             enable = true;
             providers = [ "friendly-snippets" ];
+            setupOpts.enable_autosnippets = true;
             # providers = [ "vimplugin-luasnip-latex-snippets.nvim" ];
           };
         };
@@ -409,17 +418,23 @@
         };
 
         assistant = {
-          # chatgpt.enable = false;
-          copilot = {
+          codecompanion-nvim = {
             enable = true;
-            cmp.enable = true;
-            # check nvf options to find mappings
-            mappings = {
-              panel = {
-                open = "<M-CR>";
-              };
+            setupOpts = {
+              display.chat.intro-message = "the jester looms over the city";
             };
           };
+          # chatgpt.enable = false;
+          # copilot = {
+          #   enable = true;
+          #   cmp.enable = true;
+          #   # check nvf options to find mappings
+          #   mappings = {
+          #     panel = {
+          #       open = "<M-CR>";
+          #     };
+          #   };
+          # };
           # codecompanion-nvim.enable = false;
           # avante-nvim.enable = isMaximal;
         };
