@@ -103,7 +103,7 @@
           self'.packages.lf
           self'.packages.yazi
           self'.packages.btop
-          # self'.packages.neovim-nvf
+          self'.packages.neovim-nvf
           self'.packages.zathura
           self'.packages.qalc
           self'.packages.oh-my-posh

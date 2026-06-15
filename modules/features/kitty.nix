@@ -27,7 +27,7 @@
       settings = {
         # cursor_trail = 3;
         background_blur = 1;
-        background_opacity = 0.9;
+        background_opacity = 1;
 
         scrollback_lines = 2000;
         hide_window_decorations = true;

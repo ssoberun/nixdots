@@ -8,8 +8,9 @@
         self.nixosModules.niri
         self.nixosModules.GNOME # GNOMe as backup, and also for its apps and portals
 
-        # latex
+        # latex and typst
         self.nixosModules.LaTeX
+        self.nixosModules.typst
         # apps
         # self.nixosModules.firefox
         self.nixosModules.discord

@@ -299,6 +299,27 @@
             };
           };
 
+          typst = {
+            enable = true;
+            format = {
+              enable = true;
+              type = [ "typstyle" ];
+            };
+            lsp = {
+              enable = true;
+              servers = [ "tinymist" ];
+            };
+            extensions = {
+              typst-concealer.enable = false;
+              typst-preview-nvim = {
+                enable = true;
+                setupOpts = {
+                  open_cmd = "${lib.getExe pkgs.chromium} %s";
+                };
+              };
+            };
+          };
+
           markdown = {
             enable = true;
             extensions.render-markdown-nvim.enable = true;

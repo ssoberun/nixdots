@@ -27,6 +27,8 @@
             _7-segment-font
             # chinese
             noto-fonts-cjk-sans
+            lora
+            inter
           ]
           ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
       };
