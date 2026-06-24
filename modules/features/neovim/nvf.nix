@@ -451,54 +451,6 @@
               package = pkgs.vimPlugins.himalaya-vim;
               lazy = true;
             };
-            "vimplugin-math-conceal-nvim" = {
-              enabled = true;
-              lazy = true;
-              package = pkgs.vimUtils.buildVimPlugin {
-                name = "math-conceal-nvim";
-                src = pkgs.fetchFromGitHub {
-                  owner = "pxwg";
-                  repo = "math-conceal.nvim";
-                  rev = "preview";
-                  hash = "sha256-Fb1ZK7q3milZlaWHRPMa/pc5YHD3Cpooh6nTpXDwEMA=";
-                };
-                nativeBuildInputs = [
-                  pkgs.cargo
-                  pkgs.rustc
-                ];
-                postBuild = "cargo build --release --manifest-path service/Cargo.toml";
-              };
-
-              # 2. Your filetype lazy-loading rules
-              ft = "tex";
-
-              # 3. Lua options mapped directly to setup()
-              setupOpts = {
-                conceal = [
-                  "greek"
-                  "script"
-                  "math"
-                  "font"
-                  "delim"
-                  "phy"
-                ];
-                ft = [
-                  "plaintex"
-                  "tex"
-                  "context"
-                  "bibtex"
-                  "markdown"
-                  "typst"
-                ];
-                image = {
-                  enabled = true;
-                  filetypes = [
-                    "typst"
-                    "markdown"
-                  ];
-                };
-              };
-            };
           };
         };
 

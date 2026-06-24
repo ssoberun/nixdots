@@ -1,15 +1,24 @@
 {
   self,
   inputs,
+  pkgs,
   lib,
   ...
 }:
 {
   flake.nixosModules.fonts =
+    let
+      xanh-mono = pkgs.stdenv.mkDerivation {
+        pname = "xanh-mono";
+      };
+    in
+
     { self, pkgs, ... }:
     {
       fonts = {
         fontconfig = {
+          antialias = true;
+          hinting.enable = true;
           defaultFonts = {
             serif = [ "Ubuntu Sans" ];
             sansSerif = [ "Ubuntu Sans" ];
@@ -25,6 +34,7 @@
             unifont
             iosevka
             _7-segment-font
+            google-fonts
             # chinese
             noto-fonts-cjk-sans
             lora

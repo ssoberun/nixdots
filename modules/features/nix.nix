@@ -9,6 +9,7 @@
       insecurePackages = [
         "electron-39.8.10"
         "nodejs-20.20.2"
+        "ventoy"
       ];
 
       insecurePackagesString = builtins.concatStringsSep "\n      " (
@@ -30,19 +31,16 @@
 
       nix = {
         settings = {
-          # Enable the official NixOS cache
           substituters = [
             "https://cache.nixos.org/"
             "https://noctalia.cachix.org"
           ];
 
-          # Ensure your user (or all users) is allowed to use the cache
           trusted-public-keys = [
             "cache.nixos.org-1:6nCk48X65shshYpZqz0X9vRjayahF4GCednhgyXDYXk="
             "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
           ];
 
-          # Set this to true to ensure Nix always checks for binaries first
           substitute = true;
 
           # slows down builds, use nix.optimise instead
@@ -78,6 +76,7 @@
 
       hj.xdg.config.files."nixpkgs/config.nix".source = pkgs.writeText "nixpkgs-config" /* nix */ ''
         {
+          allowUnfree = true;
           permittedInsecurePackages = [
             ${insecurePackagesString}
           ];

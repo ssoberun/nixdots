@@ -26,8 +26,7 @@
           "TerminalEmulator"
         ];
         extraConfig = {
-          # This flag tells xdg-terminal-exec and desktop environments
-          # that this package can be targeted to run terminal apps.
+          # this package can be run by terminal apps
           "X-Geany-Terminal" = "true";
         };
       };
@@ -61,11 +60,6 @@
           shell = lib.getExe self'.packages.shell-environment;
         };
       };
-      # packages.terminal = (inputs.wrappers.wrapperModules.kitty.apply {
-      #   inherit pkgs;
-      #   imports = [self.wrapperModules.kitty];
-      #   shell = lib.getExe self'.packages.shell-environment;
-      # }).wrapper;
 
       packages.shell-environment = inputs.wrappers.lib.wrapPackage {
         inherit pkgs;
