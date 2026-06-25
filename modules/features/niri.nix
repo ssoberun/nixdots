@@ -107,7 +107,7 @@
             layout = {
               gaps = 3;
               focus-ring = {
-                width = 1;
+                width = 1.5;
               };
               border = {
                 off = _: { };
