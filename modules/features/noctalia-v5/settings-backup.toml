@@ -14,7 +14,7 @@ order = [ "default", "left" ]
     margin_edge = 3
     margin_ends = 300
     radius = 0
-    start = [ "battery", "workspaces", "active_window", "recorder" ]
+    start = [ "battery", "workspaces", "active_window", "recorder", "caffeine" ]
     thickness = 33
 
     [bar.left]
@@ -260,21 +260,21 @@ settings_show_advanced = true
 [theme]
 builtin = "Dracula"
 community_palette = "Creamy Forest"
-source = "community"
-wallpaper_scheme = "m3-monochrome"
+mode = "dark"
+source = "wallpaper"
 
     [theme.templates]
-    builtin_ids = [ "foot", "gtk3", "gtk4", "kitty", "niri", "qt", "starship" ]
+    builtin_ids = [ "btop", "foot", "gtk3", "gtk4", "kitty", "niri", "qt", "starship" ]
     community_ids = [ "spicetify", "pywalfox", "obsidian", "vscode", "zed", "discord", "steam" ]
 
 [wallpaper]
 directory = "/home/sam/nixdots/wallpapers"
 
     [wallpaper.default]
-    path = "/home/sam/nixdots/wallpapers/AmericanSlavic.jpg"
+    path = "/home/sam/nixdots/wallpapers/Winslow_Homer_-_The_Gulf_Stream_-_Metropolitan_Museum_of_Art.jpg"
 
     [wallpaper.last]
-    path = "/home/sam/nixdots/wallpapers/AmericanSlavic.jpg"
+    path = "/home/sam/nixdots/wallpapers/Winslow_Homer_-_The_Gulf_Stream_-_Metropolitan_Museum_of_Art.jpg"
 
     [wallpaper.monitors.DP-2]
     path = "/home/sam/nixdots/wallpapers/AmericanSlavic.jpg"
@@ -283,7 +283,7 @@ directory = "/home/sam/nixdots/wallpapers"
     path = "/home/sam/nixdots/wallpapers/AmericanSlavic.jpg"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/sam/nixdots/wallpapers/AmericanSlavic.jpg"
+    path = "/home/sam/nixdots/wallpapers/Winslow_Homer_-_The_Gulf_Stream_-_Metropolitan_Museum_of_Art.jpg"
 
     [[wallpaper.favorite]]
     palette_source = "wallpaper"
@@ -300,6 +300,18 @@ directory = "/home/sam/nixdots/wallpapers"
     [[wallpaper.favorite]]
     palette_source = "wallpaper"
     path = "/home/sam/nixdots/wallpapers/FarmsOutWest.jpg"
+    theme_mode = "dark"
+    wallpaper_scheme = "m3-content"
+
+    [[wallpaper.favorite]]
+    community_palette = "Creamy Forest"
+    palette_source = "community"
+    path = "/home/sam/nixdots/wallpapers/AmericanSlavic.jpg"
+    theme_mode = "dark"
+
+    [[wallpaper.favorite]]
+    palette_source = "wallpaper"
+    path = "/home/sam/nixdots/wallpapers/Winslow_Homer_-_The_Gulf_Stream_-_Metropolitan_Museum_of_Art.jpg"
     theme_mode = "dark"
     wallpaper_scheme = "m3-content"
 
