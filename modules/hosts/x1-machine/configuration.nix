@@ -85,6 +85,7 @@
             "networkmanager"
             "wheel"
             "video"
+            "gamemode"
           ];
           initialPassword = "password";
           hashedPasswordFile = config.sops.secrets."users/sam-password".path;

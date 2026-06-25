@@ -35,7 +35,7 @@
       url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
 
     home-manager.url = "github:nix-community/home-manager";
     hm-wrapper-modules.url = "github:sini/hm-wrapper-modules";

@@ -33,7 +33,7 @@
 
         # wrapped modules
         self.nixosModules.mySops
-        self.nixosModules.noctalia # this is to let noctalia be accessed via shell
+        # self.nixosModules.noctalia # this is to let noctalia be accessed via shell
         # self.nixosModules.ollama
       ];
 
@@ -48,10 +48,6 @@
         firefox
         bitwarden-desktop
         spotify
-
-        godot_4
-
-        claude-code
 
         # cursor test
         # now put in runtimeInputs of niri.nix, revert if went wrong.
@@ -81,6 +77,7 @@
             "networkmanager"
             "wheel"
             "video"
+            "gamemode"
           ];
           initialPassword = "password";
           hashedPasswordFile = config.sops.secrets."users/sam-password".path;
@@ -108,22 +105,22 @@
       };
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
-      boot.kernelPackages = pkgs.linuxPackages_latest;
+      # boot.kernelPackages = pkgs.linuxPackages_latest;
       boot.initrd.availableKernelModules = [
-      	  "nvme" 
-  "xhci_pci" 
-  "ahci" 
-  "usb_storage" 
-  "sd_mod" 
+        "nvme"
+        "xhci_pci"
+        "ahci"
+        "usb_storage"
+        "sd_mod"
       ];
 
       # CachyOS kernel using https://github.com/xddxdd/nix-cachyos-kernel
-      # boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
-      # nixpkgs.overlays = [
-      #   inputs.nix-cachyos-kernel.overlays.default
-      # ];
-      # nix.settings.substituters = [ "https://attic.xuyh0120.win/lantian" ];
-      # nix.settings.trusted-public-keys = [ "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" ];
+      boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
+      nixpkgs.overlays = [
+        inputs.nix-cachyos-kernel.overlays.default
+      ];
+      nix.settings.substituters = [ "https://attic.xuyh0120.win/lantian" ];
+      nix.settings.trusted-public-keys = [ "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" ];
 
       # --- Feature Toggles ---
       # Assuming you followed the modular sops.nix we discussed:
@@ -210,12 +207,17 @@
       services.fwupd.enable = true;
       services.fstrim.enable = true;
 
-      services.fprintd = {
-        enable = false;
-        # tod = {
-        #   enable = true;
-        #   driver = pkgs.libfprint-2-tod1-vfs0090;
-        # };
+      # AMD CPUs
+      boot.initrd.kernelModules = [ "amdgpu" ];
+      # Nvidia Driver
+      services.xserver.videoDrivers = [ "nvidia" ];
+      hardware.nvidia = {
+        modesetting.enable = true;
+        open = true;
+        powerManagement.enable = false;
+        powerManagement.finegrained = false;
+        nvidiaSettings = true;
+        package = config.boot.kernelPackages.nvidiaPackages.stable;
       };
 
       # ssh
