@@ -18,6 +18,7 @@
         # unwrapped, modularised
         self.nixosModules.desktop
         self.nixosModules.opencloud
+        self.nixosModules.audio-common
 
         # nix settings
         self.nixosModules.nix
@@ -172,12 +173,12 @@
       # --- Sound & Services ---
       services.printing.enable = true;
       security.rtkit.enable = true;
-      services.pipewire = {
-        enable = true;
-        alsa.enable = true;
-        alsa.support32Bit = true;
-        pulse.enable = true;
-      };
+      # services.pipewire = {
+      #   enable = true;
+      #   alsa.enable = true;
+      #   alsa.support32Bit = true;
+      #   pulse.enable = true;
+      # };
 
       system.stateVersion = "25.11";
 
