@@ -1,7 +1,0 @@
-keys:
-  - &admin_age age1ylggs8es5twj0eq3rg6w6t9ahhlstvcjs3jgd7qzcp0r8r4275equd5a9s # <--- Paste public key here
-creation_rules:
-  - path_regex: secrets/secrets.yaml$
-    key_groups:
-      - age:
-          - *admin_age
