@@ -12,8 +12,7 @@
 
       imports = [
         # Hardware and Inputs
-        inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-9th-gen
-        self.nixosModules.x1-machine-hardware
+        self.nixosModules.study-rig-hardware
 
         # unwrapped, modularised
         self.nixosModules.desktop
@@ -21,9 +20,6 @@
 
         # nix settings
         self.nixosModules.nix
-
-        # testing
-        # self.nixosModules.wrapped-home-packages
 
         # base
         self.nixosModules.base
@@ -95,7 +91,7 @@
       };
 
       # --- System Core ---
-      networking.hostName = "x1-machine";
+      networking.hostName = "study-rig";
       networking.networkmanager.enable = true;
       time.timeZone = "Australia/Sydney";
       # because i dual boot with windows
@@ -113,6 +109,13 @@
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
       boot.kernelPackages = pkgs.linuxPackages_latest;
+      boot.initrd.availableKernelModules = [
+      	  "nvme" 
+  "xhci_pci" 
+  "ahci" 
+  "usb_storage" 
+  "sd_mod" 
+      ];
 
       # CachyOS kernel using https://github.com/xddxdd/nix-cachyos-kernel
       # boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
@@ -187,7 +190,7 @@
         "mem_sleep_default=deep"
       ];
       # Resume Device: The UUID of your ext4 'root' partition (nvme0n1p5)
-      boot.resumeDevice = "/dev/disk/by-uuid/d976dde6-3a99-4d2b-8242-1d18811edaba";
+      boot.resumeDevice = "/dev/disk/by-uuid/6034c26a-575e-4e70-a7c3-cc657cc592a0";
       powerManagement.enable = true;
 
       # Suspend first then hibernate when closing the lid
