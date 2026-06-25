@@ -63,7 +63,7 @@
           # };
 
           github_ssh_key = {
-            # path = "/home/sam/.ssh/github-ssh-key";
+            path = "/home/sam/.ssh/id_ed25519";
             owner = "sam";
           };
         };
