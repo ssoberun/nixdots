@@ -30,7 +30,7 @@
         # laptop (move to a diff file?)
         self.nixosModules.tlp # tlp conflicts
         ## suspending and hibernate
-        self.nixosModules.suspend-and-hibernate
+        # self.nixosModules.suspend-and-hibernate
 
         # wrapped modules
         self.nixosModules.mySops
@@ -43,6 +43,7 @@
         vim
         wget
         age
+        vivaldi
 
         sioyek # same with sioyek
 
@@ -189,6 +190,18 @@
       # # Hibernate on power button pressed
       # services.logind.settings.Login.PowerKey = "hibernate";
       # services.logind.settings.Login.PowerKeyLongPress = "poweroff";
+
+      fileSystems."/mnt/storage" = {
+        device = "/dev/disk/by-uuid/06F69E82F69E7223";
+        fsType = "ntfs3";
+        options = [
+          "rw"
+          "uid=1000"
+          "gid=100"
+          "umask=0022"
+          "nofail"
+        ];
+      };
 
       swapDevices = [
         {

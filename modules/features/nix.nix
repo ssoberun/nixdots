@@ -10,6 +10,7 @@
         "electron-39.8.10"
         "nodejs-20.20.2"
         "ventoy"
+        "vivaldi"
       ];
 
       insecurePackagesString = builtins.concatStringsSep "\n      " (

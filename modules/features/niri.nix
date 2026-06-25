@@ -96,7 +96,9 @@
                 repeat-rate = 40;
                 xkb.layout = "us";
               };
-              mouse.accel-profile = "flat";
+              mouse = {
+                accel-profile = "flat";
+              };
             };
 
             outputs."eDP-1" = {
