@@ -105,7 +105,7 @@
       };
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
-      # boot.kernelPackages = pkgs.linuxPackages_latest;
+      boot.kernelPackages = pkgs.linuxPackages_latest;
       boot.initrd.availableKernelModules = [
         "nvme"
         "xhci_pci"
@@ -114,13 +114,13 @@
         "sd_mod"
       ];
 
-      # CachyOS kernel using https://github.com/xddxdd/nix-cachyos-kernel
-      boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
-      nixpkgs.overlays = [
-        inputs.nix-cachyos-kernel.overlays.default
-      ];
-      nix.settings.substituters = [ "https://attic.xuyh0120.win/lantian" ];
-      nix.settings.trusted-public-keys = [ "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" ];
+      # # CachyOS kernel using https://github.com/xddxdd/nix-cachyos-kernel
+      # boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
+      # nixpkgs.overlays = [
+      #   inputs.nix-cachyos-kernel.overlays.default
+      # ];
+      # nix.settings.substituters = [ "https://attic.xuyh0120.win/lantian" ];
+      # nix.settings.trusted-public-keys = [ "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" ];
 
       # --- Feature Toggles ---
       # Assuming you followed the modular sops.nix we discussed:
@@ -181,25 +181,25 @@
       system.stateVersion = "25.11";
 
       # hibernation
-      # Physical offset: The first number under 'physical_offset' from ext 0
-      boot.kernelParams = [
-        "resume_offset=20072448"
-        "mem_sleep_default=deep"
-      ];
-      # Resume Device: The UUID of your ext4 'root' partition (nvme0n1p5)
-      boot.resumeDevice = "/dev/disk/by-uuid/6034c26a-575e-4e70-a7c3-cc657cc592a0";
-      powerManagement.enable = true;
-
-      # Suspend first then hibernate when closing the lid
-      services.logind.settings.Login.LidSwitch = "suspend-then-hibernate";
-      # Hibernate on power button pressed
-      services.logind.settings.Login.PowerKey = "hibernate";
-      services.logind.settings.Login.PowerKeyLongPress = "poweroff";
+      # # Physical offset: The first number under 'physical_offset' from ext 0
+      # boot.kernelParams = [
+      #   "resume_offset=20072448"
+      #   "mem_sleep_default=deep"
+      # ];
+      # # Resume Device: The UUID of your ext4 'root' partition (nvme0n1p5)
+      # boot.resumeDevice = "/dev/disk/by-uuid/6034c26a-575e-4e70-a7c3-cc657cc592a0";
+      # powerManagement.enable = true;
+      #
+      # # Suspend first then hibernate when closing the lid
+      # services.logind.settings.Login.LidSwitch = "suspend-then-hibernate";
+      # # Hibernate on power button pressed
+      # services.logind.settings.Login.PowerKey = "hibernate";
+      # services.logind.settings.Login.PowerKeyLongPress = "poweroff";
 
       swapDevices = [
         {
           device = "/var/lib/swapfile";
-          size = 16 * 1024; # 16 gb
+          size = 32 * 1024; # 32 gb
         }
       ];
 
