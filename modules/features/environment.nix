@@ -90,6 +90,7 @@
           pkgs.bat
           pkgs.broot
           pkgs.tree
+          pkgs.nvitop
 
           # wrapped
           self'.packages.fastfetch

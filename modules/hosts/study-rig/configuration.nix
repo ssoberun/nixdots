@@ -28,7 +28,8 @@
         self.nixosModules.gaming
 
         # laptop (move to a diff file?)
-        self.nixosModules.tlp # tlp conflicts
+        # disabled here for obv reasons
+        # self.nixosModules.tlp # tlp conflicts
         ## suspending and hibernate
         # self.nixosModules.suspend-and-hibernate
 
@@ -43,7 +44,6 @@
         vim
         wget
         age
-        vivaldi
 
         sioyek # same with sioyek
 
@@ -220,12 +220,28 @@
       services.xserver.videoDrivers = [ "nvidia" ];
       hardware.nvidia = {
         modesetting.enable = true;
-        open = true;
-        powerManagement.enable = false;
+        open = true; # set true for gpus that support it; recommended
+        powerManagement.enable = true;
         powerManagement.finegrained = false;
         nvidiaSettings = true;
         package = config.boot.kernelPackages.nvidiaPackages.stable;
       };
+      # fix black sceen
+      systemd.services."systemd-suspend" = {
+        serviceConfig = {
+          Environment = ''"SYSTEMD_SLEEP_FREEZE_USER_SESSIONS=false"'';
+        };
+      };
+      boot.extraModprobeConfig = ''
+        options nvidia_modeset vblank_sem_control=0 nvidia NVreg_PreserveVideoMemoryAllocations=1 NVreg_TemporaryFilePath=/var/tmp
+      '';
+      boot.kernelModules = [
+        "nvidia_uvm"
+        "nvidia_modeset"
+        "nvidia_drm"
+        "nvidia"
+      ];
+      boot.kernelParams = [ "nvidia-drm.modeset=1" ];
 
       # ssh
       # no home manager, thus, system wide ssh...

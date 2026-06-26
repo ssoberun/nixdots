@@ -29,9 +29,10 @@
         self.nixosModules.fonts
       ];
 
-      environment.systemPackages = [
-        pkgs.chromium
-        pkgs.qbittorrent
+      environment.systemPackages = with pkgs; [
+        chromium
+        obs-studio
+        qbittorrent
       ];
 
       # services.qbittorrent = {
