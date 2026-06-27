@@ -97,6 +97,7 @@
                 xkb.layout = "us";
               };
               mouse = {
+                accel-speed = -0.3;
                 accel-profile = "flat";
               };
             };
@@ -210,6 +211,8 @@
               "${MainMod}+G".fullscreen-window = _: { };
               "${MainMod}+Shift+F".toggle-window-floating = _: { };
               "${MainMod}+V".center-column = _: { };
+              "${MainMod}+R".switch-preset-column-width = _: { };
+              "${MainMod}+Shift+R".switch-preset-window-height = _: { };
 
               # Navigation
               "${MainMod}+H".focus-column-or-monitor-left = _: { };

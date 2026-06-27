@@ -207,7 +207,9 @@
           fidget-nvim.enable = true;
 
           highlight-undo.enable = true;
-          blink-indent.enable = true;
+
+          # indent lines (one or the other)
+          blink-indent.enable = false;
           indent-blankline.enable = false;
 
           # Fun
@@ -243,7 +245,7 @@
 
         binds = {
           whichKey.enable = true;
-          cheatsheet.enable = true;
+          # cheatsheet.enable = true;
         };
 
         minimap = {
@@ -269,7 +271,8 @@
           motion = {
             hop.enable = true;
             leap.enable = true;
-            precognition.enable = true;
+            # hint below lines
+            precognition.enable = false;
           };
           images = {
             image-nvim.enable = false;
@@ -354,7 +357,6 @@
           };
           otter-nvim.enable = true; # provide lsp for embedded languages
           trouble.enable = true;
-          lightbulb.enable = true;
           lspsaga.enable = false;
           # lspSignature.enable = !true; # conflicts with blink in maximal
           nvim-docs-view.enable = true;
