@@ -39,7 +39,7 @@
     {
       environment = {
         systemPackages = [
-          (lib.hiPrio git-desktop-entry)
+          # (lib.hiPrio git-desktop-entry)
         ];
       };
     };

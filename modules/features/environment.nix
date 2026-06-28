@@ -72,7 +72,7 @@
           pkgs.nix-inspect
 
           # unwrapped
-          pkgs.zoxide
+          # pkgs.zoxide
           pkgs.libnotify
           pkgs.file
           pkgs.unzip
@@ -103,6 +103,7 @@
           self'.packages.qalc
           self'.packages.oh-my-posh
           self'.packages.himalaya
+          self'.packages.zoxide
 
           # testing
           self'.packages.foot
