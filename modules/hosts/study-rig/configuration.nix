@@ -18,6 +18,7 @@
         self.nixosModules.desktop
         self.nixosModules.opencloud
         self.nixosModules.audio-common
+        self.nixosModules.BORE-cachy-kernel
 
         # nix settings
         self.nixosModules.nix
@@ -93,7 +94,7 @@
       networking.hostName = "study-rig";
       networking.networkmanager.enable = true;
       time.timeZone = "Australia/Sydney";
-      # because i dual boot with windows
+      # because i dual boot with windows, have this setting on
       time.hardwareClockInLocalTime = true;
       i18n.defaultLocale = "en_AU.UTF-8";
 
@@ -107,7 +108,8 @@
       };
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
-      boot.kernelPackages = pkgs.linuxPackages_latest;
+      # automatically overridden by the BORE-cachy-kernel but whatever
+      # boot.kernelPackages = pkgs.linuxPackages_latest;
       boot.initrd.availableKernelModules = [
         "nvme"
         "xhci_pci"
@@ -115,17 +117,6 @@
         "usb_storage"
         "sd_mod"
       ];
-
-      # # CachyOS kernel using https://github.com/xddxdd/nix-cachyos-kernel
-      # boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
-      # nixpkgs.overlays = [
-      #   inputs.nix-cachyos-kernel.overlays.default
-      # ];
-      # nix.settings.substituters = [ "https://attic.xuyh0120.win/lantian" ];
-      # nix.settings.trusted-public-keys = [ "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" ];
-
-      # --- Feature Toggles ---
-      # Assuming you followed the modular sops.nix we discussed:
 
       # --- Desktop Environment ---
       # Note: You have Niri imported, but GDM/GNOME are enabled here.
@@ -191,6 +182,8 @@
       # services.logind.settings.Login.PowerKey = "hibernate";
       # services.logind.settings.Login.PowerKeyLongPress = "poweroff";
 
+      # --- Hardware ---
+
       fileSystems."/mnt/storage" = {
         device = "/dev/disk/by-uuid/06F69E82F69E7223";
         fsType = "ntfs3";
@@ -202,6 +195,19 @@
           "nofail"
         ];
       };
+
+      # the following doesnt work since my C: is corrupted with a dirty bit; see mendawa
+      # fileSystems."/mnt/windows-primary" = {
+      #   device = "/dev/disk/by-uuid/01DD036613725370";
+      #   fsType = "ntsf3";
+      #   options = [
+      #     "rw"
+      #     "uid=1000"
+      #     "gid=100"
+      #     "umask=0022"
+      #     "nofail"
+      #   ];
+      # };
 
       swapDevices = [
         {

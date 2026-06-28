@@ -4,7 +4,7 @@
       inherit pkgs;
       package = pkgs.zoxide;
       env = {
-        _ZO_DATA_DIR = "~/.local/share/zoxide/db.zo";
+        _ZO_DATA_DIR = "$HOME/.local/share/zoxide/db.zo";
       };
     };
   };
