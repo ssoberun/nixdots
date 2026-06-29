@@ -38,12 +38,15 @@
             "https://noctalia.cachix.org"
             # nix-community cache includes unfree but redist. pkgs: https://nix-community.org/cache/
             "https://nix-community.cachix.org"
+            # driver cache
+            "https://cache.nixos-cuda.org"
           ];
 
           trusted-public-keys = [
             "cache.nixos.org-1:6nCk48X65shshYpZqz0X9vRjayahF4GCednhgyXDYXk="
             "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
             "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+            "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
           ];
 
           substitute = true;

@@ -14,6 +14,8 @@
     }:
     let
       system = pkgs.stdenv.hostPlatform.system;
+      shellEnvironmentPackage = self.packages.${system}.shell-environment;
+      shellEnvironmentExe = lib.getExe shellEnvironmentPackage;
       terminalExe = lib.getExe self.packages.${system}.terminal;
       terminal-desktop-entry = pkgs.makeDesktopItem {
         name = "wrapped-terminal";
@@ -35,6 +37,10 @@
       # makes the wrapped terminal a desktop entry
       environment.systemPackages = [
         terminal-desktop-entry
+      ];
+
+      environment.shells = [
+        shellEnvironmentExe
       ];
       # terminal executables go to this wrapped terminal instead of Console
       xdg.terminal-exec = {

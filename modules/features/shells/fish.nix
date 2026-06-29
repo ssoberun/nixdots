@@ -37,6 +37,11 @@
           # ${lib.getExe pkgs.fortune-kind}
         end
 
+        # if command -q ${lib.getExe pkgs.nix-your-shell}
+        # set -gx SHELL "${lib.getExe self'.packages.shell-environment}"
+        #   ${lib.getExe pkgs.nix-your-shell} fish | source
+        # end
+
         fish_vi_key_bindings
         alias ls eza
 

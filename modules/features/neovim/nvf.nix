@@ -117,10 +117,12 @@
 
         theme = {
           enable = true;
-          name = "gruber-darker";
-          style = "dark";
-          # name = "catppuccin";
-          # style = "mocha";
+          # name = "gruber-darker";
+          # style = "dark";
+
+          name = "catppuccin";
+          style = "mocha";
+
           # name = "oxocarbon";
           # style = "dark";
           transparent = false;
@@ -344,6 +346,20 @@
             enable = true;
             extensions = {
               crates-nvim.enable = true;
+            };
+          };
+
+          typescript = {
+            enable = true;
+            format = {
+              enable = true;
+              type = [ "prettier" ];
+            };
+            extensions = {
+              ts-error-translator.enable = true;
+            };
+            lsp = {
+              enable = true;
             };
           };
         };
