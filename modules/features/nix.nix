@@ -19,7 +19,7 @@
     in
     { pkgs, ... }:
     {
-      # some code editors need the LSP installed system wide like dis
+      # nix LSP needs to be installed system wide for some code editors...
       environment.systemPackages = with pkgs; [
         nil
         nixd
@@ -34,12 +34,16 @@
         settings = {
           substituters = [
             "https://cache.nixos.org/"
+            # noctalia cache
             "https://noctalia.cachix.org"
+            # nix-community cache includes unfree but redist. pkgs: https://nix-community.org/cache/
+            "https://nix-community.cachix.org"
           ];
 
           trusted-public-keys = [
             "cache.nixos.org-1:6nCk48X65shshYpZqz0X9vRjayahF4GCednhgyXDYXk="
             "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+            "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
           ];
 
           substitute = true;
