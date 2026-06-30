@@ -55,7 +55,7 @@
         # cursor test
         # now put in runtimeInputs of niri.nix, revert if went wrong.
         apple-cursor
-        antigravity
+        # antigravity
         geoclue2
       ];
 
@@ -182,6 +182,13 @@
       # services.logind.settings.Login.PowerKey = "hibernate";
       # services.logind.settings.Login.PowerKeyLongPress = "poweroff";
 
+      swapDevices = [
+        {
+          device = "/var/lib/swapfile";
+          size = 16 * 1024; # 16 gb because im not hibernating
+        }
+      ];
+
       # --- Hardware ---
 
       fileSystems."/mnt/storage" = {
@@ -208,13 +215,6 @@
       #     "nofail"
       #   ];
       # };
-
-      swapDevices = [
-        {
-          device = "/var/lib/swapfile";
-          size = 32 * 1024; # 32 gb
-        }
-      ];
 
       # firmware updates and fstirm
       services.fwupd.enable = true;
