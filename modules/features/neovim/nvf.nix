@@ -288,10 +288,27 @@
           enableTreesitter = true;
 
           bash.enable = true;
-          lua.enable = true;
           html.enable = true;
           # typescript.enable = true;
           python.enable = true;
+
+          lua = {
+            enable = true;
+            extraDiagnostics = {
+              enable = true;
+              types = [ "selene" ];
+            };
+            format = {
+              enable = true;
+              type = [ "stylua" ];
+            };
+            lsp = {
+              enable = true;
+              lazydev.enable = false; # enable for nvim plugins
+              servers = [ ];
+            };
+          };
+
           tex = {
             enable = true;
             format = {
@@ -380,16 +397,32 @@
           # presets.harper.enable = true;
 
           servers = {
-            # texlab = {
+            # luau_lsp = {
             #   enable = true;
-            #   # im getting an error where vim.lsp.servers.texlab.cmd has already been set somewhere else, though i cannot find this file.
-            #   # cmd = [
-            #   #   "${lib.getExe pkgs.texlab}"
-            #   # ];
-            #   filetypes = [ "tex" ];
+            #   cmd = [
+            #     "${lib.getExe pkgs.luau-lsp}"
+            #     "lsp"
+            #   ];
+            #   filetypes = [
+            #     "luau"
+            #     "lua"
+            #   ];
+            #   setupOpts.settings = {
+            #     luau-lsp = {
+            #       completion = {
+            #         imports = {
+            #           enabled = true;
+            #         };
+            #       };
+            #       plugin = {
+            #         roblox = {
+            #           enabled = true; # Enables Roblox global definitions
+            #         };
+            #       };
+            #     };
+            #   };
             # };
           };
-
           # lspSignature?
           # mappings?
           # servers.nixd = {
@@ -469,6 +502,87 @@
               package = pkgs.vimPlugins.himalaya-vim;
               lazy = true;
             };
+            "luau-lsp.nvim" = {
+              enabled = true;
+              package = pkgs.vimPlugins.luau-lsp-nvim;
+              ft = [
+                "luau"
+              ];
+              lazy = true;
+              after = # lua
+                ''
+                  require("luau-lsp").setup {
+                    platform = {
+                      type = "roblox",
+                    },
+                    types = {
+                      roblox_security_level = "PluginSecurity",
+                    },
+                  }
+                '';
+            };
+            # "luau-lsp.nvim" = {
+            #   enabled = true;
+            #   package = pkgs.vimPlugins.luau-lsp-nvim;
+            #   ft = [
+            #     "luau"
+            #     "lua"
+            #   ];
+            #   # setupModule = "luau-lsp";
+            #   setupOpts = {
+            #     server = {
+            #       cmd = [
+            #         "${lib.getExe pkgs.luau-lsp}"
+            #         "lsp"
+            #       ];
+            #     };
+            #     platform = {
+            #       type = "roblox";
+            #     };
+            #     types = {
+            #       roblox_security_level = "PluginSecurity";
+            #     };
+            #     sourcemap = {
+            #       # false as darklua does this in my projects
+            #       enabled = false;
+            #       autogenerate = false;
+            #     };
+            #   };
+            #   # Use 'after' to force a direct setup fallback if the implicit one misses
+            #   after = /* lua */ ''
+            #     if not require("lazy.core.config").plugins["luau-lsp.nvim"]._.loaded then
+            #       require("luau-lsp").setup({})
+            #     end
+            #   '';
+            # };
+            # "luau-lsp.nvim" = {
+            #   enabled = true;
+            #   package = pkgs.vimPlugins.luau-lsp-nvim;
+            #   ft = [
+            #     "luau"
+            #     "lua"
+            #   ];
+            #   setupModule = "luau-lsp";
+            #   setupOpts = {
+            #     server = {
+            #       # Ensure the exact executable points into the Nix store with 'lsp' flag mode!
+            #       cmd = [
+            #         "${lib.getExe pkgs.luau-lsp}"
+            #         "lsp"
+            #       ];
+            #     };
+            #     platform = {
+            #       type = "roblox";
+            #     };
+            #     types = {
+            #       roblox_security_level = "PluginSecurity";
+            #     };
+            #     sourcemap = {
+            #       enabled = true;
+            #       autogenerate = true;
+            #     };
+            #   };
+            # };
           };
         };
 
