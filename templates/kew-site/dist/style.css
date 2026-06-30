@@ -1,0 +1,96 @@
+:root {
+	--bg: #646c7f;
+	--fg: #fffde0;
+	--fg-link: #fff18f;
+}
+
+/* global */
+body {
+	margin: 0;
+	padding: 0;
+	background: var(--bg);
+	color: var(--fg);
+	font-family: serif;
+	font-size: 16px;
+	line-height: 1.2;
+}
+
+/* header */
+header {
+	padding: 20px;
+}
+
+header h1 {
+	margin: 0;
+	font-size: 35px;
+	font-weight: normal;
+	font-style: italic;
+}
+
+header a {
+	color: var(--fg);
+	text-decoration: none;
+}
+
+/* sidebar */
+#side-bar {
+	position: absolute;
+	top: 80px;
+	left: 0;
+	width: 200px;
+	padding-left: 20px;
+}
+
+.side-title {
+	font-size: 25px;
+	margin: 20px 0 8px 0;
+	color: var(--fg);
+}
+
+#side-bar ul {
+	margin: 0 0 0 20px;
+	padding: 0px;
+	list-style: none;
+}
+
+#side-bar li {
+	margin: 6px 0;
+}
+
+/* links */
+a {
+	color: var(--fg-link);
+	text-decoration: none;
+	padding: 1px 2px;
+}
+
+a:hover {
+	background: var(--fg);
+	color: var(--bg);
+}
+
+/* article */
+article {
+	margin: 80px 0 0 0;
+	max-width: 800px;
+}
+
+h3 {
+	margin-top: 30px;
+	font-size: 25px;
+	color: var(--fg);
+	font-weight: normal;
+}
+
+/* footer */
+footer {
+	padding-top: 80px;
+	font-style: italic;
+	font-size: 17px;
+}
+
+/* article + footer alignment */
+article, footer {
+	margin-left: 240px;
+	margin-top: 0px;
+}
