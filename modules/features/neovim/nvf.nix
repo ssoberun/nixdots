@@ -347,6 +347,21 @@
             extensions.render-markdown-nvim.enable = true;
           };
 
+          go = {
+            enable = true;
+            format = {
+              enable = true;
+              type = [ "gofmt" ];
+            };
+            lsp = {
+              enable = true;
+              servers = [ "gopls" ];
+            };
+            extensions = {
+              gopher-nvim.enable = false;
+            };
+          };
+
           nix = {
             enable = true;
             format = {
