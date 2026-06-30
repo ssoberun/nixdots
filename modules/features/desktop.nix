@@ -13,6 +13,7 @@
         self.nixosModules.typst
         # apps
         # self.nixosModules.firefox
+        self.nixosModules.office
         self.nixosModules.discord
         self.nixosModules.beeper
         self.nixosModules.obsidian

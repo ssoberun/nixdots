@@ -24,7 +24,7 @@
     {
       programs.direnv = {
         enable = true;
-        silent = false;
+        silent = true;
         nix-direnv.enable = true;
       };
 
