@@ -11,6 +11,7 @@
         "nodejs-20.20.2"
         "ventoy"
         "vivaldi"
+        "pnpm-10.29.2"
       ];
 
       insecurePackagesString = builtins.concatStringsSep "\n      " (
