@@ -44,13 +44,34 @@
             mainProgram = "kew";
           };
         };
+
+        build-site = pkgs.writeShellApplication {
+          name = "build-kew-site";
+          runtimeInputs = [
+            kew-pkg
+            pkgs.go
+            pkgs.lowdown
+          ];
+          text = ''
+            set -e
+
+            echo "Building kew site"
+            ${pkgs.lib.getExe kew-pkg} ./example/ ./dist/
+            echo "Built kew site at ./dist/"
+          '';
+        };
       in
       {
         packages.default = kew-pkg;
 
-        apps.default = {
+        apps.kew = {
           type = "app";
           program = "${kew-pkg}/bin/kew";
+        };
+
+        apps.build-site = {
+          type = "app";
+          program = "${pkgs.lib.getExe build-site}";
         };
 
         devShells.default = pkgs.mkShell {
@@ -58,6 +79,7 @@
             pkgs.go
             pkgs.lowdown
             kew-pkg
+            build-site
           ];
         };
       }

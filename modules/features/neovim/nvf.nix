@@ -308,6 +308,18 @@
               servers = [ ];
             };
           };
+          svelte = {
+            enable = true;
+            format = {
+              enable = true;
+            };
+            lsp = {
+              enable = true;
+              servers = [
+                "svelte-language-server"
+              ];
+            };
+          };
 
           tex = {
             enable = true;

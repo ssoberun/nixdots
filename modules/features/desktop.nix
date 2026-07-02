@@ -34,6 +34,8 @@
         chromium
         obs-studio
         qbittorrent
+        davinci-resolve
+        ffmpeg-full
       ];
 
       # services.qbittorrent = {
