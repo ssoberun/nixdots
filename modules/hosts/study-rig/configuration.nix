@@ -13,12 +13,13 @@
       imports = [
         # Hardware and Inputs
         self.nixosModules.study-rig-hardware
+        self.nixosModules.systemd-boot
+        self.nixosModules.BORE-cachy-kernel
 
         # unwrapped, modularised
         self.nixosModules.desktop
         self.nixosModules.opencloud
         self.nixosModules.audio-common
-        self.nixosModules.BORE-cachy-kernel
 
         # nix settings
         self.nixosModules.nix
@@ -55,7 +56,6 @@
         # cursor test
         # now put in runtimeInputs of niri.nix, revert if went wrong.
         apple-cursor
-        # antigravity
         geoclue2
       ];
 
@@ -98,29 +98,7 @@
       time.hardwareClockInLocalTime = true;
       i18n.defaultLocale = "en_AU.UTF-8";
 
-      # --- Boot & Kernel ---
-      boot.plymouth = {
-        theme = "evangelion-ui";
-        themePackages = [
-          inputs.evangelion-ui.packages.${pkgs.stdenv.hostPlatform.system}.evangelion-ui
-        ];
-        enable = true;
-      };
-      boot.loader.systemd-boot.enable = true;
-      boot.loader.efi.canTouchEfiVariables = true;
-      # automatically overridden by the BORE-cachy-kernel but whatever
-      # boot.kernelPackages = pkgs.linuxPackages_latest;
-      boot.initrd.availableKernelModules = [
-        "nvme"
-        "xhci_pci"
-        "ahci"
-        "usb_storage"
-        "sd_mod"
-      ];
-
-      # --- Desktop Environment ---
-      # Note: You have Niri imported, but GDM/GNOME are enabled here.
-      # Keep both if you want a fallback, otherwise disable GNOME to stay minimal.
+      # desktop environment
       services.displayManager.ly = {
         enable = true;
         settings = {

@@ -14,6 +14,8 @@
         # Hardware and Inputs
         inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-9th-gen
         self.nixosModules.x1-machine-hardware
+        self.nixosModules.systemd-boot
+        self.nixosModules.linux-kernel
 
         # unwrapped, modularised
         self.nixosModules.desktop
@@ -53,10 +55,6 @@
         firefox
         bitwarden-desktop
         spotify
-
-        godot_4
-
-        claude-code
 
         # cursor test
         # now put in runtimeInputs of niri.nix, revert if went wrong.
@@ -103,18 +101,6 @@
       # because i dual boot with windows
       time.hardwareClockInLocalTime = true;
       i18n.defaultLocale = "en_AU.UTF-8";
-
-      # --- Boot & Kernel ---
-      boot.plymouth = {
-        theme = "evangelion-ui";
-        themePackages = [
-          inputs.evangelion-ui.packages.${pkgs.stdenv.hostPlatform.system}.evangelion-ui
-        ];
-        enable = true;
-      };
-      boot.loader.systemd-boot.enable = true;
-      boot.loader.efi.canTouchEfiVariables = true;
-      boot.kernelPackages = pkgs.linuxPackages_latest;
 
       # CachyOS kernel using https://github.com/xddxdd/nix-cachyos-kernel
       # boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
