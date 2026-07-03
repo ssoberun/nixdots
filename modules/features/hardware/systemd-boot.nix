@@ -1,6 +1,5 @@
 { inputs, ... }: {
   flake.nixosModules.systemd-boot = { pkgs, ... }: {
-    boot.boot.loader.systemd-boot.enable = true;
     boot = {
       plymouth = {
         theme = "evangelion-ui";
@@ -10,7 +9,10 @@
         enable = true;
       };
 
-      loader.efi.canTouchEfiVariables = true;
+      loader = {
+        systemd-boot.enable = true;
+        efi.canTouchEfiVariables = true;
+      };
 
       initrd.availableKernelModules = [
         "nvme"
