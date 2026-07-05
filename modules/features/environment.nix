@@ -105,6 +105,7 @@
           self'.packages.oh-my-posh
           self'.packages.himalaya
           self'.packages.zoxide
+          self'.packages.starship
 
           # # testing
           # self'.packages.foot

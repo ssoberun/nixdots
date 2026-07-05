@@ -16,6 +16,13 @@
           "org.vinegarhq.Sober"
           "org.vinegarhq.Vinegar"
         ];
+        # overrides = {
+        #   "org.vinegarhq.Vinegar" = {
+        #     Context = {
+        #       sockets = [ "!wayland" ];
+        #     };
+        #   };
+        # };
         update.onActivation = true;
       };
     };
