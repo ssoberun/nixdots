@@ -29,7 +29,7 @@
         background_blur = 1;
         background_opacity = 1;
 
-        scrollback_lines = 2000;
+        scrollback_lines = 50000;
         hide_window_decorations = true;
         confirm_os_window_close = 0;
         pixel_scroll = true;

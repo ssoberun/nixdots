@@ -15,14 +15,30 @@
         packages = [
           "org.vinegarhq.Sober"
           "org.vinegarhq.Vinegar"
+
+          # nvidia drivers for flatpak
+          # "runtime/org.freedesktop.Platform.GL.nvidia-595-84/x86_64/1.4"
+          # "runtime/org.freedesktop.Platform.GL32.nvidia-595-84/x86_64/1.4"
         ];
-        # overrides = {
-        #   "org.vinegarhq.Vinegar" = {
-        #     Context = {
-        #       sockets = [ "!wayland" ];
-        #     };
-        #   };
-        # };
+        overrides = {
+          global = {
+            Environment = {
+              # Forces the use of the discrete NVIDIA GPU
+              "__NV_PRIME_RENDER_OFFLOAD" = "1";
+              "__GLX_VENDOR_LIBRARY_NAME" = "nvidia";
+
+              # Enables explicit sync protocol features if your Niri version supports it
+              "DISABLE_NVIDIA_THREADED_OPTIMIZATIONS" = "0";
+            };
+          };
+          "org.vinegarhq.Sober" = {
+            # Allow Sober to bypass the compositor's VSync if configured in Niri (Tearing)
+            Context.sockets = [
+              "wayland"
+              "fallback-x11"
+            ];
+          };
+        };
         update.onActivation = true;
       };
     };

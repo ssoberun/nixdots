@@ -8,6 +8,9 @@
         self.nixosModules.niri
         self.nixosModules.GNOME # GNOMe as backup, and also for its apps and portals
 
+        # custom
+        self.nixosModules.scripts
+
         # latex and typst
         self.nixosModules.LaTeX
         self.nixosModules.typst
