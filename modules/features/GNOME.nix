@@ -10,33 +10,34 @@
     {
       config = {
         services = {
-          desktopManager.gnome.enable = true;
+          # desktopManager.gnome.enable = true;
+          desktopManager.plasma6.enable = true;
         };
-
-        environment.systemPackages = with pkgs; [
-          gnomeExtensions.battery-monitor
-        ];
-
-        programs.dconf.profiles.user.databases = [
-          {
-            settings = {
-              "org/gnome/shell" = {
-                disable-user-extensions = false;
-
-                enabled-extensions = [
-                  "battery-monitor@vjay.me"
-                ];
-              };
-            };
-          }
-        ];
-
-        # Optional: Clean up GNOME bloat
-        environment.gnome.excludePackages = with pkgs; [
-          gnome-tour
-          geary
-          epiphany # web browser
-        ];
+        #
+        # environment.systemPackages = with pkgs; [
+        #   gnomeExtensions.battery-monitor
+        # ];
+        #
+        # programs.dconf.profiles.user.databases = [
+        #   {
+        #     settings = {
+        #       "org/gnome/shell" = {
+        #         disable-user-extensions = false;
+        #
+        #         enabled-extensions = [
+        #           "battery-monitor@vjay.me"
+        #         ];
+        #       };
+        #     };
+        #   }
+        # ];
+        #
+        # # Optional: Clean up GNOME bloat
+        # environment.gnome.excludePackages = with pkgs; [
+        #   gnome-tour
+        #   geary
+        #   epiphany # web browser
+        # ];
       };
     };
 }
