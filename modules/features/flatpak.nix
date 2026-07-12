@@ -54,7 +54,22 @@
         packages = [
           "org.vinegarhq.Sober"
           "org.vinegarhq.Vinegar"
+          "flathub:com.github.tchx84.Flatseal"
+          "flathub:org.mozilla.firefox"
         ];
+
+        overrides = {
+          "org.vinegarhq.Sober" = {
+            # hopefully equivalent to:
+            # flatpak override --user --socket=x11 --nosocket=wayland org.vinegarhq.Sober
+            # if not run the command
+            # should fix stuttering/lag issues
+            Context.sockets = [
+              "x11"
+              "!wayland"
+            ];
+          };
+        };
 
         update.onActivation = true;
       };

@@ -204,12 +204,18 @@
       services.xserver.videoDrivers = [ "nvidia" ];
       hardware.nvidia = {
         modesetting.enable = true;
-        open = true; # set true for gpus that support it; recommended
+        open = false; # set true for gpus that support it; recommended
         powerManagement.enable = true;
         powerManagement.finegrained = false;
         nvidiaSettings = true;
-        package = config.boot.kernelPackages.nvidiaPackages.stable;
+        package = config.boot.kernelPackages.nvidiaPackages.production;
       };
+
+      hardware.graphics = {
+        enable = true;
+        enable32Bit = true;
+      };
+
       # fix black sceen
       systemd.services."systemd-suspend" = {
         serviceConfig = {
@@ -226,21 +232,5 @@
         "nvidia"
       ];
       boot.kernelParams = [ "nvidia-drm.modeset=1" ];
-
-      # ssh
-      # no home manager, thus, system wide ssh...
-      # programs.ssh = {
-      #   # conflicts with GNOME ssh
-      #   # startAgent = true;
-      #
-      #   # Raw configuration for /etc/ssh/ssh_config
-      #   extraConfig = ''
-      #     Host github.com
-      #       HostName github.com
-      #       User git
-      #       IdentityFile ${config.sops.secrets.github_ssh_key.path}
-      #       IdentitiesOnly yes
-      #   '';
-      # };
     };
 }

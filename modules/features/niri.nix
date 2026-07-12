@@ -36,9 +36,16 @@
         # had to do lib.mkdefault or it would throw hissy fit?
         overrideStrategy = lib.mkDefault "asDropin";
         text = lib.mkDefault ''
+          [Unit]
+          X-Reload-Triggers=${config.constructFiles.generatedConfig.path}
+
           [Service]
-          X-StopIfChanged=false
-          X-RestartIfChanged=false
+          Type=oneshot
+          RemainAfterExit=yes
+          ExecStart=${lib.getExe' pkgs.coreutils "true"}
+          ExecReload=${lib.getExe' config.package "mmsg"} dispatch load_config_file,${config.constructFiles.generatedConfig.path}
+          X-ReloadIfChanged=true
+          EOF
         '';
       };
       # systemd.user.services.niri = {

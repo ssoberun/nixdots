@@ -68,4 +68,51 @@
     {
       environment.systemPackages = [ ffmpeg-transcoder ];
     };
+  perSystem = { pkgs, lib, ... }: {
+    packages.screenshot-tool =
+      pkgs.writeShellScriptBin "cscreenshot"
+        # sh
+        ''
+          set -euo pipefail
+
+          # Ensure the output directory exists
+          mkdir -p "$HOME/Pictures/Screenshots"
+          filepath="$HOME/Pictures/Screenshots/$(date +%Y%m%d%H%M%S).png"
+
+          case "''${1:-fullscreen}" in
+            region)
+              g=$(${lib.getExe pkgs.slurp} -d); [ -z "$g" ] && exit 1
+              ${lib.getExe pkgs.grim} -g "$g" "$filepath"
+              ;;
+            window)
+              # Assumes mmsg is packaged under pkgs.mmsg (adjust if it's from a custom package)
+              g=$(mmsg get focusing-client | ${lib.getExe pkgs.jq} -r '"\(.x),\(.y) \(.width)x\(.height)"')
+              [ -z "$g" ] && exit 1
+              ${lib.getExe pkgs.grim} -g "$g" "$filepath"
+              ;;
+            freeze)
+              p=$(mktemp -u).fifo; mkfifo "$p"
+              ${lib.getExe pkgs.wayfreeze} --after-freeze-timeout 100 --after-freeze-cmd "echo > $p" & wp=$!
+              read -r < "$p"; ${lib.getExe pkgs.grim} "$filepath"
+              kill "$wp" 2>/dev/null; rm -f "$p"
+              ;;
+            freeze-region)
+              p=$(mktemp -u).fifo; mkfifo "$p"
+              ${lib.getExe pkgs.wayfreeze} --after-freeze-timeout 100 --after-freeze-cmd "echo > $p" & wp=$!
+              read -r < "$p"; g=$(${lib.getExe pkgs.slurp} -d)
+              if [ -z "$g" ]; then kill "$wp" 2>/dev/null; rm -f "$p"; exit 1; fi
+              ${lib.getExe pkgs.grim} -g "$g" "$filepath"
+              kill "$wp" 2>/dev/null; rm -f "$p"
+              ;;
+            annotate)
+              ${lib.getExe pkgs.grim} "$filepath"
+              ${lib.getExe pkgs.satty} --filename "$filepath" --output-filename "$filepath" --actions-on-enter save-to-file --early-exit
+              ;;
+            *)
+              ${lib.getExe pkgs.grim} "$filepath"
+              ;;
+          esac
+        '';
+
+  };
 }
