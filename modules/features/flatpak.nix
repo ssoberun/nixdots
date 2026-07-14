@@ -52,8 +52,8 @@
         ];
 
         packages = [
+          # Vinegar moved to standalone nixpkg
           "org.vinegarhq.Sober"
-          "org.vinegarhq.Vinegar"
           "flathub:com.github.tchx84.Flatseal"
           "flathub:org.mozilla.firefox"
         ];
