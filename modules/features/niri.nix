@@ -92,6 +92,11 @@
               xcursor-size = 28;
             };
 
+            environment = {
+              XCURSOR_THEME = "macOS";
+              XCURSOR_SIZE = "28";
+            };
+
             clipboard = {
               disable-primary = _: { };
             };

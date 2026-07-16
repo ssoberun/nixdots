@@ -29,6 +29,7 @@
         self.nixosModules.gtk
         self.nixosModules.jetbrains
         self.nixosModules.vscode
+        self.nixosModules.cursor
 
         # desktop visuals
         self.nixosModules.fonts
@@ -41,6 +42,12 @@
         davinci-resolve
         ffmpeg-full
       ];
+
+      options.custom.cursor = {
+        package = pkgs.apple-cursor;
+        name = "macOS";
+        size = 28;
+      };
 
       # services.qbittorrent = {
       #   enable = true;

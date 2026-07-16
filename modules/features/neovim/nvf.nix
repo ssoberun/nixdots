@@ -72,6 +72,68 @@
               vim.treesitter.stop(args.buf)
             end,
           })
+
+          -- Clear highlights on search
+          vim.keymap.set("n", "<esc>", "<cmd>nohlsearch<cr>")
+
+          -- Open diagnostic quickfix list
+          vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
+
+          -- Rojo Project Detection
+          -- local function rojo_project()
+          --   return vim.fs.root(0, function(name)
+          --     return name:match ".+%.project%.json$"
+          --   end)
+          -- end
+
+          -- [[ Luau filetype detection ]]
+          -- if rojo_project() then
+          --   vim.filetype.add {
+          --     extension = {
+          --       lua = function(path)
+          --         return path:match "%.nvim%.lua$" and "lua" or "luau"
+          --       end,
+          --     },
+          --   }
+          -- end
+
+          -- [[ Custom Schemas setup for jsonls ]]
+          -- local function get_json_schemas()
+          --   -- Attempting to pull Schemastore schemas dynamically (SchemaStore.nvim is packaged by NVF if enabled)
+          --   local has_schemastore, schemastore = pcall(require, "schemastore")
+          --   local schemas = {}
+          --   if has_schemastore then
+          --     schemas = schemastore.json.schemas()
+          --   end
+          --   table.insert(schemas, {
+          --     fileMatch = { "*.project.json" },
+          --     url = "https://raw.githubusercontent.com/rojo-rbx/vscode-rojo/master/schemas/project.template.schema.json",
+          --   })
+          --   return schemas
+          -- end
+
+          -- Custom diagnostic buffer attachment (LspAttach) hook
+          vim.api.nvim_create_autocmd("LspAttach", {
+            callback = function(event)
+              local function map(mode, lhs, rhs)
+                vim.keymap.set(mode, lhs, rhs, { buffer = event.buf })
+              end
+              map("n", "gd", vim.lsp.buf.definition)
+              map("n", "gD", vim.lsp.buf.declaration)
+
+              local client = vim.lsp.get_client_by_id(event.data.client_id)
+              if client and client:supports_method "textDocument/documentHighlight" then
+                vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+                  buffer = event.buf,
+                  callback = vim.lsp.buf.document_highlight,
+                })
+                vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+                  buffer = event.buf,
+                  callback = vim.lsp.buf.clear_references,
+                })
+              end
+            end,
+          })
         '';
         keymaps =
           let
@@ -99,11 +161,15 @@
             # Jump backward (Shift+Tab)
             (mkKeymap "i" "<S-Tab>" "<Plug>luasnip-jump-prev" "Jump to previous snippet")
             (mkKeymap "s" "<S-Tab>" "<Plug>luasnip-jump-prev" "Jump to previous snippet")
+            (mkKeymap "n" "<leader>f" ":lua require('conform').format({ async = true })<CR>" "Format Code")
           ];
 
         terminal = {
           toggleterm = {
             enable = true;
+            setupOpts = {
+              winbar.enabled = true;
+            };
           };
         };
 
@@ -127,7 +193,15 @@
           # style = "dark";
           transparent = false;
         };
+
         options = {
+          number = true; # Equivalent to vim.opt.number = true
+          mouse = "a"; # Equivalent to vim.opt.mouse = "a"
+          showmode = false; # Equivalent to vim.opt.showmode = false
+          clipboard = "unnamedplus"; # Equivalent to vim.opt.clipboard = "unnamedplus"
+          signcolumn = "yes"; # Equivalent to vim.opt.signcolumn = "yes"
+          updatetime = 300; # Equivalent to vim.opt.updatetime = 300
+          cursorline = true; # Equivalent to vim.opt.cursorline = true
           tabstop = 2; # Number of spaces a <Tab> counts for
           shiftwidth = 2; # Number of spaces for auto-indent
           expandtab = true; # Convert tabs to spaces (highly recommended for Nix)
@@ -137,7 +211,14 @@
         };
 
         statusline.lualine.enable = true;
-        telescope.enable = true;
+        telescope = {
+          enable = true;
+          mappings = {
+            findFiles = "<leader>sf";
+            liveGrep = "<leader>sg";
+            buffers = "<leader><leader>";
+          };
+        };
         autopairs.nvim-autopairs.enable = true;
         comments.comment-nvim.enable = true;
         autocomplete = {
@@ -162,6 +243,7 @@
         # git
         git = {
           enable = true;
+          gitsigns.enable = true;
           neogit.enable = true;
         };
         # enable dashboard?
@@ -231,6 +313,9 @@
             mappings = {
               cycleNext = "<S-l>";
               cyclePrevious = "<S-h>";
+              moveNext = "<M-L>";
+              movePrevious = "<M-H>";
+              closeCurrent = "<S-q>";
             };
             setupOpts.options.diagnostics = "nvim_lsp";
           };
@@ -242,6 +327,9 @@
           context.enable = true;
           highlight = {
             enable = true;
+          };
+          context.setupOpts = {
+            endwise.enable = true;
           };
         };
 
@@ -282,6 +370,28 @@
           };
         };
 
+        formatter.conform-nvim = {
+          enable = true;
+          setupOpts = {
+            # 2. Tell conform to use stylua for luau files
+            formatters_by_ft = {
+              luau = [ "stylua" ];
+            };
+            # 3. Inject the stylua binary package so Nix handles the dependency
+            formatters = {
+              stylua = {
+                command = lib.getExe pkgs.stylua;
+                args = lib.mkForce [
+                  "--search-parent-directories"
+                  "--stdin-filepath"
+                  "$FILENAME"
+                  "-"
+                ];
+              };
+            };
+          };
+        };
+
         languages = {
           enableLSP = true;
           enableFormat = true;
@@ -304,9 +414,9 @@
             };
             lsp = {
               enable = true;
-              lazydev.enable = false; # enable for nvim plugins
-              servers = [ ];
+              lazydev.enable = true;
             };
+            treesitter.enable = true;
           };
           svelte = {
             enable = true;
@@ -542,10 +652,24 @@
                     platform = {
                       type = "roblox",
                     },
+                    plugin = {
+                      enabled = true,
+                      port = 3667,
+                    },
                     types = {
                       roblox_security_level = "PluginSecurity",
                     },
                   }
+
+                  vim.lsp.config("*", {
+                      capabilities = {
+                      workspace = {
+                        didChangeWatchedFiles = {
+                          dynamicRegistration = true,
+                        },
+                      },
+                    },
+                  })
                 '';
             };
             # "luau-lsp.nvim" = {
@@ -610,6 +734,12 @@
             #     };
             #   };
             # };
+          };
+        };
+
+        extraPlugins = {
+          nvim-treesitter-endwise = {
+            package = pkgs.vimPlugins.nvim-treesitter-endwise;
           };
         };
 
