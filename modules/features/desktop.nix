@@ -43,7 +43,7 @@
         ffmpeg-full
       ];
 
-      options.custom.cursor = {
+      custom.cursor = {
         package = pkgs.apple-cursor;
         name = "macOS";
         size = 28;

@@ -54,8 +54,7 @@
         packages = [
           # Vinegar moved to standalone nixpkg
           "org.vinegarhq.Sober"
-          "flathub:com.github.tchx84.Flatseal"
-          "flathub:org.mozilla.firefox"
+          "com.github.tchx84.Flatseal"
         ];
 
         overrides = {

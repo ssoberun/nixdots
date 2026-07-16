@@ -23,20 +23,16 @@
     };
   };
 
-  flake.nixosModules.cursor =
-    { pkgs, config, ... }:
-    let
-      cursor-table = config.options.custom.cursor;
-    in
-    {
-      environment = {
-        systemPackages = [
-          cursor-table.package
-        ];
-      };
+  flake.nixosModules.cursor = { config, ... }: {
+    config = {
+      environment.systemPackages = [
+        config.custom.cursor.package
+      ];
 
       hj.xdg.data.files = {
-        "icons/${cursor-table.name}".source = "${cursor-table.package}/share/icons/${cursor-table.name}";
+        "icons/${config.custom.cursor.name}".source =
+          "${config.custom.cursor.package}/share/icons/${config.custom.cursor.name}";
       };
     };
+  };
 }

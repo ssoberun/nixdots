@@ -31,6 +31,10 @@
         cacheDir = "/var/cache/ccache";
       };
 
+      programs.nix-ld = {
+        enable = true;
+      };
+
       nix = {
         settings = {
           substituters = [

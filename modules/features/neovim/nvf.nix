@@ -113,27 +113,27 @@
           -- end
 
           -- Custom diagnostic buffer attachment (LspAttach) hook
-          vim.api.nvim_create_autocmd("LspAttach", {
-            callback = function(event)
-              local function map(mode, lhs, rhs)
-                vim.keymap.set(mode, lhs, rhs, { buffer = event.buf })
-              end
-              map("n", "gd", vim.lsp.buf.definition)
-              map("n", "gD", vim.lsp.buf.declaration)
-
-              local client = vim.lsp.get_client_by_id(event.data.client_id)
-              if client and client:supports_method "textDocument/documentHighlight" then
-                vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-                  buffer = event.buf,
-                  callback = vim.lsp.buf.document_highlight,
-                })
-                vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-                  buffer = event.buf,
-                  callback = vim.lsp.buf.clear_references,
-                })
-              end
-            end,
-          })
+          -- vim.api.nvim_create_autocmd("LspAttach", {
+          --   callback = function(event)
+          --     local function map(mode, lhs, rhs)
+          --       vim.keymap.set(mode, lhs, rhs, { buffer = event.buf })
+          --     end
+          --     map("n", "gd", vim.lsp.buf.definition)
+          --     map("n", "gD", vim.lsp.buf.declaration)
+          --
+          --     local client = vim.lsp.get_client_by_id(event.data.client_id)
+          --     if client and client:supports_method "textDocument/documentHighlight" then
+          --       vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+          --         buffer = event.buf,
+          --         callback = vim.lsp.buf.document_highlight,
+          --       })
+          --       vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+          --         buffer = event.buf,
+          --         callback = vim.lsp.buf.clear_references,
+          --       })
+          --     end
+          --   end,
+          -- })
         '';
         keymaps =
           let
@@ -198,7 +198,7 @@
           number = true; # Equivalent to vim.opt.number = true
           mouse = "a"; # Equivalent to vim.opt.mouse = "a"
           showmode = false; # Equivalent to vim.opt.showmode = false
-          clipboard = "unnamedplus"; # Equivalent to vim.opt.clipboard = "unnamedplus"
+          # clipboard = "unnamedplus"; # Equivalent to vim.opt.clipboard = "unnamedplus"
           signcolumn = "yes"; # Equivalent to vim.opt.signcolumn = "yes"
           updatetime = 300; # Equivalent to vim.opt.updatetime = 300
           cursorline = true; # Equivalent to vim.opt.cursorline = true
