@@ -4,6 +4,7 @@
       wl-clipboard
       wl-clipboard-x11
       ripgrep
+      fd
     ];
   };
 }
