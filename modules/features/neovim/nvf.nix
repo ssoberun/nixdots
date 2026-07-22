@@ -73,6 +73,14 @@
             end,
           })
 
+          -- map lua to luau
+          -- vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+          --     pattern = "*.luau",
+          --     callback = function()
+          --         vim.bo.filetype = "lua"
+          --     end,
+          -- })
+
           -- Clear highlights on search
           vim.keymap.set("n", "<esc>", "<cmd>nohlsearch<cr>")
 
@@ -303,6 +311,16 @@
         filetree = {
           neo-tree = {
             enable = true;
+            setupOpts = {
+              # https://github.com/nvim-neo-tree/neo-tree.nvim/discussions/353
+              filesystem = {
+                filtered_items = {
+                  visible = true;
+                  hide_dotfiles = false;
+                  hide_gitignored = true;
+                };
+              };
+            };
           };
         };
 
@@ -534,31 +552,6 @@
           # presets.harper.enable = true;
 
           servers = {
-            # luau_lsp = {
-            #   enable = true;
-            #   cmd = [
-            #     "${lib.getExe pkgs.luau-lsp}"
-            #     "lsp"
-            #   ];
-            #   filetypes = [
-            #     "luau"
-            #     "lua"
-            #   ];
-            #   setupOpts.settings = {
-            #     luau-lsp = {
-            #       completion = {
-            #         imports = {
-            #           enabled = true;
-            #         };
-            #       };
-            #       plugin = {
-            #         roblox = {
-            #           enabled = true; # Enables Roblox global definitions
-            #         };
-            #       };
-            #     };
-            #   };
-            # };
           };
           # lspSignature?
           # mappings?
@@ -649,6 +642,10 @@
               after = # lua
                 ''
                   require("luau-lsp").setup {
+                    sourcemap = {
+                      enable = true;
+                      autogenerate = false;
+                    };
                     platform = {
                       type = "roblox",
                     },
@@ -658,6 +655,10 @@
                     },
                     types = {
                       roblox_security_level = "PluginSecurity",
+                    },
+                    fflags = {
+                      enable_new_solver = true,
+                      sync = true,
                     },
                   }
 
@@ -672,68 +673,6 @@
                   })
                 '';
             };
-            # "luau-lsp.nvim" = {
-            #   enabled = true;
-            #   package = pkgs.vimPlugins.luau-lsp-nvim;
-            #   ft = [
-            #     "luau"
-            #     "lua"
-            #   ];
-            #   # setupModule = "luau-lsp";
-            #   setupOpts = {
-            #     server = {
-            #       cmd = [
-            #         "${lib.getExe pkgs.luau-lsp}"
-            #         "lsp"
-            #       ];
-            #     };
-            #     platform = {
-            #       type = "roblox";
-            #     };
-            #     types = {
-            #       roblox_security_level = "PluginSecurity";
-            #     };
-            #     sourcemap = {
-            #       # false as darklua does this in my projects
-            #       enabled = false;
-            #       autogenerate = false;
-            #     };
-            #   };
-            #   # Use 'after' to force a direct setup fallback if the implicit one misses
-            #   after = /* lua */ ''
-            #     if not require("lazy.core.config").plugins["luau-lsp.nvim"]._.loaded then
-            #       require("luau-lsp").setup({})
-            #     end
-            #   '';
-            # };
-            # "luau-lsp.nvim" = {
-            #   enabled = true;
-            #   package = pkgs.vimPlugins.luau-lsp-nvim;
-            #   ft = [
-            #     "luau"
-            #     "lua"
-            #   ];
-            #   setupModule = "luau-lsp";
-            #   setupOpts = {
-            #     server = {
-            #       # Ensure the exact executable points into the Nix store with 'lsp' flag mode!
-            #       cmd = [
-            #         "${lib.getExe pkgs.luau-lsp}"
-            #         "lsp"
-            #       ];
-            #     };
-            #     platform = {
-            #       type = "roblox";
-            #     };
-            #     types = {
-            #       roblox_security_level = "PluginSecurity";
-            #     };
-            #     sourcemap = {
-            #       enabled = true;
-            #       autogenerate = true;
-            #     };
-            #   };
-            # };
           };
         };
 
