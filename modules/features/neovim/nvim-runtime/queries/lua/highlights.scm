@@ -1,0 +1,2 @@
+;; extends
+"const" @keyword

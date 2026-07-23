@@ -59,6 +59,10 @@
         # parts of this taken from https://github.com/iynaix/dotfiles/blob/main/modules/shell/neovim/_settings.nix
         # large parts taken frm https://github.com/NotAShelf/nvf/blob/13c4ad4b4bb926c22945e2fb8862769fe51f27f1/configuration.nix
 
+        additionalRuntimePaths = [
+          ./nvim-runtime
+        ];
+
         # keybinds
         luaConfigPost = /* lua */ ''
           local vimtex_ts_group = vim.api.nvim_create_augroup("VimTexDisableTS", { clear = true })
@@ -644,7 +648,10 @@
                   require("luau-lsp").setup {
                     sourcemap = {
                       enable = true;
-                      autogenerate = false;
+                      autogenerate = true;
+                      rojo_project_file = "default.project.json";
+                      sourcemap_file = "sourcemap.json";
+                      generator_cmd = { "argon", "sourcemap", "--watch", "--non-scripts" };
                     };
                     platform = {
                       type = "roblox",
@@ -668,6 +675,29 @@
                         didChangeWatchedFiles = {
                           dynamicRegistration = true,
                         },
+                      },
+                    },
+                  })
+                  vim.lsp.config("luau-lsp", {
+                    settings = {
+                      ["luau-lsp"] = {
+                        completion = {
+                          fillCallArguments = true, 
+                          imports = {
+                            enabled = true;
+                            useConst = true;
+                            stringRequires = {
+                              enabled = true;
+                            };
+                          };
+                        },
+                        index = {
+                          enabled = true,
+                          maxFiles = 10000,
+                        },
+                        sourcemap = {
+                          useVSCodeWatcher = false;
+                        };
                       },
                     },
                   })
