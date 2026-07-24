@@ -104,8 +104,8 @@
             input = {
               keyboard = {
                 # increasing repeat-delay and repeat-rate seems to make things much much better and faster
-                repeat-delay = 200;
-                repeat-rate = 40;
+                repeat-delay = 250;
+                repeat-rate = 100;
                 xkb.layout = "us";
               };
               mouse = {

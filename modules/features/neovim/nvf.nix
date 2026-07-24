@@ -59,9 +59,9 @@
         # parts of this taken from https://github.com/iynaix/dotfiles/blob/main/modules/shell/neovim/_settings.nix
         # large parts taken frm https://github.com/NotAShelf/nvf/blob/13c4ad4b4bb926c22945e2fb8862769fe51f27f1/configuration.nix
 
-        additionalRuntimePaths = [
-          ./nvim-runtime
-        ];
+        # additionalRuntimePaths = [
+        #   ./nvim-runtime
+        # ];
 
         # keybinds
         luaConfigPost = /* lua */ ''
@@ -76,14 +76,36 @@
               vim.treesitter.stop(args.buf)
             end,
           })
+          -- 1. Tell Neovim that .luau files have the 'luau' filetype
+          vim.filetype.add({
+            extension = {
+              luau = "luau",
+            },
+          })
+
+          -- 2. Register Luau in Comment.nvim's internal table
+          local ok, ft = pcall(require, "Comment.ft")
+          if ok then
+            ft.set("luau", { "-- %s", "--[[ %s ]]" })
+          end
 
           -- map lua to luau
           -- vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
           --     pattern = "*.luau",
           --     callback = function()
-          --         vim.bo.filetype = "lua"
+          --         vim.bo.filetype = "luau.lua"
           --     end,
           -- })
+
+
+          -- vim.api.nvim_create_autocmd("FileType", {
+          --   pattern = "luau",
+          --   callback = function()
+          --     vim.opt_local.filetype = "luau.lua" -- or handle plugin hooks
+          --   end,
+          -- })
+
+          vim.treesitter.language.register("lua", "luau")
 
           -- Clear highlights on search
           vim.keymap.set("n", "<esc>", "<cmd>nohlsearch<cr>")
@@ -222,12 +244,15 @@
           # concealcursor = "";
         };
 
-        statusline.lualine.enable = true;
+        statusline.lualine = {
+          enable = true;
+          icons.enable = true;
+        };
         telescope = {
           enable = true;
           mappings = {
-            findFiles = "<leader>sf";
-            liveGrep = "<leader>sg";
+            findFiles = "<leader>ff";
+            liveGrep = "<leader>fg";
             buffers = "<leader><leader>";
           };
         };
@@ -345,6 +370,7 @@
 
         treesitter = {
           enable = true;
+          indent.enable = true;
           addDefaultGrammars = true;
           context.enable = true;
           highlight = {
@@ -685,7 +711,7 @@
                           fillCallArguments = true, 
                           imports = {
                             enabled = true;
-                            useConst = true;
+                            useConst = false;
                             stringRequires = {
                               enabled = true;
                             };
