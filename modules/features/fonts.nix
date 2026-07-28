@@ -20,8 +20,10 @@
           antialias = true;
           hinting.enable = true;
           defaultFonts = {
-            serif = [ "Ubuntu Sans" ];
-            sansSerif = [ "Ubuntu Sans" ];
+            # serif = [ "Ubuntu Sans" ];
+            # sansSerif = [ "Ubuntu Sans" ];
+            serif = [ "JetBrainsMono Nerd Font" ];
+            sansSerif = [ "JetBrainsMono Nerd Font" ];
             monospace = [ "JetBrainsMono Nerd Font" ];
           };
         };

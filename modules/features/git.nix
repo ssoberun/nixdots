@@ -20,6 +20,10 @@
           sshCommand = "ssh -i ${config.sops.secrets.github_ssh_key.path} -o IdentitiesOnly=yes";
         };
       };
+
+      environment.systemPackages = [
+        pkgs.git-lfs
+      ];
     };
 
   # from iynaix's dotfiles, on his nvim config
