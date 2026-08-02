@@ -184,7 +184,9 @@
               (mkKeymap mode key action) // opts;
           in
           [
-            (mkKeymap "n" "<leader>e" "<cmd>Neotree toggle<CR>" "Open Neo-tree")
+            # (mkKeymap "n" "<leader>e" "<cmd>Neotree toggle<CR>" "Open Neo-tree")
+            (mkKeymap "n" "<leader>e" "<cmd>lua MiniFiles.open()<CR>" "Open mini.files")
+            (mkKeymap "n" "<leader>p" "<cmd>Pick files<CR>" "Open mini.pick files")
             (mkKeymap "n" "<PageUp>" "<C-U>" "")
             (mkKeymap "n" "<PageDown>" "<C-D>" "")
             (mkKeymap "i" "<PageUp>" "<C-O><C-U>" "")
@@ -322,7 +324,6 @@
 
         visuals = {
           nvim-scrollbar.enable = true;
-          nvim-web-devicons.enable = true;
           nvim-cursorline.enable = true;
           cinnamon-nvim.enable = true;
           fidget-nvim.enable = true;
@@ -339,7 +340,7 @@
 
         filetree = {
           neo-tree = {
-            enable = true;
+            enable = false;
             setupOpts = {
               # https://github.com/nvim-neo-tree/neo-tree.nvim/discussions/353
               filesystem = {
@@ -384,6 +385,35 @@
         binds = {
           whichKey.enable = true;
           # cheatsheet.enable = true;
+        };
+
+        mini = {
+          files = {
+            enable = true;
+            # https://nvim-mini.org/mini.nvim/doc/mini-files.html#minifiles.setup
+            setupOpts = {
+              mappings = {
+                close = "q";
+                go_in = "l";
+                go_in_plus = "L";
+                go_out = "h";
+                go_out_plus = "H";
+                mark_goto = "'";
+                mark_set = "m";
+                reset = "<BS>";
+                reveal_cwd = "@";
+                show_help = "g?";
+                synchronize = "=";
+                trim_left = "<";
+                trim_right = ">";
+                open = "<leader>e";
+              };
+            };
+          };
+          icons.enable = true;
+          pick = {
+            enable = true;
+          };
         };
 
         minimap = {

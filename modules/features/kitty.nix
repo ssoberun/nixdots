@@ -28,6 +28,7 @@
         # cursor_trail = 3;
         background_blur = 1;
         background_opacity = 1;
+        # font_family = "Iosevka Nerd Font Mono";
 
         scrollback_lines = 50000;
         hide_window_decorations = true;

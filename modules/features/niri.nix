@@ -80,6 +80,9 @@
             spawn-at-startup = [
               noctaliaExe
             ];
+            spawn-sh-at-startup = [
+              "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${pkgs.xclip}/bin/xclip -selection clipboard"
+            ];
 
             xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
