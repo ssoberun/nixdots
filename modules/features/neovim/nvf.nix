@@ -222,8 +222,8 @@
           # name = "gruber-darker";
           # style = "dark";
 
-          name = "catppuccin";
-          style = "mocha";
+          # name = "catppuccin";
+          # style = "mocha";
 
           # name = "oxocarbon";
           # style = "dark";

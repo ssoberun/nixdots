@@ -84,6 +84,8 @@
             "wheel"
             "video"
             "gamemode"
+            "lp"
+            "scanner"
           ];
           initialPassword = "password";
           hashedPasswordFile = config.sops.secrets."users/sam-password".path;

@@ -6,11 +6,15 @@
       openFirewall = true;
     };
 
+    networking.firewall.allowedUDPPorts = [ 5353 ]; # mDNS
+    networking.firewall.allowedTCPPorts = [ 631 ]; # CUPS
+
     services.printing = {
       enable = true;
       browsed.enable = true;
       drivers = with pkgs; [
         cups-filters
+        cups-browsed
         gutenprint
         gutenprintBin
         hplip

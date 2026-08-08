@@ -81,7 +81,7 @@
               noctaliaExe
             ];
             spawn-sh-at-startup = [
-              "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${pkgs.xclip}/bin/xclip -selection clipboard"
+              # "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${pkgs.xclip}/bin/xclip -selection clipboard"
             ];
 
             xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
@@ -302,6 +302,26 @@
               # If the window is already in a column, they will expel it out.
               "${MainMod}+BracketLeft".consume-or-expel-window-left = _: { };
               "${MainMod}+BracketRight".consume-or-expel-window-right = _: { };
+
+              "${MainMod}+Shift+C" = _: {
+                content = {
+                  spawn = [
+                    "sh"
+                    "-c"
+                    # "env DISPLAY=:0 xsel -ob | wl-copy"
+                    "env display =:0 xsel -o | wl-copy"
+                  ];
+                };
+              };
+              "${MainMod}+Shift+V" = _: {
+                content = {
+                  spawn = [
+                    "sh"
+                    "-c"
+                    "wl-paste -n | env DISPLAY=:0 xsel -ib"
+                  ];
+                };
+              };
 
               # --- Media Keys (The Requested Rewrite) ---
               "XF86AudioRaiseVolume" = _: {
