@@ -37,6 +37,7 @@
             iosevka
             _7-segment-font
             google-fonts
+            monocraft
             # chinese
             noto-fonts-cjk-sans
             lora

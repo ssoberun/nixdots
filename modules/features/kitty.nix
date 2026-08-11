@@ -29,8 +29,10 @@
         background_blur = 1;
         background_opacity = 1;
         # font_family = "Iosevka Nerd Font Mono";
+        font_family = "Monocraft";
 
-        scrollback_lines = 50000;
+        font_size = 12.0;
+        scrollback_lines = -1;
         hide_window_decorations = true;
         confirm_os_window_close = 0;
         pixel_scroll = true;

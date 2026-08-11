@@ -371,9 +371,9 @@
 
         treesitter = {
           enable = true;
-          indent.enable = true;
+          indent.enable = false;
           addDefaultGrammars = true;
-          context.enable = true;
+          context.enable = false;
           highlight = {
             enable = true;
           };
@@ -433,7 +433,7 @@
           multicursors.enable = true;
           smart-splits.enable = true;
           undotree.enable = true;
-          nvim-biscuits.enable = true;
+          nvim-biscuits.enable = false;
           grug-far-nvim.enable = true;
 
           motion = {
@@ -721,7 +721,7 @@
                     },
                     fflags = {
                       enable_new_solver = true,
-                      sync = true,
+                      sync = false,
                     },
                   }
 
