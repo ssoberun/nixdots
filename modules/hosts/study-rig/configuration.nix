@@ -28,6 +28,7 @@
         self.nixosModules.base
         self.nixosModules.core
         self.nixosModules.gaming
+        self.nixosModules.llamacpp
 
         # laptop (move to a diff file?)
         # disabled here for obv reasons
@@ -100,7 +101,8 @@
       networking.networkmanager.enable = true;
       time.timeZone = "Australia/Sydney";
       # because i dual boot with windows, have this setting on
-      time.hardwareClockInLocalTime = true;
+      # turned off as hardware clock seems to be aest now after windows update ??? fuck wiondows
+      time.hardwareClockInLocalTime = false;
       i18n.defaultLocale = "en_AU.UTF-8";
 
       # desktop environment
