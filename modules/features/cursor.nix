@@ -1,4 +1,4 @@
-{ lib, ... }: {
+{ lib, pkgs, ... }: {
   flake.nixosModules.core = { pkgs, ... }: {
     options.custom = {
       cursor = {
@@ -23,16 +23,29 @@
     };
   };
 
-  flake.nixosModules.cursor = { config, ... }: {
-    config = {
-      environment.systemPackages = [
-        config.custom.cursor.package
-      ];
+  flake.nixosModules.cursor = { config, pkgs, ... }: {
+    config =
 
-      hj.xdg.data.files = {
-        "icons/${config.custom.cursor.name}".source =
-          "${config.custom.cursor.package}/share/icons/${config.custom.cursor.name}";
+      let
+        cfg = config.custom.cursor;
+
+        defaultCursorTheme = pkgs.runCommandLocal "default-cursor-theme" { } ''
+          mkdir -p $out/share/icons
+          ln -s ${cfg.package}/share/icons/${cfg.name} $out/share/icons/default
+        '';
+      in
+      {
+        environment.systemPackages = [
+          cfg.package
+          defaultCursorTheme
+        ];
+
+        hj.xdg.data.files = {
+          # for the apple
+          "icons/${cfg.name}".source = "${cfg.package}/share/icons/${cfg.name}";
+          # set as default for fhs shit
+          "icons/default".source = "${cfg.package}/share/icons/${cfg.name}";
+        };
       };
-    };
   };
 }
