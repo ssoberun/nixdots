@@ -25,6 +25,21 @@
           # Optional helps save long term battery health
           START_CHARGE_THRESH_BAT0 = 40; # 40 and below it starts to charge
           STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
+
+          # Forces PCIe links (SSD, Graphics, Wi-Fi) to save power on battery
+          PCIE_ASPM_ON_BAT = "powersave";
+
+          # Enables Runtime Power Management for PCIe devices on battery
+          RUNTIME_PM_ON_BAT = "auto";
+
+          # Fixes the 100% Wi-Fi (iwlwifi) power drain
+          WIFI_PWR_ON_BAT = "on";
+
+          # Fixes Intel Audio / Audio Codec background drain
+          SOUND_LPM_ON_BAT = "y";
+
+          # Forces USB devices (like Bluetooth) to autosuspend when idle
+          USB_AUTOSUSPEND = 1;
         };
       };
     };

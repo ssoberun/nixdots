@@ -71,6 +71,7 @@
           self'.packages.ns
           pkgs.manix
           pkgs.nix-inspect
+          pkgs.comma
 
           # unwrapped
           # pkgs.zoxide
