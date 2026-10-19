@@ -41,6 +41,7 @@
         qbittorrent
         davinci-resolve
         ffmpeg-full
+        zapzap
       ];
 
       custom.cursor = {

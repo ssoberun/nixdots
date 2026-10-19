@@ -48,7 +48,7 @@
         wget
         age
 
-        sioyek # same with sioyek
+        # sioyek # same with sioyek
 
         firefox
         bitwarden-desktop
@@ -130,6 +130,16 @@
           fcitx5-gtk # Optional: for GTK app support
         ];
       };
+      # keychron
+      # id found from nix-shell -p usbutils --run "lsusb"
+      services.udev.extraRules = ''
+        SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3434", MODE="0666", TAG+="uaccess"
+      '';
+      hardware.keyboard.qmk.enable = true;
+      services.udev.packages = [
+        pkgs.via
+        pkgs.qmk-udev-rules
+      ];
 
       # autocpufreq testing
       # services.auto-cpufreq = {

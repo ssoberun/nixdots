@@ -93,6 +93,7 @@
           pkgs.broot
           pkgs.tree
           pkgs.nvitop
+          pkgs.tldr
 
           # wrapped
           self'.packages.fastfetch

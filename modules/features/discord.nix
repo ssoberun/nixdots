@@ -3,8 +3,8 @@
     { pkgs, ... }:
     {
       environment.systemPackages = [
-        pkgs.vesktop
-        pkgs.discord
+        # pkgs.vesktop
+        # pkgs.discord
       ];
 
       # persistance.cache.directories = [
