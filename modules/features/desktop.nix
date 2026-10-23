@@ -41,7 +41,11 @@
         qbittorrent
         davinci-resolve
         ffmpeg-full
+<<<<<<< HEAD
         zapzap
+=======
+        unityhub
+>>>>>>> 127a95d (stash)
       ];
 
       custom.cursor = {

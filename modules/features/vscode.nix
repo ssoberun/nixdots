@@ -5,6 +5,7 @@
     {
       environment.systemPackages = [
         pkgs.vscodium
+        pkgs.vscode
       ];
     };
 }

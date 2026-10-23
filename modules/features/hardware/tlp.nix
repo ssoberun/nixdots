@@ -40,6 +40,11 @@
 
           # Forces USB devices (like Bluetooth) to autosuspend when idle
           USB_AUTOSUSPEND = 1;
+
+          # Platform profile for Lenovo ACPI
+          PLATFORM_PROFILE_ON_AC = "performance";
+          PLATFORM_PROFILE_ON_BAT = "low-power";
+
         };
       };
     };
