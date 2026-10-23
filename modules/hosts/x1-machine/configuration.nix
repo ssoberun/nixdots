@@ -34,8 +34,8 @@
         self.nixosModules.gaming
 
         # laptop (move to a diff file?)
-        self.nixosModules.tlp # tlp conflicts
-        ## suspending and hibernate
+        self.nixosModules.tlp
+        # suspending and hibernate
         self.nixosModules.suspend-and-hibernate
 
         # wrapped modules
