@@ -14,7 +14,7 @@
         # Hardware and Inputs
         self.nixosModules.study-rig-hardware
         self.nixosModules.systemd-boot
-        self.nixosModules.BORE-cachy-kernel
+        # self.nixosModules.BORE-cachy-kernel
 
         # unwrapped, modularised
         self.nixosModules.desktop
@@ -166,7 +166,7 @@
       # boot.kernelParams = [
       #   "resume_offset=20072448"
       #   "mem_sleep_default=deep"
-      # ];
+      # ];himalaya-vim
       # # Resume Device: The UUID of your ext4 'root' partition (nvme0n1p5)
       # boot.resumeDevice = "/dev/disk/by-uuid/6034c26a-575e-4e70-a7c3-cc657cc592a0";
       # powerManagement.enable = true;

@@ -4,7 +4,7 @@
     { pkgs, config, ... }:
     {
       programs.ccache = {
-        enable = true;
+        enable = false;
         cacheDir = "/var/cache/ccache";
       };
 
