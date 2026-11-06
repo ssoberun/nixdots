@@ -26,11 +26,6 @@
         nixd
       ];
 
-      programs.ccache = {
-        enable = true;
-        cacheDir = "/var/cache/ccache";
-      };
-
       programs.nix-ld = {
         enable = true;
         libraries = with pkgs; [

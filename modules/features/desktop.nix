@@ -6,7 +6,7 @@
       imports = [
         # wm
         self.nixosModules.niri
-        self.nixosModules.mangowc
+        # self.nixosModules.mangowc
         self.nixosModules.GNOME # GNOMe as backup, and also for its apps and portals
 
         # custom
@@ -79,6 +79,11 @@
 
       programs.chromium = {
         enable = true;
+      };
+
+      services.libinput = {
+        enable = true;
+        mouse.middleEmulation = true;
       };
 
       xdg.portal = {

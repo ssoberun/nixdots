@@ -492,9 +492,10 @@
             };
             lsp = {
               enable = true;
-              lazydev.enable = true;
+              # lazydev.enable = true;
             };
             treesitter.enable = true;
+            extensions.lazydev.enable = true;
           };
           svelte = {
             enable = true;
@@ -721,7 +722,8 @@
                   vim.cmd("colorscheme kanagawa")
                 '';
             };
-            "himalaya-vim" = {
+            # "himalaya-vim" = {
+            "himalaya-vim9" = {
               enabled = true;
               cmd = [ "Himalaya" ];
               package = pkgs.vimPlugins.himalaya-vim;
