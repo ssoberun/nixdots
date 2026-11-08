@@ -7,6 +7,8 @@
       apps.photocraft.enable = true;
       apps.vectorcraft.enable = true;
       apps.pdfcraft.enable = true;
+      apps.filmcraft.enable = true;
+      apps.wordcraft.enable = true;
     };
     # environment.systemPackages = with pkgs; [
     #   pdfcraft
