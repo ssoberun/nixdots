@@ -1,14 +1,6 @@
 { inputs, ... }: {
   flake.nixosModules.systemd-boot = { pkgs, ... }: {
     boot = {
-      plymouth = {
-        theme = "evangelion-ui";
-        themePackages = [
-          inputs.evangelion-ui.packages.${pkgs.stdenv.hostPlatform.system}.evangelion-ui
-        ];
-        enable = true;
-      };
-
       loader = {
         systemd-boot.enable = true;
         efi.canTouchEfiVariables = true;
