@@ -30,6 +30,7 @@
         self.nixosModules.jetbrains
         self.nixosModules.vscode
         self.nixosModules.cursor
+        self.nixosModules.artcraft
 
         # desktop visuals
         self.nixosModules.fonts

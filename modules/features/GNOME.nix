@@ -14,7 +14,7 @@
         };
 
         environment.systemPackages = with pkgs; [
-          gnomeExtensions.battery-monitor
+          # gnomeExtensions.battery-monitor
         ];
 
         programs.dconf.profiles.user.databases = [
