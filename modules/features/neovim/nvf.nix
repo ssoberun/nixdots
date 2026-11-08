@@ -722,7 +722,6 @@
                   vim.cmd("colorscheme kanagawa")
                 '';
             };
-            # "himalaya-vim" = {
             "himalaya-vim9" = {
               enabled = true;
               cmd = [ "Himalaya" ];
