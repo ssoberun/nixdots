@@ -14,7 +14,8 @@
         # Hardware and Inputs
         inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-9th-gen
         self.nixosModules.x1-machine-hardware
-        self.nixosModules.systemd-boot
+        # self.nixosModules.systemd-boot
+        self.nixosModules.GRUB
         self.nixosModules.boot-misc
         self.nixosModules.linux-kernel
 
