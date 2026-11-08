@@ -14,6 +14,7 @@
         # Hardware and Inputs
         self.nixosModules.study-rig-hardware
         self.nixosModules.systemd-boot
+        self.nixosModules.boot-misc
         # self.nixosModules.BORE-cachy-kernel
 
         # unwrapped, modularised
