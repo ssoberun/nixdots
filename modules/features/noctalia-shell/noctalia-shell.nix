@@ -8,20 +8,20 @@
   flake.nixosModules.noctalia =
     { pkgs, ... }:
     {
-      environment.systemPackages = [
-        self.packages.${pkgs.stdenv.hostPlatform.system}.noctalia-shell
-        # self'.packages.${pkgs.stdenv.hostPlatform.system}.noctalia-shell
-      ];
+      # environment.systemPackages = [
+      #   self.packages.${pkgs.stdenv.hostPlatform.system}.noctalia-shell
+      #   # self'.packages.${pkgs.stdenv.hostPlatform.system}.noctalia-shell
+      # ];
       hj.xdg.config.files."noctalia/plugins.json".source = ./plugins.json;
     };
 
   perSystem =
     { pkgs, ... }:
     {
-      packages.noctalia-shell = inputs.wrapper-modules.wrappers.noctalia-shell.wrap {
-        inherit pkgs;
-        settings = (builtins.fromJSON (builtins.readFile ./noctalia.json)).settings;
-      };
+      # packages.noctalia-shell = inputs.wrapper-modules.wrappers.noctalia.wrap {
+      #   inherit pkgs;
+      #   settings = (builtins.fromJSON (builtins.readFile ./noctalia.json)).settings;
+      # };
     };
 }
 

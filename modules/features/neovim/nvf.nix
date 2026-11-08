@@ -722,12 +722,12 @@
                   vim.cmd("colorscheme kanagawa")
                 '';
             };
-            "himalaya-vim9" = {
-              enabled = true;
-              cmd = [ "Himalaya" ];
-              package = pkgs.vimPlugins.himalaya-vim;
-              lazy = true;
-            };
+            # "himalaya-vim9" = {
+            #   enabled = true;
+            #   cmd = [ "Himalaya" ];
+            #   package = pkgs.vimPlugins.himalaya-vim;
+            #   lazy = true;
+            # };
             "luau-lsp.nvim" = {
               enabled = true;
               package = pkgs.vimPlugins.luau-lsp-nvim;
